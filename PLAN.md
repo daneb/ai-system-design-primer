@@ -78,7 +78,7 @@ comparing with the original primer. Second reads should check each primer page a
 - [ ] **3.5** Agentic retrieval (draft 2026-11-01; lab done; needs second read)
 - [ ] **2.5** Single-agent vs multi-agent (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.10** Multi-agent topologies and protocols (draft 2026-11-01; lab done; needs second read)
-- [ ] **3.11** Agent memory
+- [ ] **3.11** Agent memory (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.16** Observability
 - [ ] **4.6** Solved design: coding agent platform
 - [ ] **4.5** Solved design: customer-support agent
@@ -108,7 +108,7 @@ section that needs it.
 | TGI archive date | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
 | PagedAttention throughput figures | From memory; read arXiv 2309.06180 | 3.8 |
 | OpenAI "A practical guide to building agents" details | Seen via summary only | 3.9 |
-| Managed agent memory names (Foundry Agent Service memory, Vertex AI Memory Bank, AgentCore Memory) and Anthropic server-side compaction details | From search snippets; first-party pages not read | 3.3, 3.11 |
+| Managed agent memory (Foundry, Memory Bank, AgentCore) | Docs seen via search snippets, not read in full; Foundry throughput figure secondary; OpenAI long-term memory API absence unconfirmed | 3.3, 3.11 |
 | Self-Route cost savings (65% Gemini, 39% GPT-4o); LaRA findings | Secondary summaries; read arXiv 2407.16833 and 2502.09977 | 2.3 |
 | AWS and OpenAI first-party long-context-vs-RAG guidance | Not found | 2.3 |
 | Coding-agent search choices (Codex, Cline, Cursor) and Claude Code "agentic search beat RAG" | Secondary sources and an interview; arXiv 2608.01507 seen via abstract only | 3.5 |
