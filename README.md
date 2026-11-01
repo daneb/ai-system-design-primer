@@ -73,9 +73,9 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [4.1 Design an LLM inference API](docs/4-solved-designs/4.1-llm-inference-api.md) `S`
 - [4.2 Design an enterprise RAG assistant](docs/4-solved-designs/4.2-enterprise-rag-assistant.md) `S/F` · [deep dive](docs/deep-dives/4.2-enterprise-rag-assistant.md)
 - [4.3 Design an enterprise AI gateway](docs/4-solved-designs/4.3-enterprise-ai-gateway.md) `S`
-- [4.4 Design a regulated document-review assistant](docs/4-solved-designs/4.4-regulated-document-review.md) `S/F` _(planned)_
-- [4.5 Design a customer-support agent](docs/4-solved-designs/4.5-customer-support-agent.md) `F` _(planned)_
-- [4.6 Design a coding agent platform](docs/4-solved-designs/4.6-coding-agent.md) `F` _(planned)_
+- [4.4 Design a regulated document-review assistant](docs/4-solved-designs/4.4-regulated-document-review.md) `S/F`
+- [4.5 Design a customer-support agent](docs/4-solved-designs/4.5-customer-support-agent.md) `F`
+- [4.6 Design a coding agent platform](docs/4-solved-designs/4.6-coding-agent.md) `F`
 - [4.7 Design an eval and release pipeline](docs/4-solved-designs/4.7-eval-and-release-pipeline.md) `S`
 - [4.8 Additional design questions](docs/4-solved-designs/4.8-unsolved-questions.md) `S/F` _(planned)_
 
@@ -97,7 +97,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
-| 3 | 11 | 3 | 8 | 0 | 0 |
+| 3 | 11 | 0 | 11 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->
 
