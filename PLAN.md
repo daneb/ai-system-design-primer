@@ -72,9 +72,9 @@ comparing with the original primer. Second reads should check each primer page a
 
 ## Phase 3: Agents and the frontier
 
-- [ ] **3.9** Workflows and agents
-- [ ] **3.3** Context engineering
-- [ ] **2.3** Context stuffing vs retrieval
+- [ ] **3.9** Workflows and agents (draft 2026-11-01; lab done; needs second read)
+- [ ] **3.3** Context engineering (draft 2026-11-01; lab done; needs second read)
+- [ ] **2.3** Context stuffing vs retrieval (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.5** Agentic retrieval
 - [ ] **2.5** Single-agent vs multi-agent
 - [ ] **3.10** Multi-agent topologies and protocols
@@ -108,6 +108,10 @@ section that needs it.
 | TGI archive date | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
 | PagedAttention throughput figures | From memory; read arXiv 2309.06180 | 3.8 |
 | OpenAI "A practical guide to building agents" details | Seen via summary only | 3.9 |
+| Managed agent memory names (Foundry Agent Service memory, Vertex AI Memory Bank, AgentCore Memory) and Anthropic server-side compaction details | From search snippets; first-party pages not read | 3.3, 3.11 |
+| Self-Route cost savings (65% Gemini, 39% GPT-4o); LaRA findings | Secondary summaries; read arXiv 2407.16833 and 2502.09977 | 2.3 |
+| AWS and OpenAI first-party long-context-vs-RAG guidance | Not found | 2.3 |
+| Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Contextual retrieval −35% and absolute failure rates | −49/−67%, $1.02, 50–100 tokens and the 200k threshold confirmed from Anthropic; −35% and 5.7% → 1.9% still from secondary reports | 3.4 |

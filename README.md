@@ -41,7 +41,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 
 - [2.1 Cost vs quality vs latency](docs/2-trade-offs/2.1-cost-quality-latency.md) `S` · [deep dive](docs/deep-dives/2.1-cost-quality-latency.md)
 - [2.2 Determinism vs autonomy](docs/2-trade-offs/2.2-determinism-vs-autonomy.md) `S/F` · [deep dive](docs/deep-dives/2.2-determinism-vs-autonomy.md)
-- [2.3 Context stuffing vs retrieval](docs/2-trade-offs/2.3-context-vs-retrieval.md) `S/F` _(planned)_
+- [2.3 Context stuffing vs retrieval](docs/2-trade-offs/2.3-context-vs-retrieval.md) `S/F` · [deep dive](docs/deep-dives/2.3-context-vs-retrieval.md)
 - [2.4 Capability vs security](docs/2-trade-offs/2.4-capability-vs-security.md) `S/F` · [deep dive](docs/deep-dives/2.4-capability-vs-security.md)
 - [2.5 Single-agent vs multi-agent](docs/2-trade-offs/2.5-single-vs-multi-agent.md) `S/F` _(planned)_
 - [2.6 Prompting vs RAG vs fine-tuning](docs/2-trade-offs/2.6-prompt-rag-finetune.md) `S` · [deep dive](docs/deep-dives/2.6-prompt-rag-finetune.md)
@@ -51,13 +51,13 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 
 - [3.1 AI gateway and router](docs/3-components/3.1-ai-gateway-and-router.md) `S` · [deep dive](docs/deep-dives/3.1-ai-gateway-and-router.md)
 - [3.2 Input guardrails](docs/3-components/3.2-input-guardrails.md) `S` · [deep dive](docs/deep-dives/3.2-input-guardrails.md)
-- [3.3 Context engineering](docs/3-components/3.3-context-engineering.md) `S/F` _(planned)_
+- [3.3 Context engineering](docs/3-components/3.3-context-engineering.md) `S/F` · [deep dive](docs/deep-dives/3.3-context-engineering.md)
 - [3.4 Retrieval pipeline](docs/3-components/3.4-retrieval-pipeline.md) `S` · [deep dive](docs/deep-dives/3.4-retrieval-pipeline.md)
 - [3.5 Agentic retrieval and the long-context boundary](docs/3-components/3.5-agentic-retrieval.md) `F` _(planned)_
 - [3.6 Vector stores](docs/3-components/3.6-vector-stores.md) `S/F` · [deep dive](docs/deep-dives/3.6-vector-stores.md)
 - [3.7 Model layer: selection, structured outputs, streaming](docs/3-components/3.7-model-layer.md) `S/F` · [deep dive](docs/deep-dives/3.7-model-layer.md)
 - [3.8 Serving internals](docs/3-components/3.8-serving-internals.md) `S/F` · [deep dive](docs/deep-dives/3.8-serving-internals.md)
-- [3.9 Workflows and agents](docs/3-components/3.9-workflows-and-agents.md) `S` _(planned)_
+- [3.9 Workflows and agents](docs/3-components/3.9-workflows-and-agents.md) `S` · [deep dive](docs/deep-dives/3.9-workflows-and-agents.md)
 - [3.10 Multi-agent topologies and protocols (MCP, A2A)](docs/3-components/3.10-multi-agent-and-protocols.md) `F` _(planned)_
 - [3.11 Agent memory](docs/3-components/3.11-memory.md) `F` _(planned)_
 - [3.12 Output guardrails and validation](docs/3-components/3.12-output-guardrails.md) `S` · [deep dive](docs/deep-dives/3.12-output-guardrails.md)
@@ -97,7 +97,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
-| 3 | 11 | 11 | 0 | 0 | 0 |
+| 3 | 11 | 8 | 3 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->
 
