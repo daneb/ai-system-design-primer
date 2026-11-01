@@ -58,7 +58,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [3.7 Model layer: selection, structured outputs, streaming](docs/3-components/3.7-model-layer.md) `S/F` · [deep dive](docs/deep-dives/3.7-model-layer.md)
 - [3.8 Serving internals](docs/3-components/3.8-serving-internals.md) `S/F` · [deep dive](docs/deep-dives/3.8-serving-internals.md)
 - [3.9 Workflows and agents](docs/3-components/3.9-workflows-and-agents.md) `S` · [deep dive](docs/deep-dives/3.9-workflows-and-agents.md)
-- [3.10 Multi-agent topologies and protocols (MCP, A2A)](docs/3-components/3.10-multi-agent-and-protocols.md) `F` _(planned)_
+- [3.10 Multi-agent topologies and protocols (MCP, A2A)](docs/3-components/3.10-multi-agent-and-protocols.md) `F` · [deep dive](docs/deep-dives/3.10-multi-agent-and-protocols.md)
 - [3.11 Agent memory](docs/3-components/3.11-memory.md) `F` _(planned)_
 - [3.12 Output guardrails and validation](docs/3-components/3.12-output-guardrails.md) `S` · [deep dive](docs/deep-dives/3.12-output-guardrails.md)
 - [3.13 Caching](docs/3-components/3.13-caching.md) `S/F` · [deep dive](docs/deep-dives/3.13-caching.md)
@@ -97,7 +97,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
-| 3 | 11 | 6 | 5 | 0 | 0 |
+| 3 | 11 | 5 | 6 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->
 

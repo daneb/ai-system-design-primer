@@ -77,7 +77,7 @@ comparing with the original primer. Second reads should check each primer page a
 - [ ] **2.3** Context stuffing vs retrieval (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.5** Agentic retrieval (draft 2026-11-01; lab done; needs second read)
 - [ ] **2.5** Single-agent vs multi-agent (draft 2026-11-01; lab done; needs second read)
-- [ ] **3.10** Multi-agent topologies and protocols
+- [ ] **3.10** Multi-agent topologies and protocols (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.11** Agent memory
 - [ ] **3.16** Observability
 - [ ] **4.6** Solved design: coding agent platform
@@ -114,6 +114,8 @@ section that needs it.
 | Coding-agent search choices (Codex, Cline, Cursor) and Claude Code "agentic search beat RAG" | Secondary sources and an interview; arXiv 2608.01507 seen via abstract only | 3.5 |
 | Bedrock agentic retrieval and Vertex AI Search agentic features | AWS blog only; Google not checked | 3.5 |
 | MAST category shares (44.2% system design); Kim et al. sequential-task figures (39–70% vs "−70%") | Secondary sources and abstracts; read both papers | 2.5 |
+| A2A v1.0 operations, dates and agent-card fields; MCP revision list | Secondary sources; read a2a-protocol.org spec and MCP release list | 3.10 |
+| Cloud MCP/A2A services (AgentCore Gateway/Identity, Apigee, Entra Agent ID, Agent Engine A2A) | Not checked first-party | 3.10 |
 | Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
