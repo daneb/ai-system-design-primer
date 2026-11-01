@@ -1,0 +1,9 @@
+%% alt: Diagram for 3.17 Security: User, Application, Web, email, uploads, Documents and vector store, Model, Tools and business systems, Models, packages, tool servers, Telemetry
+flowchart LR
+  U[User] -->|1 prompts| APP[Application]
+  EXT[Web, email, uploads] -->|2 untrusted content| APP
+  KB[(Documents and<br/>vector store)] -->|3 retrieval| APP
+  APP --> M[Model]
+  APP -->|4 tool calls| T[Tools and<br/>business systems]
+  SC[Models, packages,<br/>tool servers] -.->|5 supply chain| APP
+  APP -->|6 logs| LOG[(Telemetry)]

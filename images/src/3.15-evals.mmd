@@ -1,0 +1,5 @@
+%% alt: Diagram for 3.15 Evals: Cases from real use, edge cases, must-refuse, System under test, Graders code, model, human, Scores with error bars, Release gate, Production traffic
+flowchart LR
+  D[(Cases from real use,<br/>edge cases, must-refuse)] --> S[System under test] --> G[Graders<br/>code, model, human] --> R[Scores with<br/>error bars] --> X{Release gate}
+  P[Production traffic] -. sample .-> G
+  G -. failures become cases .-> D

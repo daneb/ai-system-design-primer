@@ -1,0 +1,14 @@
+%% alt: Two panels. Workflows, where code decides the path: prompt chaining, routing, parallelisation, orchestrator-workers and evaluator-optimizer. Agent, where the model decides the path: goal, the model chooses a tool, the tool result gives ground truth, then a check for done or budget spent loops back.
+flowchart LR
+  subgraph W[Workflows: code decides the path]
+    direction LR
+    C[Chain] ~~~ R[Route] ~~~ P[Parallel]
+    O[Orchestrator-<br/>workers] ~~~ E[Evaluator-<br/>optimizer]
+  end
+  subgraph A[Agent: the model decides the path]
+    direction LR
+    G[Goal]:::human --> L[Model chooses<br/>a tool]:::model --> T[Tool result<br/>= ground truth]:::tool --> D{Done or<br/>budget spent?}:::control
+    D -->|no| L
+  end
+  W ~~~ A
+  class C,R,P,O,E model

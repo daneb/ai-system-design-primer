@@ -11,12 +11,12 @@ isn't a matter of opinion.
 
 Measured by a quick scan of the primer pages, to set targets below:
 
-| Measure | Now | Target |
+| Measure | 2026-11-01 start → now | Target |
 |---|---|---|
-| Diagrams | 42 Mermaid flowcharts; no rendered images | Every page has a rendered, consistent diagram with alt text |
-| Primer pages with no worked example | 29 of 41 | 0 |
-| Sentences over 30 words in primer pages | 110 | Under 20 |
-| Acronyms used in primer pages but not in the glossary | ~37 (e.g. PII, GDPR, POPIA, NIST, PTU, RBAC, PEFT, GRPO) | 0 |
+| Diagrams | 42 Mermaid flowcharts; no rendered images → **43 rendered SVGs with alt text, one style** | Every page has a rendered, consistent diagram with alt text |
+| Primer pages with no worked example | 29 of 41 → **0 in Parts 0–3** (Parts 4–5 are worked cases already) | 0 |
+| Sentences over 30 words in primer pages | 110 → **0 in Parts 0–3** | Under 20 |
+| Acronyms used in primer pages but not in the glossary | ~37 → **0** | 0 |
 | Lab results shown as charts | 0 (tables only) | Every lab with a numeric sweep has a chart |
 | Verification-debt rows | 50 | Under 15, none on a stable section |
 
@@ -24,13 +24,13 @@ Measured by a quick scan of the primer pages, to set targets below:
 
 Readers should never meet a term they can't look up, and every idea should come with a concrete case.
 
-- [ ] **P0 · Key terms box on every primer page.** Three to six terms, each defined in one plain
+- [x] **P0 · Key terms box on every primer page.** Three to six terms, each defined in one plain
   sentence, linked to the glossary. *Check:* `primer.py check` warns when a page lacks the box or uses a
-  glossary term in its heading without defining it.
-- [ ] **P0 · Acronym rule.** Spell out on first use in each page; every acronym in the glossary.
-  *Check:* a new `check` rule lists acronyms missing from the glossary (the audit above, automated).
-- [ ] **P0 · One worked example per page.** A short, concrete case with numbers: "a 40-turn agent
-  that…", "a bank with 50 apps…". *Check:* every primer page has a `### Example` subsection.
+  glossary term in its heading without defining it. *Done 2026-11-01:* Parts 0–3 have the box; terms are outside the word budget.
+- [x] **P0 · Acronym rule.** Spell out on first use in each page; every acronym in the glossary.
+  *Check:* a new `check` rule lists acronyms missing from the glossary (the audit above, automated). *Done 2026-11-01:* `check` warns on acronyms missing from the glossary (Part 5 exempt).
+- [x] **P0 · One worked example per page.** A short, concrete case with numbers: "a 40-turn agent
+  that…", "a bank with 50 apps…". *Check:* every primer page has a `### Example` subsection. *Done 2026-11-01:* Parts 0–3 have an example, mostly drawn from the labs.
 - [ ] **P1 · Part 0 foundations: "How a language model works, for system designers".** Tokens,
   context window, sampling and temperature, embeddings, attention and the KV cache, tool calling,
   reasoning models. Two or three short pages so Parts 2–3 can assume them. *Check:* pages exist and
@@ -38,11 +38,11 @@ Readers should never meet a term they can't look up, and every idea should come 
 - [ ] **P1 · "How it works, step by step" for the hardest mechanisms**, in the deep dives: KV cache and
   paged attention, continuous batching, speculative decoding, HNSW search, reciprocal rank fusion,
   LoRA, prompt caching, pass^k. Each with a small diagram and a worked number. *Check:* list complete.
-- [ ] **P1 · Sentence-length pass.** Split sentences over 30 words; target under 20 across the primer.
-  *Check:* `check` reports the count.
-- [ ] **P1 · Glossary cleanup.** Remove duplicates (two were found and removed on 2026-11-01), one
+- [x] **P1 · Sentence-length pass.** Split sentences over 30 words; target under 20 across the primer.
+  *Check:* `check` reports the count. *Done 2026-11-01:* 0 sentences over 30 words in Parts 0–3.
+- [x] **P1 · Glossary cleanup.** Remove duplicates (two were found and removed on 2026-11-01), one
   definition per term, consistent style, link every term to its main section. *Check:* `check` fails on
-  duplicate terms.
+  duplicate terms. *Done 2026-11-01:* `check` fails on duplicate terms; ~110 terms added. Linking every term to its section is still open.
 - [ ] **P2 · "Common misconceptions" per part,** e.g. "a bigger context window means you don't need
   retrieval", "multi-agent is more capable", "RAG eliminates hallucination". Each answered with a lab or
   source.
@@ -54,11 +54,11 @@ Readers should never meet a term they can't look up, and every idea should come 
 The original primer is known for its diagrams. Ours are Mermaid flowcharts: easy to maintain, but
 plain, inconsistent in layout and rendered differently by every viewer.
 
-- [ ] **P0 · Diagram style guide** in STYLE.md: one palette, shape meaning (model, tool, data store,
-  human, untrusted input), left-to-right request flow, section numbers on components, alt text rule.
-- [ ] **P0 · Render diagrams to SVG in the build.** Keep Mermaid as source; render with `mmdc` and a
+- [x] **P0 · Diagram style guide** in STYLE.md: one palette, shape meaning (model, tool, data store,
+  human, untrusted input), left-to-right request flow, section numbers on components, alt text rule. *Done 2026-11-01:* STYLE.md § Diagrams.
+- [x] **P0 · Render diagrams to SVG in the build.** Keep Mermaid as source; render with `mmdc` and a
   shared theme into `images/`, and link the SVG with alt text from each page. *Check:* `check` fails
-  when a page's diagram has no rendered SVG or no alt text.
+  when a page's diagram has no rendered SVG or no alt text. *Done 2026-11-01:* 43 sources in `images/src/`, `scripts/diagrams.py check` in CI.
 - [ ] **P1 · Hero diagrams**, drawn by hand (Excalidraw or draw.io sources committed under
   `images/src/`): the request path through Parts 3 (README), the complexity ladder, the lethal trifecta,
   the agent loop, the retrieval pipeline, the sandbox in 4.6. These are the images people will share.
@@ -76,13 +76,13 @@ plain, inconsistent in layout and rendered differently by every viewer.
 
 - [ ] **Decide the licence, visibility and publishing** (open decisions in PLAN.md). Suggested: CC BY
   4.0 for content, MIT for code, matching the original.
-- [ ] **`git init`, first commit, push.**
-- [ ] **CI:** run `primer.py check`, `primer.py readme --check`, the relative-link check and every lab
-  on each pull request. *Check:* green badge in README.
+- [x] **`git init`, first commit, push.**
+- [x] **CI:** run `primer.py check`, `primer.py readme --check`, the relative-link check and every lab
+  on each pull request. *Check:* green badge in README. *Done 2026-11-01:* labs job added; badge still to add once public.
 - [ ] **Clear verification debt on stable sections first:** batch discounts and cache multipliers
   (2.1, 3.13, 5.1), PagedAttention figures (3.8), contextual-retrieval figures (3.4), pgvector defaults
   (3.6), OpenAI agent guide details (3.9, 2.4).
-- [ ] **External link checker** (weekly, with a cache) so dead provider links surface early.
+- [x] **External link checker** (weekly, with a cache) so dead provider links surface early. *Done:* lychee weekly in CI.
 
 ### P1: next quarter
 

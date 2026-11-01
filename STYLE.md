@@ -70,14 +70,22 @@ Follow [templates/section.md](templates/section.md). Mirror the original primer'
 
 1. **One diagram** that shows flow or structure the prose can't. Small.
 2. **What it is**: the problem, then the mechanism, in one to three short paragraphs.
-3. **How it works** or **Types**: bullets, each a bolded term and one or two sentences.
-4. **When to use / when to avoid**: bullets.
-5. **Disadvantages**: bullets, the way the original lists "Disadvantage(s)". Include the main
+3. **Key terms**: three to six terms, each in bold with a one-sentence plain definition, then a link
+   to the glossary. Every term here must also be in the glossary. Not counted in the word budget.
+4. **How it works** or **Types**: bullets, each a bolded term and one or two sentences.
+5. **Example**: one concrete scenario with numbers, ideally from the section's lab, showing the idea
+   changing a decision. Five to ten sentences.
+6. **When to use / when to avoid**: bullets.
+7. **Disadvantages**: bullets, the way the original lists "Disadvantage(s)". Include the main
    failure modes here.
-6. **Go deeper**: one line linking the deep dive and the lab, saying what the reader will find.
-7. **Flashcards** and **Sources** (3–5 links, primary sources first).
+8. **Go deeper**: one line linking the deep dive and the lab, saying what the reader will find.
+9. **Flashcards** and **Sources** (3–5 links, primary sources first).
 
 Rules of thumb:
+
+- **Define before you use.** Spell out every acronym on first use in a page, and make sure it is in
+  the glossary. `primer.py check` lists acronyms missing from the glossary.
+- **Sentences of 30 words or fewer.** `primer.py check` flags longer ones in Parts 0–3.
 
 - **Bullets over tables.** At most one table, and only when the reader genuinely compares rows.
 - **Links:** other sections and labs inline; external sources mostly in the Sources list. Inline
@@ -87,6 +95,29 @@ Rules of thumb:
 - **No product names** in primer prose ([ADR 0003](adr/0003-vendor-neutral-prose.md)); they live in
   the deep dive's cloud mapping.
 - **One headline number at most**, sourced and dated, if it changes the reader's intuition.
+
+## Diagrams
+
+Diagrams are Mermaid sources rendered to SVG, so they look the same on GitHub, in a PDF and offline.
+
+- **Where they live:** source in `images/src/<page-stem>.mmd`, rendered file in `images/<page-stem>.svg`. Deep-dive diagrams use a `dd-` prefix. Never put a ```` ```mermaid ```` block in a page.
+- **How a page shows one:** `![alt text](../../images/<stem>.svg)` with `<!-- source: images/src/<stem>.mmd; render with scripts/diagrams.py -->` on the next line.
+- **Alt text:** the first line of the source is `%% alt: ...`. Write one sentence saying what the diagram shows, not what it looks like. `scripts/diagrams.py sync-alt` copies it into the pages.
+- **Flow:** left to right (`flowchart LR`) unless the idea is a stack. Use invisible links (`~~~`) to sit two panels side by side.
+- **Labels:** short nouns. Put the section number on a component that has its own page, for example `Gateway 3.1`.
+- **Colour means something.** Tag nodes with a class; plain nodes stay white. Add no other colours.
+
+| Class | Use for | Look |
+|---|---|---|
+| `model` | an LLM call | indigo |
+| `tool` | a tool, API or code step | green |
+| `data` | a store, index or document | amber |
+| `human` | a person or approval step | grey |
+| `untrusted` | input you do not control | red, dashed |
+| `control` | a guardrail, gateway or policy check | violet |
+
+- **Render:** `python3 scripts/diagrams.py render` (needs Node; uses `@mermaid-js/mermaid-cli` and `images/mermaid-config.json`). Commit the `.mmd`, the `.svg` and `images/.hashes.json` together.
+- **Check:** `python3 scripts/diagrams.py check` fails on inline Mermaid, missing alt text, a missing source or SVG, or an SVG older than its source. CI runs it.
 
 ## Shape of a deep dive
 
@@ -134,6 +165,7 @@ Every section is researched the same way, so readers can trust that a claim isn'
 
 - [ ] Could a busy engineer read the primer page in ten minutes and explain the idea afterwards?
 - [ ] Is it within budget, mostly bullets, with at most one table and one diagram?
+- [ ] Does the diagram follow the Diagrams rules, and does `scripts/diagrams.py check` pass?
 - [ ] Is every term explained the first time it appears?
 - [ ] Does the deep dive cover at least three of the five major providers, plus primary literature?
 - [ ] Are agreements and disagreements between sources stated in the deep dive?

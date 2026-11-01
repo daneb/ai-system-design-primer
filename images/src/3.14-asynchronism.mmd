@@ -1,0 +1,7 @@
+%% alt: Diagram for 3.14 Asynchronism: batch, durable execution, back-pressure: Caller, Queue, Workers rate-limited, Model API, Checkpoints and results
+flowchart LR
+  C[Caller] -->|enqueue, get job ID| Q[(Queue)]
+  Q --> W[Workers<br/>rate-limited]
+  W -->|retry with backoff + jitter| M[Model API]
+  W --> S[(Checkpoints<br/>and results)]
+  S -->|webhook or poll| C

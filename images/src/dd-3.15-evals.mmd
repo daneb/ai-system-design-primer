@@ -1,0 +1,10 @@
+%% alt: Diagram for 3.15 Evals: deep dive: Eval cases from real use, edge cases, must-refuse, System under test prompt, model, retrieval, tools, Outputs and transcripts, Graders code, model, human, Scores with error bars, Release gate
+flowchart LR
+  D[(Eval cases<br/>from real use,<br/>edge cases,<br/>must-refuse)] --> S[System under test<br/>prompt, model,<br/>retrieval, tools]
+  S --> O[Outputs and<br/>transcripts]
+  O --> G[Graders<br/>code, model, human]
+  G --> R[Scores with<br/>error bars]
+  R --> X{Release<br/>gate}
+  P[Production traffic] -. sample .-> G
+  O -. read regularly .-> H[Humans refine<br/>criteria and cases]
+  H -.-> D

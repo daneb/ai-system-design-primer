@@ -1,0 +1,4 @@
+%% alt: Diagram for 3.6 Vector stores: Query embedding, Filter tenant, permissions, date, ANN index, Top k candidates, Optional rescoring, To fusion and reranking, 3.4
+flowchart LR
+  Q[Query embedding] --> F{Filter<br/>tenant, permissions, date}
+  F --> A[ANN index] --> C[Top k candidates] --> R[Optional rescoring] --> O[To fusion and<br/>reranking, 3.4]

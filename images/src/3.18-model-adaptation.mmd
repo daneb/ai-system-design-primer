@@ -1,0 +1,7 @@
+%% alt: Diagram for 3.18 Model adaptation: Base model, Supervised fine-tuning examples of good output, Preference tuning better vs worse pairs, Reinforcement fine-tuning a grader scores attempts, Large teacher model
+flowchart LR
+  B[Base model] --> SFT[Supervised fine-tuning<br/>examples of good output]
+  SFT --> PREF[Preference tuning<br/>better vs worse pairs]
+  B --> RFT[Reinforcement fine-tuning<br/>a grader scores attempts]
+  T[Large teacher model] --> DIST[Distillation<br/>teacher's answers train a small student]
+  SFT & PREF & RFT & DIST --> E{Beats the eval<br/>baseline?} --> H[Host, version, re-validate]

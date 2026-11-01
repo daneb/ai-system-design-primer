@@ -40,7 +40,67 @@ def reading_body(body):
 
 
 def body_words(body):
-    return len(re.findall(r"\S+", reading_body(body)))
+    """Words counted against the budget: the reading body minus the Key terms box (reference material)."""
+    text = re.sub(r"^## Key terms\s*$.*?(?=^## )", "", reading_body(body), flags=re.S | re.M)
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)|<!--.*?-->", "", text, flags=re.S)  # diagram alt text is not reading
+    return len(re.findall(r"\S+", text))
+
+
+GLOSSARY = DOCS / "5-appendix" / "5.6-glossary.md"
+# Acronyms readers are assumed to know; everything else must be in the glossary.
+COMMON_ACRONYMS = {"AI", "API", "APIs", "ID", "IDs", "URL", "URLs", "HTTP", "HTTPS", "JSON", "PDF", "CPU",
+                   "CPUs", "GPU", "GPUs", "SQL", "UI", "CI", "US", "EU", "UK", "OK", "SDK", "SDKs", "CSV",
+                   "KB", "MB", "GB", "TB", "PR", "PRs", "FAQ", "IT", "HR", "CEO", "README", "TL", "DR",
+                   "AWS", "GCP", "VM", "VMs", "OS", "IDE", "CLI", "RAM", "Q", "A", "HTML", "CSS", "XML", "SMS", "BCC", "CC"}
+KEY_TERMS_PARTS = ("0", "1", "2", "3")     # primer pages that need a Key terms box and an example
+LONG_SENTENCE = 30
+
+
+def glossary_terms():
+    """Terms (lower-case) and acronyms defined in the glossary's first column."""
+    terms, acronyms, dupes = set(), set(), []
+    if not GLOSSARY.exists():
+        return terms, acronyms, dupes
+    for line in GLOSSARY.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^\| ([^|]+?) \| [^|]+ \| [^|]*\|\s*$", line)
+        if not m or m.group(1) in ("Term", "Date") or m.group(1).startswith("-"):
+            continue
+        term = m.group(1).strip()
+        if re.match(r"\d{4}-\d{2}-\d{2}", term):
+            continue
+        key = term.lower()
+        if key in terms:
+            dupes.append(term)
+        terms.add(key)
+        acronyms.update(re.findall(r"[A-Z][A-Z0-9]{1,6}", term))
+    return terms, acronyms, dupes
+
+
+def plain_text(body):
+    """Reading body with links reduced to their text, inline code and HTML comments removed."""
+    t = reading_body(body)
+    t = re.sub(r"`[^`]*`", "", t)
+    t = re.sub(r"\]\([^)]*\)", "]", t)
+    t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+    t = re.sub(r"\b[A-Z]{1,6}-\d+\b", "", t)          # identifiers such as TX-4471
+    return t
+
+
+def undefined_acronyms(body, known):
+    found = set(re.findall(r"\b[A-Z][A-Z0-9]{1,6}s?\b", plain_text(body)))
+    found = {a for a in found if not re.fullmatch(r"(LLM|ASI)\d\d|[IVX]+|[A-Z]\d+", a)}   # list IDs, numerals, model codes
+    return sorted(a for a in found
+                  if a not in COMMON_ACRONYMS and a not in known and a.rstrip("s") not in known)
+
+
+def long_sentences(body):
+    text = re.sub(r"^\s*\|.*$", "", plain_text(body), flags=re.M)     # skip tables
+    out = []
+    # list items and headings are separate units even without a full stop
+    for unit in re.split(r"\n\s*\n|\n(?=\s*(?:[-*]|\d+\.)\s)|\n(?=#)", text):
+        unit = re.sub(r"\s+", " ", unit).strip()
+        out += [s for s in re.split(r"(?<=[.!?:;])\s+", unit) if len(s.split()) > LONG_SENTENCE]
+    return out
 
 
 def table_count(body):
@@ -126,6 +186,10 @@ def parse_date(v):
 def cmd_check(args):
     today = dt.date.fromisoformat(args.today) if args.today else dt.date.today()
     errors, warnings, seen = [], [], set()
+    g_terms, g_acronyms, g_dupes = glossary_terms()
+    for d in g_dupes:
+        errors.append(f"{GLOSSARY.relative_to(ROOT)}: duplicate glossary term '{d}'")
+    long_total = 0
     for s in load_sections():
         m, rel = s["meta"], s["path"].relative_to(ROOT)
         if not m:
@@ -177,6 +241,19 @@ def cmd_check(args):
                 warnings.append(f"{rel}: no deep dive in docs/deep-dives/ (ADR 0007)")
         if "## Flashcards" not in s["body"]:
             warnings.append(f"{rel}: no '## Flashcards' heading")
+        if sid.split(".")[0] in KEY_TERMS_PARTS:
+            if not re.search(r"^## Key terms\s*$", s["body"], re.M):
+                warnings.append(f"{rel}: no '## Key terms' box (ROADMAP theme 1)")
+            if not re.search(r"^#{2,3} (?:Worked e|E)xample\b", s["body"], re.M):
+                warnings.append(f"{rel}: no '### Example' worked example (ROADMAP theme 1)")
+        missing = undefined_acronyms(s["body"], g_acronyms) if sid.split(".")[0] != "5" else []
+        if missing:
+            warnings.append(f"{rel}: acronyms not in the glossary: {', '.join(missing)}")
+        if sid.split(".")[0] in KEY_TERMS_PARTS:
+            longs = long_sentences(s["body"])
+            long_total += len(longs)
+            for sentence in longs:
+                warnings.append(f"{rel}: sentence over {LONG_SENTENCE} words: \"{sentence[:70]}...\"")
     primer_ids = {s["meta"].get("id") for s in load_sections()}
     for d in load_deep_dives():
         m, rel = d["meta"], d["path"].relative_to(ROOT)
@@ -343,6 +420,22 @@ def cmd_flashcards(args):
     return 0
 
 
+def cmd_labs(args):
+    """Run every lab script from its own folder; fail if any exits non-zero."""
+    import subprocess
+    failed = 0
+    scripts = sorted((ROOT / "labs").glob("*/*.py"))
+    for script in scripts:
+        r = subprocess.run([sys.executable, script.name], cwd=script.parent, capture_output=True, text=True, timeout=600)
+        status = "ok" if r.returncode == 0 else f"FAILED ({r.returncode})"
+        print(f"{status:<12} {script.relative_to(ROOT)}")
+        if r.returncode != 0:
+            failed += 1
+            print(r.stderr[-2000:])
+    print(f"{len(scripts) - failed}/{len(scripts)} labs ran")
+    return 1 if failed else 0
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -353,8 +446,9 @@ def main():
     r = sub.add_parser("readme")
     r.add_argument("--check", action="store_true", help="exit 1 if README.md would change")
     sub.add_parser("flashcards")
+    sub.add_parser("labs")
     args = p.parse_args()
-    return {"check": cmd_check, "status": cmd_status, "readme": cmd_readme, "flashcards": cmd_flashcards}[args.cmd](args)
+    return {"check": cmd_check, "status": cmd_status, "readme": cmd_readme, "flashcards": cmd_flashcards, "labs": cmd_labs}[args.cmd](args)
 
 
 if __name__ == "__main__":

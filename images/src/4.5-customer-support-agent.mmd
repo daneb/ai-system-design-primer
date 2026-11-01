@@ -1,0 +1,16 @@
+%% alt: Diagram for 4.5 Design a customer-support agent: Customer, authenticated in app, Chat channel, Input guardrails: injection, abuse, PII, Router, Small model + approved content, Support agent, Knowledge: policies, product terms, RAG
+flowchart LR
+  C[Customer,<br/>authenticated in app] --> CH[Chat channel]
+  CH --> IG[Input guardrails:<br/>injection, abuse, PII]
+  IG --> R{Router}
+  R -->|FAQ| F[Small model +<br/>approved content]
+  R -->|account or action| A[Support agent]
+  A --> K[Knowledge: policies,<br/>product terms, RAG]
+  A --> T[Tools as workflows:<br/>lookups, card freeze,<br/>dispute, preferences]
+  T --> P{Policy engine:<br/>eligibility, limits}
+  P -->|allowed| B[Core banking APIs]
+  P -->|needs confirmation| Y[Customer confirms<br/>in app]
+  A --> OG[Output checks:<br/>grounded, no advice,<br/>no other customer's data]
+  OG --> CH
+  A -->|hand over| H[Human agent desktop:<br/>summary + history]
+  A --> L[(Traces, decisions,<br/>actions, consent)]

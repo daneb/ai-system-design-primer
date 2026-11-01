@@ -1,0 +1,8 @@
+%% alt: Diagram for 3.8 Serving internals: Requests, Scheduler continuous batching, Prefill whole prompt at once, KV cache paged blocks, Decode one token per step, Streamed tokens
+flowchart LR
+  R[Requests] --> S[Scheduler<br/>continuous batching]
+  S --> P[Prefill<br/>whole prompt at once]
+  P --> KV[(KV cache<br/>paged blocks)]
+  KV --> D[Decode<br/>one token per step]
+  D --> KV
+  D --> O[Streamed tokens]

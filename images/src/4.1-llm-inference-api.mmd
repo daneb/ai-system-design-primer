@@ -1,0 +1,10 @@
+%% alt: Diagram for 4.1 Design an LLM inference API: Teams, AI gateway auth, quotas, telemetry, Inference router queue-, cache- and prefix-aware, Interactive pool engine replicas, Bulk pool engine replicas, Signed model weights object storage
+flowchart LR
+  T[Teams] --> GW[AI gateway<br/>auth, quotas, telemetry]
+  GW --> IG[Inference router<br/>queue-, cache- and<br/>prefix-aware]
+  IG --> P1[Interactive pool<br/>engine replicas]
+  IG --> P2[Bulk pool<br/>engine replicas]
+  P1 & P2 --> W[(Signed model weights<br/>object storage)]
+  AS[Autoscaler<br/>on queue depth and<br/>KV-cache use] --> P1
+  AS --> P2
+  P1 & P2 --> M[(Metrics: TTFT, TPOT,<br/>queue, cache use)]

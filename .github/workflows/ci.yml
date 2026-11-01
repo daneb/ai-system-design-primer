@@ -18,12 +18,26 @@ jobs:
         run: python3 scripts/primer.py check
       - name: README TOC and progress are current
         run: python3 scripts/primer.py readme --check
+      - name: Diagrams have sources, alt text and current SVGs
+        run: python3 scripts/diagrams.py check
       - name: Flashcards build
         run: python3 scripts/primer.py flashcards
       - uses: actions/upload-artifact@v4
         with:
           name: flashcards
           path: build/flashcards.tsv
+
+  labs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install lab dependencies
+        run: pip install numpy matplotlib
+      - name: Every lab runs
+        run: python3 scripts/primer.py labs
 
   links:
     runs-on: ubuntu-latest

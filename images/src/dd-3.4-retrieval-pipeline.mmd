@@ -1,0 +1,25 @@
+%% alt: Diagram for 3.4 Retrieval pipeline: deep dive: Indexing (offline, on change, Sources, Parse and extract, Chunk, Enrich: metadata, context, Embed, Keyword index, Index: vectors, text, permissions, Query (online, per request, Query
+flowchart LR
+  subgraph Ingest["Indexing (offline, on change)"]
+    direction LR
+    S[Sources] --> P[Parse and<br/>extract]
+    P --> C[Chunk]
+    C --> E[Enrich:<br/>metadata, context]
+    E --> V[Embed]
+    E --> K[Keyword<br/>index]
+    V --> I[(Index:<br/>vectors, text,<br/>permissions)]
+    K --> I
+  end
+  subgraph Query["Query (online, per request)"]
+    direction LR
+    Q[Query] --> T[Translate:<br/>rewrite, decompose]
+    T --> R1[Keyword<br/>search]
+    T --> R2[Vector<br/>search]
+    R1 --> F[Fuse<br/>RRF]
+    R2 --> F
+    F --> RR[Rerank]
+    RR --> A[Assemble context<br/>with citations]
+    A --> G[Generate]
+  end
+  I -. permission-filtered .-> R1
+  I -. permission-filtered .-> R2

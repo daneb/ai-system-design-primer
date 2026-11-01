@@ -1,0 +1,9 @@
+%% alt: Diagram for 3.11 Agent memory: Conversation and tool results, Candidate memories, Write?, Memory store, scoped per user, Update or delete old, Working context, Model
+flowchart LR
+  C[Conversation<br/>and tool results] -->|extract| X[Candidate<br/>memories]
+  X -->|check source,<br/>filter sensitive| G{Write?}
+  G -->|new| S[(Memory store,<br/>scoped per user)]
+  G -->|contradicts old| U[Update or<br/>delete old]
+  U --> S
+  S -->|search by relevance<br/>at the start of a turn| W[Working context]
+  W --> M[Model]

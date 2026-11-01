@@ -1,0 +1,8 @@
+%% alt: Diagram for 3.3 Context engineering: Sources: instructions, tools, history, retrieved data, memory, Select, Compress: clear, summarise, Order, Working context for this call, Model
+flowchart LR
+  S[Sources:<br/>instructions, tools,<br/>history, retrieved data,<br/>memory] --> Sel[Select]
+  Sel --> Cmp[Compress:<br/>clear, summarise]
+  Cmp --> Ord[Order]
+  Ord --> W[Working context<br/>for this call]
+  W --> M[Model]
+  M -->|new turn, tool result| S

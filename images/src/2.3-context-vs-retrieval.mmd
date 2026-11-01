@@ -1,0 +1,6 @@
+%% alt: Diagram for 2.3 Context stuffing vs retrieval: Question, Corpus size, traffic, freshness, access rules, Stuff: whole corpus in the prompt, cached, Retrieve: top passages into the prompt, Hybrid: retrieve first, stuff when needed
+flowchart LR
+  Q[Question] --> D{Corpus size,<br/>traffic, freshness,<br/>access rules}
+  D -->|small, stable,<br/>busy| S[Stuff: whole corpus<br/>in the prompt, cached]
+  D -->|large, changing,<br/>per-user access| R[Retrieve: top passages<br/>into the prompt]
+  D -->|mixed| H[Hybrid: retrieve first,<br/>stuff when needed]

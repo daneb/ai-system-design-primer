@@ -21,10 +21,22 @@ flowchart LR
 
 One to three short paragraphs: the problem, then the mechanism. Vendor-neutral.
 
+## Key terms
+
+- **Term one:** one plain sentence. Also add it to the glossary.
+- **Term two:** one plain sentence.
+
+More in the [glossary](../5-appendix/5.6-glossary.md).
+
 ## How it works
 
 - **Part or type A.** One or two sentences.
 - **Part or type B.** One or two sentences.
+
+## Example
+
+A concrete scenario with numbers, ideally from the lab: who, how much, what they tried, what happened,
+and what they decided.
 
 ## When to use
 

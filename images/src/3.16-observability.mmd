@@ -1,0 +1,10 @@
+%% alt: Diagram for 3.16 Observability: Agent run, Spans: agent, model call, tool call, retrieval, guardrail, Collector: redact, sample, Traces, Metrics: tokens, cost, latency, errors, Online evals score samples, Dashboards and alerts
+flowchart LR
+  A[Agent run] --> S[Spans: agent,<br/>model call, tool call,<br/>retrieval, guardrail]
+  S --> C[Collector:<br/>redact, sample]
+  C --> T[(Traces)]
+  C --> M[(Metrics:<br/>tokens, cost,<br/>latency, errors)]
+  T --> E[Online evals<br/>score samples]
+  E --> D[Dashboards<br/>and alerts]
+  M --> D
+  T --> R[Review queue,<br/>new eval cases]

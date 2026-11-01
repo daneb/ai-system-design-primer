@@ -1,0 +1,16 @@
+%% alt: Diagram for 4.6 Design a coding agent platform: Ticket or prompt, Orchestrator: queue, quotas, policy, Ephemeral sandbox per task, Ephemeral sandbox, Agent loop, Files: repo clone worktree, Shell: build, test, lint
+flowchart LR
+  T[Ticket or prompt] --> O[Orchestrator:<br/>queue, quotas,<br/>policy]
+  O --> S[Ephemeral sandbox<br/>per task]
+  subgraph S[Ephemeral sandbox]
+    A[Agent loop] --> F[Files: repo clone<br/>worktree]
+    A --> X[Shell: build,<br/>test, lint]
+    A --> R[Read-only sub-agents:<br/>search, review]
+  end
+  A -->|model calls| G[AI gateway]
+  X -->|egress allow-list| P[Package mirror,<br/>git server]
+  A --> PR[Branch + pull request]
+  PR --> CI[CI: tests, SAST,<br/>secret scan]
+  CI --> H[Human review<br/>and approval]
+  H --> M[Merge]
+  S --> L[(Traces, commands,<br/>network log)]

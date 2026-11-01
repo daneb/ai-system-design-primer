@@ -1,0 +1,14 @@
+%% alt: Diagram for 4.3 Design an enterprise AI gateway: Apps, Edge: auth, request limits, Policy: data class, model catalogue, input guardrails, Token quotas and budgets, Router: rules, learned routing, fallback, breakers, Provider A two regions
+flowchart LR
+  A[Apps] --> E[Edge: auth,<br/>request limits]
+  E --> P[Policy: data class,<br/>model catalogue,<br/>input guardrails]
+  P --> Q[Token quotas<br/>and budgets]
+  Q --> R[Router: rules,<br/>learned routing,<br/>fallback, breakers]
+  R --> M1[Provider A<br/>two regions]
+  R --> M2[Provider B]
+  R --> M3[Self-hosted pool]
+  R -.-> O[Output checks<br/>where configured]
+  E & Q & R --> U[(Usage records,<br/>traces)]
+  U --> D[Chargeback, dashboards,<br/>model inventory]
+  C[Self-service portal] --> K[(Config: teams, keys,<br/>quotas, routes)]
+  K --> E & P & Q & R

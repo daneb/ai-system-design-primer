@@ -11,6 +11,16 @@ owner: "@daneb"
 
 # 0 Orientation
 
+## Key terms
+
+- **Large language model (LLM):** a model trained on large amounts of text that writes text in response to a prompt.
+- **Primer page and deep dive:** each topic has a short page to learn from and a longer reference page with provider details, numbers and controls.
+- **Maturity tag:** how settled a section is: stable (`S`), mixed (`S/F`), frontier (`F`) or speculative (`?`).
+- **last_verified / review_by:** when a section's sources were last checked, and when they must be checked again.
+- **Lab:** a small runnable script that tests a claim from the section, with the prediction written down first.
+
+More in the [glossary](../5-appendix/5.6-glossary.md).
+
 ## What this is
 
 A primer on designing systems built around large language models: gateways, retrieval, agents,
@@ -39,9 +49,9 @@ of engineers that every design decision is a trade-off:
 
 ## How to read a section
 
-Every section has the same shape: what it is, variants, when to use and when to avoid, the trade-off it
-moves, limitations and the pattern that mitigates each, numbers, failure modes, risk and controls,
-cloud mapping, flashcards, and sources.
+Every topic has the same shape. The primer page covers what it is, key terms, a worked example, when
+to use it, when to avoid it, its disadvantages and flashcards. The deep dive holds the provider survey,
+numbers, risk and controls, and cloud mapping.
 
 Each section is also labelled with how settled its content is:
 
@@ -55,12 +65,21 @@ Each section is also labelled with how settled its content is:
 The `last_verified` date at the top of a section is the day its sources were last checked. The build
 fails when a review is overdue, so a date in the past is a promise that someone looked.
 
-AI moves fast, but less of it moves than it seems. The stable core here is roughly the
-five workflow patterns and agent loop from Anthropic's
-[Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), the
-retrieval pipeline, gateways and caching, evals, guardrails and the prompt-injection threat model.
+AI moves fast, but less of it moves than it seems. The stable core is small. It's the five workflow
+patterns and agent loop from Anthropic's
+[Building effective agents](https://www.anthropic.com/engineering/building-effective-agents). It's also
+the retrieval pipeline, gateways and caching, evals, guardrails and the prompt-injection threat model.
 What churns is mostly products, protocols and multi-agent designs. Learn the core well and treat the
 frontier as news.
+
+## Example
+
+An engineer has a week before a design interview at a company building AI products. They read the
+method (Part 1), then trade-offs 2.1, 2.2 and 2.4, then the five components marked in the study guide.
+On day four they work the enterprise RAG assistant (4.2) on paper before reading the solution, and
+compare their token estimate with the one in the page. Each evening they review that day's flashcards.
+On day six they run Lab 2.4 and classify the tools in their own team's chatbot. That last step is the
+one most likely to come up: "What could an injected instruction make your system do?"
 
 ## Study guide
 

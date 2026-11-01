@@ -1,0 +1,10 @@
+%% alt: Diagram for 3.12 Output guardrails and validation: deep dive: Model output, Shape schema, types, allowed values, Grounding claims supported by sources?, Policy harmful content, PII, leakage, Safe handling encode, parameterise
+flowchart LR
+  M[Model output] --> S[Shape<br/>schema, types,<br/>allowed values]
+  S --> G[Grounding<br/>claims supported<br/>by sources?]
+  G --> P[Policy<br/>harmful content,<br/>PII, leakage]
+  P --> H[Safe handling<br/>encode, parameterise,<br/>never execute]
+  H --> D[User or<br/>downstream system]
+  S -. fail .-> F[Retry, fall back,<br/>refuse, or route<br/>to a person]
+  G -. fail .-> F
+  P -. fail .-> F

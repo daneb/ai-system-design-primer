@@ -1,0 +1,12 @@
+%% alt: Diagram for 3.1 AI gateway and router: App A, App B, Agent, AI gateway, Authenticate, Token quotas, Policy hooks, Route, Retry and fallback, Provider 1, Provider 2, Usage per team
+flowchart LR
+  A1[App A] --> G
+  A2[App B] --> G
+  A3[Agent] --> G
+  subgraph G[AI gateway]
+    direction TB
+    AU[Authenticate] --> Q[Token quotas] --> P[Policy hooks] --> R[Route] --> F[Retry and fallback]
+  end
+  F --> M1[Provider 1]
+  F --> M2[Provider 2]
+  G -.-> O[(Usage per team)]

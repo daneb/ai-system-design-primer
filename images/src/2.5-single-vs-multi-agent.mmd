@@ -1,0 +1,14 @@
+%% alt: Diagram for 2.5 Single-agent vs multi-agent: Single agent, One agent one context all tools, Multi-agent: orchestrator, Lead agent, Sub-agent
+flowchart LR
+  subgraph S[Single agent]
+    direction TB
+    A1[One agent<br/>one context<br/>all tools]
+  end
+  subgraph M[Multi-agent: orchestrator]
+    direction TB
+    L[Lead agent] --> W1[Sub-agent]
+    L --> W2[Sub-agent]
+    L --> W3[Sub-agent]
+    W1 & W2 & W3 -->|short summaries| L
+  end
+  S -.->|split only when testing<br/>shows a limit you can't fix| M

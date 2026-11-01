@@ -23,15 +23,18 @@ design, design the core components, then scale. AI systems need two changes to t
 
 That gives six steps.
 
-```mermaid
-flowchart LR
-  A[1 Use cases,<br/>constraints,<br/>quality bar] --> B[2 Back-of-the-<br/>envelope]
-  B --> C[3 High-level design<br/>on the ladder]
-  C --> D[4 Core<br/>components]
-  D --> E[5 Harden]
-  E --> F[6 Scale and<br/>optimise]
-  F -. new bottleneck .-> D
-```
+![Diagram for 1 How to approach an AI system design question: 1 Use cases, constraints, quality bar, 2 Back-of-the- envelope, 3 High-level design on the ladder, 4 Core components, 5 Harden, 6 Scale and optimise](../../images/1-method.svg)
+<!-- source: images/src/1-method.mmd; render with scripts/diagrams.py -->
+
+## Key terms
+
+- **Quality bar:** what a good answer looks like and how it will be measured, agreed before design starts.
+- **Back-of-the-envelope:** rough arithmetic on tokens, requests per second, cost and latency to size the system.
+- **Complexity ladder:** single call → workflow → single agent → multi-agent; start at the lowest rung that meets the bar.
+- **Hardening:** designing against prompt injection, data leakage and unsafe actions as a step of its own.
+- **Eval (evaluation):** a repeatable test of output quality, run before release and sampled in production.
+
+More in the [glossary](../5-appendix/5.6-glossary.md).
 
 ## Step 1: Use cases, constraints and the quality bar
 

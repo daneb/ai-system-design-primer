@@ -1,0 +1,11 @@
+%% alt: Diagram for 3.5 Agentic retrieval and the long-context boundary: Question, Plan: what do I need to know?, Choose a tool, Search index, grep / list files, Open a whole document, Read results, Enough to answer?, Answer with citations
+flowchart LR
+  Q[Question] --> P[Plan: what do<br/>I need to know?]
+  P --> T{Choose a tool}
+  T --> S[Search index]
+  T --> G[grep / list files]
+  T --> O[Open a whole<br/>document]
+  S & G & O --> R[Read results]
+  R --> E{Enough to answer?}
+  E -->|no: refine query| P
+  E -->|yes| A[Answer with citations]

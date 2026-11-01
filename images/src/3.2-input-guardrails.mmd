@@ -1,0 +1,8 @@
+%% alt: Diagram for 3.2 Input guardrails: User input, Retrieved documents, tool results, emails, Input guardrails rules → classifiers → model screen, Model, Redacted input, Safe response, review queue, log
+flowchart LR
+  U[User input] --> C
+  D[Retrieved documents,<br/>tool results, emails] --> C
+  C[Input guardrails<br/>rules → classifiers → model screen]
+  C -->|pass| M[Model]
+  C -->|mask| R[Redacted input] --> M
+  C -->|block or flag| H[Safe response,<br/>review queue, log]

@@ -1,0 +1,12 @@
+%% alt: Diagram for 3.17 Security: deep dive: User, Application, Web, email, uploads, other agents, Context assembly, Documents and vector store, AI gateway, Model provider, Output handling, Policy and identity check, Tools and MCP servers
+flowchart LR
+  U[User] -->|1 prompts| APP[Application]
+  EXT[Web, email, uploads,<br/>other agents] -->|2 untrusted content| CTX
+  APP --> CTX[Context assembly]
+  KB[(Documents and<br/>vector store)] -->|3 retrieval| CTX
+  CTX --> GW[AI gateway] --> M[Model provider]
+  M --> OUT[Output handling] --> APP
+  OUT -->|4 tool calls| POL{Policy and<br/>identity check} --> T[Tools and MCP servers] --> SYS[(Business systems)]
+  SC[Models, packages,<br/>tool servers] -.->|5 supply chain| M
+  SC -.-> T
+  APP -->|6 logs and traces| LOG[(Telemetry)]

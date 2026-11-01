@@ -3,23 +3,8 @@
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
 
-```mermaid
-flowchart LR
-  U[User] --> G[Gateway<br/>3.1]
-  G --> IG[Input<br/>guardrails 3.2]
-  IG --> C[Context<br/>engineering 3.3]
-  C --> R[Retrieval<br/>3.4–3.6]
-  C --> A[Workflow or<br/>agent 3.9–3.11]
-  A --> M[Model layer<br/>3.7–3.8]
-  R --> M
-  M --> OG[Output<br/>checks 3.12]
-  OG --> U
-  M -.-> K[Caching 3.13]
-  A -.-> Q[Async 3.14]
-  E[Evals 3.15] -.-> M
-  O[Observability 3.16] -.-> A
-  S[Security 3.17] -.-> A
-```
+![The request path through the primer's components. A user's request passes through the gateway (3.1), input guardrails (3.2) and context engineering (3.3), then retrieval (3.4 to 3.6) and a workflow or agent (3.9 to 3.11), reaches the model layer (3.7, 3.8), and returns through output checks (3.12). Caching, asynchronism, evals, observability and security support the path.](images/readme.svg)
+<!-- source: images/src/readme.mmd; render with scripts/diagrams.py -->
 
 ## Motivation
 

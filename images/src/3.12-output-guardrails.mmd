@@ -1,0 +1,6 @@
+%% alt: Diagram for 3.12 Output guardrails and validation: Model output, Shape, Grounding, Policy, Safe handling, User or downstream system, Retry, fall back, refuse or escalate
+flowchart LR
+  M[Model output] --> S[Shape] --> G[Grounding] --> P[Policy] --> H[Safe handling] --> D[User or<br/>downstream system]
+  S -. fail .-> F[Retry, fall back,<br/>refuse or escalate]
+  G -. fail .-> F
+  P -. fail .-> F
