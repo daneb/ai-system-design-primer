@@ -55,33 +55,33 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [3.4 Retrieval pipeline](docs/3-components/3.4-retrieval-pipeline.md) `S` · [deep dive](docs/deep-dives/3.4-retrieval-pipeline.md)
 - [3.5 Agentic retrieval and the long-context boundary](docs/3-components/3.5-agentic-retrieval.md) `F` _(planned)_
 - [3.6 Vector stores](docs/3-components/3.6-vector-stores.md) `S/F` · [deep dive](docs/deep-dives/3.6-vector-stores.md)
-- [3.7 Model layer: selection, structured outputs, streaming](docs/3-components/3.7-model-layer.md) `S/F` _(planned)_
+- [3.7 Model layer: selection, structured outputs, streaming](docs/3-components/3.7-model-layer.md) `S/F` · [deep dive](docs/deep-dives/3.7-model-layer.md)
 - [3.8 Serving internals](docs/3-components/3.8-serving-internals.md) `S/F` · [deep dive](docs/deep-dives/3.8-serving-internals.md)
 - [3.9 Workflows and agents](docs/3-components/3.9-workflows-and-agents.md) `S` _(planned)_
 - [3.10 Multi-agent topologies and protocols (MCP, A2A)](docs/3-components/3.10-multi-agent-and-protocols.md) `F` _(planned)_
 - [3.11 Agent memory](docs/3-components/3.11-memory.md) `F` _(planned)_
 - [3.12 Output guardrails and validation](docs/3-components/3.12-output-guardrails.md) `S` · [deep dive](docs/deep-dives/3.12-output-guardrails.md)
 - [3.13 Caching](docs/3-components/3.13-caching.md) `S/F` · [deep dive](docs/deep-dives/3.13-caching.md)
-- [3.14 Asynchronism: batch, durable execution, back-pressure](docs/3-components/3.14-asynchronism.md) `S` _(planned)_
+- [3.14 Asynchronism: batch, durable execution, back-pressure](docs/3-components/3.14-asynchronism.md) `S` · [deep dive](docs/deep-dives/3.14-asynchronism.md)
 - [3.15 Evals](docs/3-components/3.15-evals.md) `S` · [deep dive](docs/deep-dives/3.15-evals.md)
 - [3.16 Observability](docs/3-components/3.16-observability.md) `S/F` _(planned)_
 - [3.17 Security](docs/3-components/3.17-security.md) `S/F` · [deep dive](docs/deep-dives/3.17-security.md)
-- [3.18 Model adaptation](docs/3-components/3.18-model-adaptation.md) `S` _(planned)_
+- [3.18 Model adaptation](docs/3-components/3.18-model-adaptation.md) `S` · [deep dive](docs/deep-dives/3.18-model-adaptation.md)
 
 **Part 4: Solved designs**
 
-- [4.1 Design an LLM inference API](docs/4-solved-designs/4.1-llm-inference-api.md) `S` _(planned)_
+- [4.1 Design an LLM inference API](docs/4-solved-designs/4.1-llm-inference-api.md) `S`
 - [4.2 Design an enterprise RAG assistant](docs/4-solved-designs/4.2-enterprise-rag-assistant.md) `S/F` · [deep dive](docs/deep-dives/4.2-enterprise-rag-assistant.md)
-- [4.3 Design an enterprise AI gateway](docs/4-solved-designs/4.3-enterprise-ai-gateway.md) `S` _(planned)_
+- [4.3 Design an enterprise AI gateway](docs/4-solved-designs/4.3-enterprise-ai-gateway.md) `S`
 - [4.4 Design a regulated document-review assistant](docs/4-solved-designs/4.4-regulated-document-review.md) `S/F` _(planned)_
 - [4.5 Design a customer-support agent](docs/4-solved-designs/4.5-customer-support-agent.md) `F` _(planned)_
 - [4.6 Design a coding agent platform](docs/4-solved-designs/4.6-coding-agent.md) `F` _(planned)_
-- [4.7 Design an eval and release pipeline](docs/4-solved-designs/4.7-eval-and-release-pipeline.md) `S` _(planned)_
+- [4.7 Design an eval and release pipeline](docs/4-solved-designs/4.7-eval-and-release-pipeline.md) `S`
 - [4.8 Additional design questions](docs/4-solved-designs/4.8-unsolved-questions.md) `S/F` _(planned)_
 
 **Part 5: Appendix**
 
-- [5.1 Numbers every AI engineer should know](docs/5-appendix/5.1-numbers.md) `S/F` _(planned)_
+- [5.1 Numbers every AI engineer should know](docs/5-appendix/5.1-numbers.md) `S/F`
 - [5.2 Cloud mapping: Azure, AWS Bedrock, GCP](docs/5-appendix/5.2-cloud-mapping.md) `F` _(planned)_
 - [5.3 Pattern crosswalk](docs/5-appendix/5.3-pattern-crosswalk.md) `S/F` _(planned)_
 - [5.4 Governance crosswalk: OWASP, FINOS, EU AI Act](docs/5-appendix/5.4-governance-crosswalk.md) `F` _(planned)_
@@ -96,7 +96,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 |---|---|---|---|---|---|
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
-| 2 | 10 | 7 | 3 | 0 | 0 |
+| 2 | 10 | 0 | 10 | 0 | 0 |
 | 3 | 11 | 11 | 0 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->

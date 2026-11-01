@@ -62,13 +62,13 @@ comparing with the original primer. Second reads should check each primer page a
 - [ ] **2.7** Throughput vs per-request latency (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.8** Serving internals (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.13** Caching (draft 2026-11-01; lab done; needs second read)
-- [ ] **3.7** Model layer
-- [ ] **3.14** Asynchronism
-- [ ] **3.18** Model adaptation
-- [ ] **5.1** Numbers every AI engineer should know (clear the verification debt below first)
-- [ ] **4.1** Solved design: LLM inference API
-- [ ] **4.3** Solved design: enterprise AI gateway
-- [ ] **4.7** Solved design: eval and release pipeline
+- [ ] **3.7** Model layer (draft 2026-11-01; lab done; needs second read)
+- [ ] **3.14** Asynchronism (draft 2026-11-01; lab done; needs second read)
+- [ ] **3.18** Model adaptation (draft 2026-11-01; lab done; needs second read)
+- [ ] **5.1** Numbers every AI engineer should know (draft 2026-11-01; aggregates deep dives; needs second read)
+- [ ] **4.1** Solved design: LLM inference API (draft 2026-11-01; lab done; needs second read)
+- [ ] **4.3** Solved design: enterprise AI gateway (draft 2026-11-01; needs second read)
+- [ ] **4.7** Solved design: eval and release pipeline (draft 2026-11-01; needs second read)
 
 ## Phase 3: Agents and the frontier
 
@@ -108,7 +108,7 @@ section that needs it.
 | TGI archive date | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
 | PagedAttention throughput figures | From memory; read arXiv 2309.06180 | 3.8 |
 | OpenAI "A practical guide to building agents" details | Seen via summary only | 3.9 |
-| Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Not sourced | 5.1 |
+| Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Contextual retrieval −35% and absolute failure rates | −49/−67%, $1.02, 50–100 tokens and the 200k threshold confirmed from Anthropic; −35% and 5.7% → 1.9% still from secondary reports | 3.4 |
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
@@ -126,7 +126,10 @@ section that needs it.
 | τ-bench figures (GPT-4o retail pass@1 ~61%, pass^8 ~25%); newer models' pass^k | Figures from the paper abstract and summaries; current leaderboards not checked | 2.2, 3.15 |
 | OpenAI flex, priority and Scale Tier; Anthropic Priority Tier withdrawal; AWS priority on-demand | Via gateway documentation, not provider docs | 2.7, 5.2 |
 | Chunked-prefill defaults in vLLM V1 and SGLang; Sarathi-Serve figures; managed endpoints for open models on Azure and AWS | Secondary sources / not researched | 3.8, 5.2 |
-| Anthropic model fine-tuning via cloud partners | Not checked | 2.6, 3.18, 5.2 |
+| Anthropic model fine-tuning via cloud partners | Claude 3 Haiku tuning on Bedrock confirmed (GA Nov 2024); AWS blog says the model reached EOL 10 Sep 2026; any current Claude tuning option not verified | 2.6, 3.18, 5.2 |
+| Azure and Google fine-tuning methods (DPO, RFT); OpenAI currently tunable models; Bedrock RFT accuracy claim | Not researched / secondary | 3.18, 5.2 |
+| Anthropic 529 overload semantics; OpenAI, Google, Azure, AWS batch limits | Secondary sources | 3.14 |
+| OpenAI snapshot pinning guidance; Anthropic dateless IDs are pinned | Secondary sources quoting provider docs | 3.7 |
 | Anthropic eval details: pass@k / pass^k, capability vs regression, grade outcomes not paths | Page confirmed to exist and cover them; details read via secondary summaries | 3.15 |
 | EU AI Act Art. 15 (accuracy for high-risk systems) | Not checked against the regulation text | 3.15, 5.4 |
 | Anthropic managed eval tooling; AWS and Google production monitoring of eval scores | Not researched | 3.15, 5.2 |

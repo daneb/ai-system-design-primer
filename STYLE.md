@@ -57,7 +57,7 @@ Long is not thorough. The reader should finish a primer page in ten minutes.
 | Trade-off (Part 2) | 400–800 |
 | Component (Part 3) | 400–800 |
 | Hub component (3.4, 3.9, 3.17) | up to 1,200 |
-| Solved design (Part 4) | 1,500–2,500 |
+| Solved design (Part 4) | 1,000–2,500, excluding code blocks |
 | Deep dive | no budget; organise it so a reader can jump to the table they need |
 
 `scripts/primer.py check` warns when a primer page is over budget, has more than one table, or has
