@@ -43,7 +43,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [2.2 Determinism vs autonomy](docs/2-trade-offs/2.2-determinism-vs-autonomy.md) `S/F` · [deep dive](docs/deep-dives/2.2-determinism-vs-autonomy.md)
 - [2.3 Context stuffing vs retrieval](docs/2-trade-offs/2.3-context-vs-retrieval.md) `S/F` · [deep dive](docs/deep-dives/2.3-context-vs-retrieval.md)
 - [2.4 Capability vs security](docs/2-trade-offs/2.4-capability-vs-security.md) `S/F` · [deep dive](docs/deep-dives/2.4-capability-vs-security.md)
-- [2.5 Single-agent vs multi-agent](docs/2-trade-offs/2.5-single-vs-multi-agent.md) `S/F` _(planned)_
+- [2.5 Single-agent vs multi-agent](docs/2-trade-offs/2.5-single-vs-multi-agent.md) `S/F` · [deep dive](docs/deep-dives/2.5-single-vs-multi-agent.md)
 - [2.6 Prompting vs RAG vs fine-tuning](docs/2-trade-offs/2.6-prompt-rag-finetune.md) `S` · [deep dive](docs/deep-dives/2.6-prompt-rag-finetune.md)
 - [2.7 Throughput vs per-request latency in serving](docs/2-trade-offs/2.7-throughput-vs-latency.md) `S` · [deep dive](docs/deep-dives/2.7-throughput-vs-latency.md)
 
@@ -53,7 +53,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [3.2 Input guardrails](docs/3-components/3.2-input-guardrails.md) `S` · [deep dive](docs/deep-dives/3.2-input-guardrails.md)
 - [3.3 Context engineering](docs/3-components/3.3-context-engineering.md) `S/F` · [deep dive](docs/deep-dives/3.3-context-engineering.md)
 - [3.4 Retrieval pipeline](docs/3-components/3.4-retrieval-pipeline.md) `S` · [deep dive](docs/deep-dives/3.4-retrieval-pipeline.md)
-- [3.5 Agentic retrieval and the long-context boundary](docs/3-components/3.5-agentic-retrieval.md) `F` _(planned)_
+- [3.5 Agentic retrieval and the long-context boundary](docs/3-components/3.5-agentic-retrieval.md) `F` · [deep dive](docs/deep-dives/3.5-agentic-retrieval.md)
 - [3.6 Vector stores](docs/3-components/3.6-vector-stores.md) `S/F` · [deep dive](docs/deep-dives/3.6-vector-stores.md)
 - [3.7 Model layer: selection, structured outputs, streaming](docs/3-components/3.7-model-layer.md) `S/F` · [deep dive](docs/deep-dives/3.7-model-layer.md)
 - [3.8 Serving internals](docs/3-components/3.8-serving-internals.md) `S/F` · [deep dive](docs/deep-dives/3.8-serving-internals.md)
@@ -97,7 +97,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
-| 3 | 11 | 8 | 3 | 0 | 0 |
+| 3 | 11 | 6 | 5 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->
 

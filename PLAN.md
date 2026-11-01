@@ -75,8 +75,8 @@ comparing with the original primer. Second reads should check each primer page a
 - [ ] **3.9** Workflows and agents (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.3** Context engineering (draft 2026-11-01; lab done; needs second read)
 - [ ] **2.3** Context stuffing vs retrieval (draft 2026-11-01; lab done; needs second read)
-- [ ] **3.5** Agentic retrieval
-- [ ] **2.5** Single-agent vs multi-agent
+- [ ] **3.5** Agentic retrieval (draft 2026-11-01; lab done; needs second read)
+- [ ] **2.5** Single-agent vs multi-agent (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.10** Multi-agent topologies and protocols
 - [ ] **3.11** Agent memory
 - [ ] **3.16** Observability
@@ -111,6 +111,9 @@ section that needs it.
 | Managed agent memory names (Foundry Agent Service memory, Vertex AI Memory Bank, AgentCore Memory) and Anthropic server-side compaction details | From search snippets; first-party pages not read | 3.3, 3.11 |
 | Self-Route cost savings (65% Gemini, 39% GPT-4o); LaRA findings | Secondary summaries; read arXiv 2407.16833 and 2502.09977 | 2.3 |
 | AWS and OpenAI first-party long-context-vs-RAG guidance | Not found | 2.3 |
+| Coding-agent search choices (Codex, Cline, Cursor) and Claude Code "agentic search beat RAG" | Secondary sources and an interview; arXiv 2608.01507 seen via abstract only | 3.5 |
+| Bedrock agentic retrieval and Vertex AI Search agentic features | AWS blog only; Google not checked | 3.5 |
+| MAST category shares (44.2% system design); Kim et al. sequential-task figures (39–70% vs "−70%") | Secondary sources and abstracts; read both papers | 2.5 |
 | Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
