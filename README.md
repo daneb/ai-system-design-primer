@@ -3,30 +3,105 @@
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
 
-Modelled on Donne Martin's [System Design Primer](https://github.com/donnemartin/system-design-primer):
-the same arc of method, trade-offs, components in request order, solved designs and reference numbers,
-rebuilt for AI systems.
+```mermaid
+flowchart LR
+  U[User] --> G[Gateway<br/>3.1]
+  G --> IG[Input<br/>guardrails 3.2]
+  IG --> C[Context<br/>engineering 3.3]
+  C --> R[Retrieval<br/>3.4–3.6]
+  C --> A[Workflow or<br/>agent 3.9–3.11]
+  A --> M[Model layer<br/>3.7–3.8]
+  R --> M
+  M --> OG[Output<br/>checks 3.12]
+  OG --> U
+  M -.-> K[Caching 3.13]
+  A -.-> Q[Async 3.14]
+  E[Evals 3.15] -.-> M
+  O[Observability 3.16] -.-> A
+  S[Security 3.17] -.-> A
+```
 
-> **Work in progress.** See [PLAN.md](PLAN.md) for the roadmap and [research/](research/) for the
-> feasibility study behind it.
+## Motivation
 
-## How this primer differs from a blog post
+> Learn how to design AI systems that hold up in production.
+> Prepare for the AI system design conversation.
 
-- **Trade-offs first.** Every pattern says which trade-off it moves and in which direction.
-- **Maturity is labelled.** Each section is tagged `S` (stable core), `S/F` (stable concept, volatile
-  specifics) or `F` (frontier, expect rewrites), and carries a `last_verified` date. CI fails when a
-  review is overdue.
-- **Vendor-neutral.** The prose names concepts. Products appear only in the deep dives' cloud mappings.
-- **Two layers.** Each topic is a short primer page you can read in ten minutes, plus a deep dive with
-  the provider survey, numbers, risk and controls (OWASP, FINOS, EU AI Act, with the evidence an
-  auditor would ask for) and cloud mappings.
-- **Flashcards.** Every section ends in Q/A pairs, exported to an Anki deck by
-  `python3 scripts/primer.py flashcards`.
+Building on models is now a core engineering skill, and the field moves fast. Most of what's written
+about it is a product announcement, a framework tutorial or a single team's experience. This primer is
+an organised collection of what has converged across providers and researchers, with every trade-off
+named and every number dated and sourced.
 
-Start with [Orientation](docs/0-orientation/0-orientation.md), then the
-[Method](docs/1-method/1-method.md).
+It is modelled on Donne Martin's [System Design Primer](https://github.com/donnemartin/system-design-primer):
+the same arc of method, trade-offs, components, solved designs and reference numbers, rebuilt for
+systems whose core component is probabilistic, priced per token, and open to prompt injection.
 
-## Contents
+**Learn how to design AI systems.** Each topic is a short page you can read in ten minutes, with a
+diagram, when to use it, when not to, and its disadvantages. A deep dive per topic holds the provider
+survey, numbers, risk controls and cloud mappings.
+
+**Prepare for the AI system design conversation,** in an interview or a design review. Work through the
+[method](docs/1-method/1-method.md), the [solved designs](#ai-system-design-questions-with-solutions)
+and the [practice questions](docs/4-solved-designs/4.8-unsolved-questions.md).
+
+## Anki flashcards
+
+Every page ends in question-and-answer flashcards. Build the deck with:
+
+```sh
+python3 scripts/primer.py flashcards   # writes build/flashcards.tsv; import into Anki
+```
+
+Cards are tagged by section and maturity, so you can study one part, or drop `frontier` cards when
+they go stale.
+
+## Labs
+
+Most topics come with a small, runnable lab: a simulation or calculation, numpy or the standard
+library only, with the prediction written down before the run and an honest note when it was wrong.
+
+| Lab | Question |
+|---|---|
+| [2.1](labs/2.1-cost-quality-latency/README.md) | When does routing between models pay off? |
+| [2.2](labs/2.2-determinism-vs-autonomy/README.md) | What autonomy costs in reliability and predictability |
+| [2.3](labs/2.3-context-vs-retrieval/README.md) | When is the whole corpus in the prompt cheaper than retrieval? |
+| [2.4](labs/2.4-capability-vs-security/README.md) | Count to three, then size what a detector leaves behind |
+| [2.5](labs/2.5-single-vs-multi-agent/README.md) | One agent or several? |
+| [2.7](labs/2.7-throughput-vs-latency/README.md) | Batching, per-user speed, and why you can't run at 100% |
+| [3.2](labs/3.2-input-guardrails/README.md) | What a guardrail's error rates mean at volume |
+| [3.3](labs/3.3-context-engineering/README.md) | What each context strategy costs, and what it forgets |
+| [3.4](labs/3.4-retrieval-pipeline/README.md) | Keyword vs dense vs hybrid retrieval |
+| [3.5](labs/3.5-agentic-retrieval/README.md) | Single-shot retrieval, query fan-out, or an agent loop? |
+| [3.6](labs/3.6-vector-stores/README.md) | Approximate search and filtering |
+| [3.7](labs/3.7-model-layer/README.md) | Picking the cheapest model that "meets the bar", with a noisy eval |
+| [3.8](labs/3.8-serving-internals/README.md) | Cache arithmetic and when speculation pays |
+| [3.9](labs/3.9-workflows-and-agents/README.md) | An evaluator loop is only as good as its evaluator |
+| [3.10](labs/3.10-multi-agent-and-protocols/README.md) | What does connecting more tools cost, and does tool search pay? |
+| [3.11](labs/3.11-memory/README.md) | What should an agent remember, and how? |
+| [3.12](labs/3.12-output-guardrails/README.md) | How far does a quote check get you? |
+| [3.13](labs/3.13-caching/README.md) | When a prompt cache pays, and what a semantic cache gets wrong |
+| [3.14](labs/3.14-asynchronism/README.md) | Retries during an overload, and checkpoints for long runs |
+| [3.15](labs/3.15-evals/README.md) | How many eval cases do you need? |
+| [3.16](labs/3.16-observability/README.md) | Which agent traces should you keep? |
+| [3.17](labs/3.17-security/README.md) | Pin your tools, and see what pinning can't see |
+| [3.18](labs/3.18-model-adaptation/README.md) | What LoRA trains, and when a fine-tune pays for itself |
+| [4.1](labs/4.1-inference-api/README.md) | How many accelerators does a self-hosted inference API need? |
+| [4.2](labs/4.2-enterprise-rag/README.md) | Where the money goes in an enterprise RAG assistant |
+
+## Contributing
+
+> Learn from the community.
+
+Pull requests are welcome to fix errors, improve sections and add new ones. Read [STYLE.md](STYLE.md)
+for how sections are researched and written (learner-first, several providers per topic, every claim
+sourced) and [CONTRIBUTING.md](CONTRIBUTING.md) for the mechanics. Decisions about the primer itself
+are recorded in [adr/](adr/). Work still to do is in [ROADMAP.md](ROADMAP.md).
+
+## Index of AI system design topics
+
+> Summaries of AI system design topics, including pros and cons. **Everything is a trade-off.**
+>
+> Each section links to its deep dive. Maturity is marked `S` (stable core), `S/F` (stable concept,
+> volatile specifics) or `F` (frontier, expect rewrites).
 
 <!-- toc:start -->
 **Part 0: Orientation**
@@ -77,17 +152,95 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [4.5 Design a customer-support agent](docs/4-solved-designs/4.5-customer-support-agent.md) `F`
 - [4.6 Design a coding agent platform](docs/4-solved-designs/4.6-coding-agent.md) `F`
 - [4.7 Design an eval and release pipeline](docs/4-solved-designs/4.7-eval-and-release-pipeline.md) `S`
-- [4.8 Additional design questions](docs/4-solved-designs/4.8-unsolved-questions.md) `S/F` _(planned)_
+- [4.8 Additional design questions](docs/4-solved-designs/4.8-unsolved-questions.md) `S/F`
 
 **Part 5: Appendix**
 
 - [5.1 Numbers every AI engineer should know](docs/5-appendix/5.1-numbers.md) `S/F`
-- [5.2 Cloud mapping: Azure, AWS Bedrock, GCP](docs/5-appendix/5.2-cloud-mapping.md) `F` _(planned)_
-- [5.3 Pattern crosswalk](docs/5-appendix/5.3-pattern-crosswalk.md) `S/F` _(planned)_
-- [5.4 Governance crosswalk: OWASP, FINOS, EU AI Act](docs/5-appendix/5.4-governance-crosswalk.md) `F` _(planned)_
-- [5.5 Real-world architectures and engineering blogs](docs/5-appendix/5.5-real-world-architectures.md) `F` _(planned)_
+- [5.2 Cloud mapping: Azure, AWS Bedrock, GCP](docs/5-appendix/5.2-cloud-mapping.md) `F`
+- [5.3 Pattern crosswalk](docs/5-appendix/5.3-pattern-crosswalk.md) `S/F`
+- [5.4 Governance crosswalk: OWASP, FINOS, EU AI Act](docs/5-appendix/5.4-governance-crosswalk.md) `F`
+- [5.5 Real-world architectures and engineering blogs](docs/5-appendix/5.5-real-world-architectures.md) `F`
 - [5.6 Glossary](docs/5-appendix/5.6-glossary.md) `S`
 <!-- toc:end -->
+
+## Study guide
+
+> Suggested topics to review based on your timeline.
+
+| | Short (days) | Medium (weeks) | Long (months) |
+|---|---|---|---|
+| Read [Orientation](docs/0-orientation/0-orientation.md) and the [method](docs/1-method/1-method.md) | ✓ | ✓ | ✓ |
+| Read the trade-offs (Part 2) | Some | All | All |
+| Read the components (Part 3) | 3.1, 3.4, 3.9, 3.15, 3.17 | Most | All, plus deep dives |
+| Read [Numbers](docs/5-appendix/5.1-numbers.md) and the [Glossary](docs/5-appendix/5.6-glossary.md) | ✓ | ✓ | ✓ |
+| Work the solved designs (Part 4) | Some | Many | All |
+| Run the labs and their exercises | Some | Many | All |
+| Practise the [additional questions](docs/4-solved-designs/4.8-unsolved-questions.md) | Some | Many | Most |
+| Read [real-world architectures](docs/5-appendix/5.5-real-world-architectures.md) | Some | Many | All |
+| Map your platform with [cloud](docs/5-appendix/5.2-cloud-mapping.md) and [governance](docs/5-appendix/5.4-governance-crosswalk.md) crosswalks | — | Some | All |
+
+## How to approach an AI system design question
+
+> How to tackle an AI system design question, in an interview or a design review.
+
+The classic four steps, with two changes: the **quality bar comes first**, because a model-backed
+feature is right only some of the time; and **hardening is its own step**, because prompt injection,
+data leakage and runaway agents are design constraints, not add-ons.
+
+1. **Use cases, constraints and the quality bar.** Who, what, how many, how fast, what data, and how
+   you'll know it works.
+2. **Back-of-the-envelope.** Tokens per request, requests per second, cost per day, latency.
+3. **High-level design on the complexity ladder.** Single call → workflow → single agent →
+   multi-agent. Start at the lowest rung that meets the bar.
+4. **Core components.** Retrieval, context, tools, model choice, output checks.
+5. **Harden.** Which legs of the lethal trifecta are present, and which does the design break?
+6. **Scale and optimise.** Bottlenecks in order; caching, routing, batching.
+
+Full walkthrough with a worked example: [How to approach an AI system design question](docs/1-method/1-method.md).
+
+## AI system design questions with solutions
+
+> Common AI system design questions with sample discussions, numbers and diagrams.
+
+| Question | |
+|---|---|
+| Design an LLM inference API | [Solution](docs/4-solved-designs/4.1-llm-inference-api.md) |
+| Design an enterprise RAG assistant | [Solution](docs/4-solved-designs/4.2-enterprise-rag-assistant.md) |
+| Design an enterprise AI gateway | [Solution](docs/4-solved-designs/4.3-enterprise-ai-gateway.md) |
+| Design a regulated document-review assistant | [Solution](docs/4-solved-designs/4.4-regulated-document-review.md) |
+| Design a customer-support agent | [Solution](docs/4-solved-designs/4.5-customer-support-agent.md) |
+| Design a coding agent platform | [Solution](docs/4-solved-designs/4.6-coding-agent.md) |
+| Design an eval and release pipeline | [Solution](docs/4-solved-designs/4.7-eval-and-release-pipeline.md) |
+| Add an AI system design question | [Contribute](CONTRIBUTING.md) |
+
+More practice: [additional design questions](docs/4-solved-designs/4.8-unsolved-questions.md).
+
+## Appendix
+
+- [Numbers every AI engineer should know](docs/5-appendix/5.1-numbers.md): tokens, speed, cost
+  ratios, memory, retrieval and eval figures, each dated and sourced.
+- [Cloud mapping](docs/5-appendix/5.2-cloud-mapping.md): each capability on Azure, AWS, Google Cloud,
+  OpenAI, Anthropic and open source.
+- [Pattern crosswalk](docs/5-appendix/5.3-pattern-crosswalk.md): the same patterns under each
+  provider's and author's names.
+- [Governance crosswalk](docs/5-appendix/5.4-governance-crosswalk.md): OWASP LLM and Agentic Top 10,
+  FINOS, EU AI Act, mapped to primer sections.
+- [Real-world architectures](docs/5-appendix/5.5-real-world-architectures.md): engineering write-ups
+  and independent studies.
+- [Glossary](docs/5-appendix/5.6-glossary.md) and changelog.
+
+## How this primer differs from the original, and from a blog post
+
+- **Trade-offs first.** Every pattern says which trade-off it moves and in which direction.
+- **Quality bar first.** Evals are part of the method, not an afterthought.
+- **Maturity is labelled and dated.** Each page carries `last_verified` and `review_by`; the checker
+  fails when a review is overdue. Frontier pages are reviewed every three months.
+- **Several providers on every topic.** Anthropic, OpenAI, Google, AWS and Microsoft, with the names
+  each uses.
+- **Vendor-neutral prose.** Product names live in the deep dives and the cloud mapping.
+- **Risk and controls on every topic,** with the evidence an auditor would ask for.
+- **Runnable labs** with predictions recorded before the run.
 
 ## Progress
 
@@ -98,11 +251,23 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
 | 3 | 11 | 0 | 11 | 0 | 0 |
-| 4 | 5 | 5 | 0 | 0 | 0 |
+| 4 | 5 | 0 | 5 | 0 | 0 |
 <!-- status:end -->
 
-## Contributing
+See [ROADMAP.md](ROADMAP.md) for what's next and [PLAN.md](PLAN.md) for the build plan and the
+verification debt (claims still waiting for a first-party source).
 
-See [STYLE.md](STYLE.md) for how sections are researched and written, and
-[CONTRIBUTING.md](CONTRIBUTING.md) for the mechanics. Architectural decisions about the primer itself are recorded in
-[adr/](adr/).
+## Credits
+
+- Donne Martin's [System Design Primer](https://github.com/donnemartin/system-design-primer), whose
+  structure this follows.
+- The provider guides, papers and engineering write-ups cited in each section; see
+  [real-world architectures](docs/5-appendix/5.5-real-world-architectures.md).
+
+## Contact info
+
+Open an issue to discuss errors, missing topics or new solved designs.
+
+## License
+
+To be decided. See [ROADMAP.md](ROADMAP.md).

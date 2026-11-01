@@ -73,7 +73,8 @@ def parse_front_matter(text):
         if not line.strip():
             continue
         if line.lstrip().startswith("- ") and key:
-            meta.setdefault(key, [])
+            if meta.get(key) is None:
+                meta[key] = []
             if isinstance(meta[key], list):
                 meta[key].append(line.strip()[2:].strip().strip('"'))
             continue
@@ -238,12 +239,82 @@ def replace_block(text, name, content):
     return pattern.sub(lambda m: m.group(1) + "\n" + content + "\n" + m.group(2), text)
 
 
+CLOUD_COLS = ["Azure", "AWS", "Google Cloud", "OpenAI", "Anthropic", "Open source"]
+CLOUD_NORM = {"Azure / Microsoft": "Azure", "Self-hosted / open source": "Open source"}
+CLOUD_GROUPS = {
+    "Cost, capacity and model access": ["2.1", "2.7", "3.1", "3.7", "3.13", "3.14"],
+    "Retrieval and knowledge": ["2.3", "3.4", "3.5", "3.6"],
+    "Agents, context and memory": ["2.5", "3.3", "3.9", "3.10", "3.11"],
+    "Safety, security and quality": ["3.2", "3.12", "3.15", "3.16", "3.17"],
+    "Serving and adaptation": ["2.6", "3.8", "3.18"],
+}
+
+
+def cloudmap():
+    """Merge every deep dive's 'Cloud mapping' table into one set of tables for 5.2."""
+    files = {p.name.split("-")[0]: p for p in DEEP.glob("*.md")}
+    fix = lambda x: re.sub(r"\]\((\d[\d.]*-[^)]+\.md)\)", r"](../deep-dives/\1)", x)
+    out = []
+    for group, ids in CLOUD_GROUPS.items():
+        out += [f"### {group}", "", "| Capability | " + " | ".join(CLOUD_COLS) + " |",
+                "|" + "---|" * (len(CLOUD_COLS) + 1)]
+        for sid in ids:
+            path = files.get(sid)
+            if not path:
+                continue
+            m = re.search(r"^## Cloud mapping\n(.*?)(?=^## |\Z)", path.read_text(encoding="utf-8"), re.S | re.M)
+            if not m:
+                continue
+            rows = [l for l in m.group(1).splitlines() if l.startswith("|")]
+            hdr = [CLOUD_NORM.get(h.strip(), h.strip()) for h in rows[0].strip("|").split("|")]
+            for r in rows[2:]:
+                cells = [c.strip() for c in r.strip("|").split("|")]
+                if not cells[0]:
+                    continue
+                d = dict(zip(hdr[1:], cells[1:]))
+                vals = [fix(d.get(c, "")) or "·" for c in CLOUD_COLS]
+                out.append(f"| {fix(cells[0])} ([{sid}](../deep-dives/{path.name})) | " + " | ".join(vals) + " |")
+        out.append("")
+    return "\n".join(out).strip()
+
+
+def akamap():
+    """Collect each section's 'aka' names (other vendors' and researchers' names) for 5.3."""
+    out = ["| Section | Also known as |", "|---|---|"]
+    for s in load_sections():
+        m = s["meta"]
+        aka = m.get("aka")
+        if not aka or m.get("status") == "planned":
+            continue
+        names = "<br>".join(aka) if isinstance(aka, list) else str(aka)
+        rel = "../" + s["path"].relative_to(DOCS).as_posix()
+        out.append(f"| [{m['id']} {m['title']}]({rel}) | {names} |")
+    return "\n".join(out)
+
+
+def refresh_appendix(check):
+    """Regenerate the generated blocks in 5.2 and 5.3. Returns True if anything changed."""
+    changed = False
+    for name, func in [("cloudmap", cloudmap), ("akamap", akamap)]:
+        for path in (DOCS / "5-appendix").glob("*.md"):
+            text = path.read_text(encoding="utf-8")
+            if f"<!-- {name}:start -->" not in text:
+                continue
+            new = replace_block(text, name, func())
+            if new != text:
+                changed = True
+                if not check:
+                    path.write_text(new, encoding="utf-8")
+    return changed
+
+
 def cmd_readme(args):
     text = README.read_text(encoding="utf-8")
     new = replace_block(replace_block(text, "toc", toc()), "status", status_table())
+    appendix_changed = refresh_appendix(args.check)
     if args.check:
-        if new != text:
-            print("README.md is out of date; run: python3 scripts/primer.py readme")
+        if new != text or appendix_changed:
+            print("README.md or generated appendix tables are out of date; run: python3 scripts/primer.py readme")
             return 1
         print("README.md is up to date")
         return 0

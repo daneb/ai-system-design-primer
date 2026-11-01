@@ -5,7 +5,7 @@
 Read [STYLE.md](STYLE.md) first: it sets the audience, voice, length budgets and research method.
 
 
-1. Pick a section from [PLAN.md](PLAN.md). Its stub already exists under `docs/`.
+1. Pick an item from [ROADMAP.md](ROADMAP.md), or a section from [PLAN.md](PLAN.md). Section stubs already exist under `docs/`.
 2. Research into a deep dive first: copy [templates/deep-dive.md](templates/deep-dive.md) to
    `docs/deep-dives/<id>-<slug>.md`. Then write the primer page from
    [templates/section.md](templates/section.md) into the stub (or

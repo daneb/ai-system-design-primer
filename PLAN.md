@@ -86,12 +86,12 @@ comparing with the original primer. Second reads should check each primer page a
 
 ## Phase 4: Cross-cutting appendices
 
-- [ ] **5.2** Cloud mapping (Azure, AWS Bedrock, GCP), sourced from first-party docs
-- [ ] **5.3** Pattern crosswalk (Anthropic, Gulli, Lakshmanan & Hapke, Fowler, Azure)
-- [ ] **5.4** Governance crosswalk (OWASP LLM and Agentic Top 10, FINOS, EU AI Act)
-- [ ] **5.5** Real-world architectures and engineering blogs
-- [ ] **4.8** Additional design questions
-- [ ] First quarterly frontier review (all `frontier` sections)
+- [ ] **5.2** Cloud mapping (Azure, AWS Bedrock, GCP), sourced from first-party docs (draft 2026-11-01; generated from deep dives)
+- [ ] **5.3** Pattern crosswalk (Anthropic, Gulli, Lakshmanan & Hapke, Fowler, Azure) (draft 2026-11-01; Lakshmanan & Hapke not yet mapped)
+- [ ] **5.4** Governance crosswalk (OWASP LLM and Agentic Top 10, FINOS, EU AI Act) (draft 2026-11-01)
+- [ ] **5.5** Real-world architectures and engineering blogs (draft 2026-11-01)
+- [ ] **4.8** Additional design questions (draft 2026-11-01)
+- [ ] First quarterly frontier review (all `frontier` sections): moved to [ROADMAP.md](ROADMAP.md)
 
 ## Verification debt
 
@@ -125,15 +125,19 @@ section that needs it.
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Contextual retrieval −35% and absolute failure rates | −49/−67%, $1.02, 50–100 tokens and the 200k threshold confirmed from Anthropic; −35% and 5.7% → 1.9% still from secondary reports | 3.4 |
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
-| Lakshmanan & Hapke pattern names | Possibly a revised edition | 5.3 |
-| FINOS risk counts | Do not reconcile | 5.4 |
+| Lakshmanan & Hapke pattern names | Possibly a revised edition; not mapped in 5.3 | 5.3 |
+| Gulli chapter titles and Fowler pattern names in 5.3 | From memory of the published contents; check against the book and article | 5.3 |
+| EU AI Act Digital Omnibus dates | Provisional agreement (7 May 2026) and Parliament vote (16 June 2026) via law-firm summaries; final Official Journal text not checked | 5.4 |
+| FINOS AIGF risk IDs (AIR-SEC-0xx, AIR-OP-0xx) | Read from the framework site's search snippets, not each risk page | 5.4 |
+| EU AI Act article mapping per risk in 5.4 | Primer's reading; confirm with legal | 5.4 |
+| FINOS risk counts | Sources say 30, 46 and 25; the site doesn't state a total; 5.4 avoids counts | 5.4 |
 | pgvector HNSW defaults (m, ef_construction, ef_search) | Seen via a documentation mirror, not the pgvector repository | 3.6 |
 | AWS S3 Vectors and MemoryDB as vector stores | Third-party source only | 3.6, 5.2 |
 | AWS AgentCore Gateway token limits; Google learned routing | Third-party source only / not researched | 3.1, 5.2 |
 | Prompt Shields input limits (2024 figures); Azure PII masking and custom categories; open-source guardrails (Llama Guard, Prompt Guard, NeMo, Presidio) | Possibly outdated / not researched | 3.2, 5.2 |
 | OpenAI structured outputs and guardrails-library hallucination check; Azure OpenAI structured outputs | Secondary sources only / not checked | 3.12, 5.2 |
 | OpenAI agent guide (tool risk ratings, human-intervention triggers); Microsoft deterministic exfiltration blocking | PDF and MSRC post read via search excerpts and secondary summaries | 2.4, 3.17 |
-| OWASP Agentic Top 10 2026 entry names (ASI01–ASI04 quoted); MITRE ATLAS counts | Secondary summaries only; OWASP and ATLAS pages not read directly | 3.17 |
+| OWASP Agentic Top 10 2026 entry names (all ten in 5.4); MITRE ATLAS counts | Several secondary sources agree on names; OWASP PDF and ATLAS pages not read directly | 3.17, 5.4 |
 | Invariant Labs tool-poisoning and rug-pull disclosures (April 2025); malicious models on public hubs (JFrog, ReversingLabs) | Secondary sources only | 3.17, 3.10 |
 | Tool-call authorisation, sandboxes and red-teaming services for Azure, Google, OpenAI | Not researched | 3.17, 5.2 |
 | τ-bench figures (GPT-4o retail pass@1 ~61%, pass^8 ~25%); newer models' pass^k | Figures from the paper abstract and summaries; current leaderboards not checked | 2.2, 3.15 |
