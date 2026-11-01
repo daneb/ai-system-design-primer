@@ -1,0 +1,19 @@
+{
+  "about": "Fictional sources and a model answer split into claims. Each claim cites a source and quotes it. Labels (what a careful human reviewer would say) were written before the checker was run.",
+  "sources": {
+    "s1": "Permanent staff receive an annual leave entitlement of 25 working days per calendar year. Up to five unused days may be carried over into the next year with line manager approval.",
+    "s2": "Same-day domestic payments must be submitted before 15:30. International payments submitted after 14:00 are processed on the next business day.",
+    "s3": "Gifts from clients worth more than 100 US dollars must be declared in the gifts register within five working days. Cash gifts must always be refused."
+  },
+  "claims": [
+    {"id": "c1", "text": "Staff get 25 working days of annual leave.", "source": "s1", "quote": "annual leave entitlement of 25 working days per calendar year", "label": "supported"},
+    {"id": "c2", "text": "Up to five days can be carried over with approval.", "source": "s1", "quote": "Up to five unused days may be carried over into the next year with line manager approval", "label": "supported"},
+    {"id": "c3", "text": "Up to ten days can be carried over.", "source": "s1", "quote": "Up to ten unused days may be carried over", "label": "unsupported (fabricated quote)"},
+    {"id": "c4", "text": "International payments after 14:00 go the next business day.", "source": "s2", "quote": "International payments submitted after 14:00 are processed on the next business day", "label": "supported"},
+    {"id": "c5", "text": "Domestic payments after 14:00 go the next business day.", "source": "s2", "quote": "International payments submitted after 14:00 are processed on the next business day", "label": "unsupported (real quote, wrong claim)"},
+    {"id": "c6", "text": "Gifts over 100 US dollars must be declared within five working days.", "source": "s3", "quote": "Gifts from clients worth more than 100 US dollars must be declared in the gifts register within five working days", "label": "supported"},
+    {"id": "c7", "text": "Cash gifts may be accepted if declared.", "source": "s3", "quote": "Cash gifts must always be refused", "label": "unsupported (real quote, contradicted claim)"},
+    {"id": "c8", "text": "Gifts must be declared within five days.", "source": "s2", "quote": "declared in the gifts register within five working days", "label": "unsupported (wrong source cited)"},
+    {"id": "c9", "text": "Leave is 25 days.", "source": "s1", "quote": "annual  leave entitlement of 25 Working Days", "label": "supported (quote differs only in spacing and case)"}
+  ]
+}

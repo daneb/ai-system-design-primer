@@ -1,0 +1,22 @@
+{
+  "tools": {
+    "web_search":        {"untrusted_input": true,  "sensitive": false, "acts": false},
+    "fetch_url":         {"untrusted_input": true,  "sensitive": false, "acts": true,  "note": "a GET to an attacker URL can carry data out"},
+    "read_inbox":        {"untrusted_input": true,  "sensitive": true,  "acts": false},
+    "send_email":        {"untrusted_input": false, "sensitive": false, "acts": true},
+    "crm_lookup":        {"untrusted_input": false, "sensitive": true,  "acts": false},
+    "policy_search":     {"untrusted_input": false, "sensitive": false, "acts": false, "note": "curated internal corpus"},
+    "customer_docs_rag": {"untrusted_input": true,  "sensitive": true,  "acts": false, "note": "customer-uploaded files"},
+    "create_ticket":     {"untrusted_input": false, "sensitive": false, "acts": true},
+    "render_markdown":   {"untrusted_input": false, "sensitive": false, "acts": true,  "note": "images and links load URLs in the user's browser"}
+  },
+  "agents": {
+    "policy_qa":          ["policy_search"],
+    "research_helper":    ["web_search", "fetch_url"],
+    "inbox_assistant":    ["read_inbox", "send_email"],
+    "inbox_summariser":   ["read_inbox"],
+    "kyc_reviewer":       ["customer_docs_rag", "crm_lookup", "create_ticket"],
+    "kyc_reviewer_split": ["customer_docs_rag", "crm_lookup"],
+    "support_chat_md":    ["customer_docs_rag", "render_markdown"]
+  }
+}

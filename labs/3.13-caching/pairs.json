@@ -1,0 +1,22 @@
+{"cached": [
+  "What is the daily transfer limit for a savings account?",
+  "How do I reset my online banking password?",
+  "What are the fees for an international payment?",
+  "Can I open a joint account online?",
+  "What is the interest rate on a 12-month fixed deposit?",
+  "How do I report a lost card?"
+],
+"incoming": [
+  ["What's the daily transfer limit on a savings account?", 0],
+  ["What is the daily transfer limit for a cheque account?", -1],
+  ["how can I reset my internet banking password", 1],
+  ["How do I reset my card PIN?", -1],
+  ["What fees apply to international payments?", 2],
+  ["What are the fees for a local payment?", -1],
+  ["Is it possible to open a joint account online?", 3],
+  ["Can I close a joint account online?", -1],
+  ["Interest rate for a 12 month fixed deposit?", 4],
+  ["What is the interest rate on a 24-month fixed deposit?", -1],
+  ["I lost my card, how do I report it?", 5],
+  ["How do I report a stolen phone?", -1]
+]}
