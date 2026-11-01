@@ -64,7 +64,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 - [3.13 Caching](docs/3-components/3.13-caching.md) `S/F` · [deep dive](docs/deep-dives/3.13-caching.md)
 - [3.14 Asynchronism: batch, durable execution, back-pressure](docs/3-components/3.14-asynchronism.md) `S` · [deep dive](docs/deep-dives/3.14-asynchronism.md)
 - [3.15 Evals](docs/3-components/3.15-evals.md) `S` · [deep dive](docs/deep-dives/3.15-evals.md)
-- [3.16 Observability](docs/3-components/3.16-observability.md) `S/F` _(planned)_
+- [3.16 Observability](docs/3-components/3.16-observability.md) `S/F` · [deep dive](docs/deep-dives/3.16-observability.md)
 - [3.17 Security](docs/3-components/3.17-security.md) `S/F` · [deep dive](docs/deep-dives/3.17-security.md)
 - [3.18 Model adaptation](docs/3-components/3.18-model-adaptation.md) `S` · [deep dive](docs/deep-dives/3.18-model-adaptation.md)
 
@@ -97,7 +97,7 @@ Start with [Orientation](docs/0-orientation/0-orientation.md), then the
 | 0 | 3 | 0 | 3 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
-| 3 | 11 | 4 | 7 | 0 | 0 |
+| 3 | 11 | 3 | 8 | 0 | 0 |
 | 4 | 5 | 5 | 0 | 0 | 0 |
 <!-- status:end -->
 

@@ -79,7 +79,7 @@ comparing with the original primer. Second reads should check each primer page a
 - [ ] **2.5** Single-agent vs multi-agent (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.10** Multi-agent topologies and protocols (draft 2026-11-01; lab done; needs second read)
 - [ ] **3.11** Agent memory (draft 2026-11-01; lab done; needs second read)
-- [ ] **3.16** Observability
+- [ ] **3.16** Observability (draft 2026-11-01; lab done; needs second read)
 - [ ] **4.6** Solved design: coding agent platform
 - [ ] **4.5** Solved design: customer-support agent
 - [ ] **4.4** Solved design: regulated document-review assistant
@@ -116,6 +116,7 @@ section that needs it.
 | MAST category shares (44.2% system design); Kim et al. sequential-task figures (39–70% vs "−70%") | Secondary sources and abstracts; read both papers | 2.5 |
 | A2A v1.0 operations, dates and agent-card fields; MCP revision list | Secondary sources; read a2a-protocol.org spec and MCP release list | 3.10 |
 | Cloud MCP/A2A services (AgentCore Gateway/Identity, Apigee, Entra Agent ID, Agent Engine A2A) | Not checked first-party | 3.10 |
+| OTel GenAI conventions details (repo move, versions, operations); Google Cloud Trace for ADK; Anthropic telemetry | Secondary sources; Google and Anthropic not checked first-party | 3.16 |
 | Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
