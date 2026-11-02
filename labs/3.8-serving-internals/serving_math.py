@@ -28,3 +28,15 @@ for a in (0.3, 0.5, 0.7, 0.85):
     for g in (3, 6):
         e = (1 - a ** (g + 1)) / (1 - a)
         print(f"| {a:.0%} | {g} | {e:.2f} | {e/(g*0.05+1):.2f}x | {e/(g*0.20+1):.2f}x |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+acc = [i / 100 for i in range(20, 96, 5)]
+spd = lambda a, g: (1 - a ** (g + 1)) / (1 - a) / (g * 0.05 + 1)
+line_chart(CHART_PATH, acc, {"Draft 6 tokens": [spd(a, 6) for a in acc], "Draft 3 tokens": [spd(a, 3) for a in acc]},
+           title="Speculative decoding pays only when most drafted tokens are accepted",
+           xlabel="Acceptance rate (draft cost 5% of a target pass)", ylabel="Speed-up (x)",
+           xpercent=True, ref=(1, "no speed-up"), ref_at="right")

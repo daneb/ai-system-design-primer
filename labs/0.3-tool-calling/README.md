@@ -21,6 +21,8 @@ short tasks. Schema validation will catch the malformed calls but not the forbid
 
 ## Result (run 2026-11-01)
 
+![Line chart: total input tokens for a task against the number of tool calls; with 50 tool definitions it reaches 291,060 at 20 calls, with 5 tools 102,060.](result.svg)
+
 | Tool calls | Tool definitions | Input tokens on the last call | Total input tokens | Total output tokens |
 |---|---|---|---|---|
 | 1 | 5 tools (1,000 tokens) | 1,800 | 3,260 | 240 |

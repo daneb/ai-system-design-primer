@@ -23,6 +23,8 @@ raise cost roughly in proportion to their number.
 
 ## Result (run 2026-11-01)
 
+![Line chart: cost of one call relative to no reasoning, rising linearly from 1x with no hidden reasoning tokens to about 18x with 12,000.](result.svg)
+
 | Work | Time | Tokens per second | Accelerator-seconds per 1,000 tokens |
 |---|---|---|---|
 | Prefill a 500-token prompt | 20 ms | 25,000 | 0.040 |

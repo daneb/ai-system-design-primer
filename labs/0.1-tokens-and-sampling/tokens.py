@@ -115,3 +115,14 @@ for label, t, cut in (("temperature 0 (greedy)", 0, 1.0), ("temperature 0.3", 0.
     outs = [run(t, cut) for _ in range(RUNS)]
     p_top = sum(top_p(probs(lg, t), cut)[0] for lg in steps) / STEPS
     print(f"| {label} | {p_top:.0%} | {len(set(outs))} | {sum(o == greedy for o in outs)/RUNS:.0%} |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+temps = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0]
+same = [sum(run(t) == greedy for _ in range(RUNS)) / RUNS for t in temps]
+line_chart(CHART_PATH, temps, {"Runs identical to the greedy answer": same},
+           title="A little randomness per token, compounded over 40 tokens",
+           xlabel="Temperature", ylabel="Share of 500 runs matching greedy", ypercent=True, ylim=(0, 1.05))

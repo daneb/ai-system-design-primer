@@ -23,6 +23,8 @@ every run will match; at 0.3 most will; at 0.7 and above few will.
 
 ## Result (run 2026-11-01)
 
+![Line chart: share of 500 sampled 40-token answers identical to the greedy answer, falling from 100% at temperature 0.1 to 63% at 0.3 and near 0% from 0.6.](result.svg)
+
 | Text | Characters | Tokens | Characters per token | Tokens vs English |
 |---|---|---|---|---|
 | English | 202 | 72 | 2.8 | 1.00x |

@@ -20,6 +20,8 @@ confidence bound to clear the target will be safe but expensive.
 
 ## Result (run 2026-11-01)
 
+![Line chart: how often the cheapest-model rule picks a model truly below target; with measured scores 57% at 50 eval cases falling to 0% at 3,000, with the lower confidence bound 3% or less throughout.](result.svg)
+
 | Eval cases | Rule | Picked a model truly below target | Average relative cost | Most common pick |
 |---|---|---|---|---|
 | 50 | measured ≥ target | 57% | 1.9 | small-a (34%) |

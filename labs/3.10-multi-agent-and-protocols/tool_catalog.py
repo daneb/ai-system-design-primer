@@ -38,3 +38,15 @@ for recall in [0.98, 0.64, 0.40]:
     one = recall
     two = 1 - (1 - recall) ** 2
     print(f"  recall {recall:.0%}: one search {one:.0%}, with one retry {two:.0%}")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+ts = [10, 20, 50, 100, 200, 500, 1000, 2000]
+line_chart(CHART_PATH, ts, {"All definitions loaded": [t * PER_TOOL for t in ts],
+                     "Tool search": [SEARCH_TOOL + LOADED * PER_TOOL + ROUND_TRIP_TOKENS for t in ts]},
+           title="Tool search keeps the per-call cost flat as the catalog grows",
+           xlabel="Tools in the catalog", ylabel="Tool tokens per call", logx=True, logy=True,
+           ref=(200_000, "200k context window"))

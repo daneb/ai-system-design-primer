@@ -52,3 +52,14 @@ for thr in (0.5, 0.6, 0.7, 0.8, 0.9):
         elif truth >= 0:
             missed += 1
     print(f"| {thr} | {served} of 12 | {correct} | {wrong} | {missed} |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+rates = [0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 1, 2, 5, 10, 30]
+line_chart(CHART_PATH, rates, {"Prefix cost with caching": [simulate(r)[1] for r in rates]},
+           title="A prompt cache pays once its prefix is reused within its lifetime",
+           xlabel="Requests per minute sharing the prefix (5-minute cache)", ylabel="Cost vs no caching (x)",
+           logx=True, ref=(1, "no caching"), xticks=[0.02, 0.1, 0.5, 2, 10, 30])

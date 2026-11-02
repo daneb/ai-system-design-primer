@@ -45,7 +45,8 @@ def main():
     z = 1.96
     print("| Eval cases | 95% CI half-width on one pass rate | Unpaired test detects B < A | Paired test detects B < A |")
     print("|---|---|---|---|")
-    for n in (25, 50, 100, 200, 500, 1000, 2000):
+    ns, curve_u, curve_p = (25, 50, 100, 200, 500, 1000, 2000), [], []
+    for n in ns:
         a, b = simulate(rng, n, args.trials)
         ma, mb = a.mean(1), b.mean(1)
         se_unpaired = np.sqrt(ma * (1 - ma) / n + mb * (1 - mb) / n)
@@ -55,8 +56,19 @@ def main():
             unpaired = np.mean((ma - mb) / se_unpaired > z)
             paired = np.mean(np.nan_to_num((ma - mb) / se_paired) > z)
         half = z * math.sqrt(0.8 * 0.2 / n)
+        curve_u.append(unpaired); curve_p.append(paired)
         print(f"| {n} | ±{half:.1%} | {unpaired:.0%} | {paired:.0%} |")
 
+
+    # ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+    import pathlib as _pl, sys as _sys
+    _sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+    from chart import line_chart
+    CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+    line_chart(CHART_PATH, list(ns), {"Paired test": curve_p, "Unpaired test": curve_u},
+               title="Catching a 5-point regression takes about a thousand cases",
+               xlabel="Eval cases", ylabel="Chance the test detects B < A", ypercent=True, logx=True,
+               xticks=list(ns), ylim=(0, 1.02), ref=(0.8, "80% power"))
 
 if __name__ == "__main__":
     main()

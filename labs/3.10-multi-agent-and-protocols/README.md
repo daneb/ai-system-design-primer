@@ -20,6 +20,8 @@ Tool search will be cheaper than loading every tool from a few dozen tools upwar
 
 ## Result (run 2026-11-01)
 
+![Log-scale line chart: tool tokens per call grow with catalog size when every definition is loaded, passing a 200,000-token window near 200 tools, while tool search stays flat at 8,250.](result.svg)
+
 | Apps × systems | Point-to-point connectors | With a shared protocol |
 |---|---|---|
 | 3 × 5 | 15 | 8 |

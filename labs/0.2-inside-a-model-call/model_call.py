@@ -49,3 +49,13 @@ for r in (0, 1000, 4000, 12000):
     cost = PROMPT * IN + (ANSWER + r) * OUT
     t = prefill_s(PROMPT) + (ANSWER + r) * step
     print(f"| {r:,} | {ANSWER + r:,} | {cost/base:.1f}x | {t:.1f} s |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+rs = list(range(0, 12001, 1000))
+line_chart(CHART_PATH, rs, {"Cost of the call": [(PROMPT * IN + (ANSWER + r) * OUT) / base for r in rs]},
+           title="Hidden reasoning tokens multiply the cost of a 300-token answer",
+           xlabel="Hidden reasoning tokens", ylabel="Cost vs no reasoning (x)", ref=(1, "no reasoning"))

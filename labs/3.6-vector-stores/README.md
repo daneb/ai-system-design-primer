@@ -22,6 +22,8 @@ Needs Python 3.9+ and numpy. Synthetic data (20,000 normalised 64-dimensional ve
 
 ## Result (run 2026-11-01)
 
+![Line chart: IVF recall@10 against the share of the index scored, 0.78 at 1.5%, 0.95 at 2.2% and 1.0 from about 4%.](result.svg)
+
 | nprobe | recall@10 | vectors scored |
 |---|---|---|
 | 1 | 0.781 | 1.5% |

@@ -19,6 +19,8 @@ to it for the all-or-nothing one. The agent's p95 call count will be at least do
 
 ## Result (run 2026-11-01)
 
+![Line chart: end-to-end success over 1 to 20 steps; at 20 steps it is 82% for 99% per step, 36% for 95% and 12% for 90%.](result.svg)
+
 End-to-end success when every step must succeed (p^n):
 
 | Per-step success | 3 steps | 5 steps | 10 steps | 20 steps |

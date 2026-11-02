@@ -46,3 +46,14 @@ for rho in [0.5, 0.7, 0.85, 0.95]:
         done_prev = start[i] + SERVICE
     wait = (start - arrive) * 1e3
     print(f"| {rho:.0%} | {wait.mean():,.0f} | {np.percentile(wait,95):,.0f} | {np.percentile(wait,99):,.0f} |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+bs = list(range(1, max_batch + 1, 4))
+line_chart(CHART_PATH, bs, {"Decode step time": [step_time(b) * 1e3 for b in bs]},
+           title="Bigger batches slow every user's tokens; the latency target caps the batch",
+           xlabel="Sequences in the batch", ylabel="Time per output token (ms)",
+           ref=(30, "30 ms per-token target"))

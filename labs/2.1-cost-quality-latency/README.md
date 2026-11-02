@@ -21,6 +21,8 @@ accuracy; a poor router loses noticeably more at the same cost.
 
 ## Result (run 2026-11-01)
 
+![Line chart: accuracy against the share of requests sent to the large model; the good router approaches the large model's 95.5% sooner than the poor router.](result.svg)
+
 Small model alone: 77.4% accuracy at 10% of the cost. Large model alone: 95.5% at 100%.
 
 | Router | Share sent to large model | Accuracy | Cost vs all-large |

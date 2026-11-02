@@ -37,3 +37,14 @@ for name, x in (("Workflow (4 fixed calls)", workflow), ("Agent loop (cap 25)", 
     print(f"| {name} | {x.mean():.1f} | {np.percentile(x,50):.0f} | {np.percentile(x,95):.0f} | "
           f"{np.percentile(x,99):.0f} | {x.max()} |")
 print(f"\nAgent requests hitting the cap: {np.mean(agent == 25):.2%}")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+steps = list(range(1, 21))
+line_chart(CHART_PATH, steps, {f"{p:.0%} per step": [p ** n for n in steps] for p in (0.99, 0.95, 0.90)},
+           title="Every step must succeed: reliability falls with each step",
+           xlabel="Steps in the task", ylabel="End-to-end success", ypercent=True, ylim=(0, 1.02),
+           xticks=[1, 5, 10, 15, 20])

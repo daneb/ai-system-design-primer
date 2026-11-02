@@ -119,6 +119,18 @@ Diagrams are Mermaid sources rendered to SVG, so they look the same on GitHub, i
 - **Render:** `python3 scripts/diagrams.py render` (needs Node; uses `@mermaid-js/mermaid-cli` and `images/mermaid-config.json`). Commit the `.mmd`, the `.svg` and `images/.hashes.json` together.
 - **Check:** `python3 scripts/diagrams.py check` fails on inline Mermaid, missing alt text, a missing source or SVG, or an SVG older than its source. CI runs it.
 
+### Lab charts
+
+A lab with a numeric sweep draws it with `labs/chart.py` and writes `result.svg` beside its README.
+The README shows the chart above its results table, with alt text that states the finding in numbers.
+
+- **One chart per lab,** of its main sweep; comparisons of named options stay as tables.
+- **The title states the finding** ("Tool search keeps the per-call cost flat"), not the axes.
+- **At most three series,** in the helper's fixed colour order, with a legend and labels at the line
+  ends. Mark a threshold or baseline with the dashed reference line.
+- **Charting comes after the tables** in the script and must not change them; matplotlib is optional
+  locally, and `primer.py labs` (run in CI) fails if a chart is missing or not shown.
+
 ## Shape of a deep dive
 
 Follow [templates/deep-dive.md](templates/deep-dive.md): where the providers agree and differ,

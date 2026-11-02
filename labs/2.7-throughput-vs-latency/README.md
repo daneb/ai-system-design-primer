@@ -21,6 +21,8 @@ about 80% utilisation.
 
 ## Result (run 2026-11-01)
 
+![Line chart: time per output token rising linearly with batch size from about 8 ms, crossing the 30 ms target at around 170 sequences.](result.svg)
+
 Weights 16 GB; attention cache 262 MB per 2,000-token sequence; memory fits 244 sequences.
 
 | Batch | Step time (ms) | Tokens/s per user | Tokens/s total | Meets 30 ms per-token SLO? |

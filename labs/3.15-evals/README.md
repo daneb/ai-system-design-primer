@@ -30,6 +30,8 @@ does better.
 
 ## Result (run 2026-11-01)
 
+![Line chart: chance of detecting a 5-point regression rises with eval cases, from under 10% at 25 cases to about 76% (paired) and 67% (unpaired) at 1,000, and over 90% at 2,000.](result.svg)
+
 True rates in a large sample: A = 0.794, B = 0.746.
 
 | Eval cases | 95% CI half-width on one pass rate | Unpaired test catches the drop | Paired test catches the drop |

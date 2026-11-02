@@ -51,3 +51,17 @@ print("\nTime to first token from prefill (cache miss / hit / retrieval incl. ~1
 for c in [20_000, 100_000, 500_000, 1_000_000]:
     miss = (c + QUESTION) / PREFILL
     print(f"  {c:>9,} tokens: {miss:5.1f} s / {miss * 0.15:4.1f} s / {(RETRIEVED + QUESTION) / PREFILL + 0.15:.1f} s")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+sizes = [int(10_000 * 1.5 ** i) for i in range(12)]
+Q = 1_000
+line_chart(CHART_PATH, sizes, {"Whole corpus": [stuff(c, Q) for c in sizes],
+                        "Corpus, cached": [stuff_cached(c, Q) for c in sizes],
+                        "Retrieval": [retrieve(c, Q) for c in sizes]},
+           title="At 1,000 questions a day, retrieval wins above about 58,000 tokens",
+           xlabel="Corpus size (tokens)", ylabel="Input cost per day", yprefix="$", logx=True, logy=True,
+           xticks=[10_000, 30_000, 100_000, 300_000], xticklabels=["10k", "30k", "100k", "300k"])

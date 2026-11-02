@@ -433,6 +433,17 @@ def cmd_labs(args):
             failed += 1
             print(r.stderr[-2000:])
     print(f"{len(scripts) - failed}/{len(scripts)} labs ran")
+    charts = 0
+    for script in scripts:
+        if "line_chart(" not in script.read_text(encoding="utf-8"):
+            continue
+        charts += 1
+        svg, readme = script.parent / "result.svg", script.parent / "README.md"
+        if not svg.exists():
+            failed += 1; print(f"FAILED       {svg.relative_to(ROOT)} not written (is matplotlib installed?)")
+        elif "](result.svg)" not in readme.read_text(encoding="utf-8"):
+            failed += 1; print(f"FAILED       {readme.relative_to(ROOT)} doesn't show result.svg")
+    print(f"{charts} lab charts checked")
     return 1 if failed else 0
 
 

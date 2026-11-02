@@ -17,7 +17,7 @@ Measured by a quick scan of the primer pages, to set targets below:
 | Primer pages with no worked example | 29 of 41 → **0 in Parts 0–3** (Parts 4–5 are worked cases already) | 0 |
 | Sentences over 30 words in primer pages | 110 → **0 in Parts 0–3** | Under 20 |
 | Acronyms used in primer pages but not in the glossary | ~37 → **0** | 0 |
-| Lab results shown as charts | 0 (tables only) | Every lab with a numeric sweep has a chart |
+| Lab results shown as charts | 0 (tables only) → **14 of 14 labs with a numeric sweep** | Every lab with a numeric sweep has a chart |
 | Verification-debt rows | 50 | Under 15, none on a stable section |
 
 ## Theme 1: Clearer definitions and fuller explanations
@@ -67,8 +67,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
   the agent loop, the retrieval pipeline, the sandbox in 4.6. These are the images people will share.
 - [ ] **P1 · Anatomy diagrams** for mechanisms in Theme 1 (KV cache, continuous batching, HNSW, LoRA,
   caching prefixes), drawn to scale where numbers matter.
-- [ ] **P1 · Lab charts.** Each lab writes an SVG chart next to its README (matplotlib, optional
-  dependency); READMEs show the chart above the table. *Check:* labs with a sweep have `result.svg`.
+- [x] **P1 · Lab charts.** Each lab writes an SVG chart next to its README (matplotlib, optional
+  dependency); READMEs show the chart above the table. *Check:* labs with a sweep have `result.svg`. *Done 2026-11-02:* 14 labs with sweeps draw `result.svg` via `labs/chart.py`;
+  the rest compare named options and keep tables. `primer.py labs` checks the charts.
 - [ ] **P2 · Dark-mode and accessibility check:** contrast, readable at mobile width, text not baked
   into images where avoidable.
 - [ ] **P2 · Image licensing** recorded alongside the content licence.

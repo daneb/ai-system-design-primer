@@ -23,6 +23,8 @@ one important word.
 
 ## Result (run 2026-11-01)
 
+![Line chart: prefix cost with caching relative to no caching, above 1x at very low traffic, about 0.5x at 0.2 requests a minute, and 0.1x from about 1 a minute.](result.svg)
+
 | Requests per minute sharing the prefix | Hit rate | Prefix cost vs no caching |
 |---|---|---|
 | 0.05 | 22% | 1.00x |

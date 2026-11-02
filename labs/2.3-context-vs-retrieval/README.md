@@ -20,6 +20,8 @@ suggests you can simply put in the prompt.
 
 ## Result (run 2026-11-01)
 
+![Log-scale line chart of daily input cost against corpus size at 1,000 questions a day: the whole corpus costs most, caching it is cheapest below about 58,000 tokens, and retrieval is flat and cheapest above.](result.svg)
+
 Daily input cost:
 
 | Corpus | Questions/day | Stuff | Stuff + cache | Retrieve | Cheapest |

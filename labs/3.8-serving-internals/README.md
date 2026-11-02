@@ -20,6 +20,8 @@ expensive and often wrong.
 
 ## Result (run 2026-11-01)
 
+![Line chart: speculative decoding speed-up against acceptance rate for 3- and 6-token drafts, near 1x at 20% and rising to 3.2x and 4.6x at 95%.](result.svg)
+
 | Model shape | Cache bytes | Per token | 8k-token request | 128k-token request |
 |---|---|---|---|---|
 | 8B, full multi-head attention (32 KV heads) | 16-bit | 512 KB | 4.29 GB | 68.7 GB |

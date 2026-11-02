@@ -21,6 +21,8 @@ Decode will be the bottleneck and the 50 ms target will cap the batch. A replica
 
 ## Result (run 2026-11-01)
 
+![Line chart: accelerators needed rising in steps of two from 4 at 1 request a second to 88 at 50.](result.svg)
+
 - Weights 70 GB over 2 accelerators; cache 541 MB per request; memory fits 136 concurrent requests.
 - Largest batch within 50 ms per token: 136 (memory, not latency, set the cap); decode ≈ 3,174
   tokens/s per replica.

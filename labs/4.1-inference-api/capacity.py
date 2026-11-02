@@ -40,3 +40,13 @@ for peak in (1, 5, 10, 25, 50):
     full = peak / req_per_s_replica
     r60 = math.ceil(peak / (req_per_s_replica * 0.6))
     print(f"| {peak} | {full:.1f} | {r60} | {(r60 + 1) * TP} |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+peaks = list(range(1, 51))
+line_chart(CHART_PATH, peaks, {"Accelerators": [(math.ceil(p / (req_per_s_replica * 0.6)) + 1) * TP for p in peaks]},
+           title="Accelerators needed at 60% target utilisation, plus one spare replica",
+           xlabel="Peak requests per second", ylabel="Accelerators (2 per replica)")

@@ -21,7 +21,8 @@ def choose(scores, n, rule):
 print(f"Target {TARGET:.0%}. True accuracies: " + ", ".join(f"{m[0]} {m[1]:.0%} (cost {m[2]})" for m in models) + "\n")
 print("| Eval cases | Rule | Picked a model truly below target | Average relative cost | Most common pick |")
 print("|---|---|---|---|---|")
-for n in (50, 100, 300, 1000, 3000):
+NS, curves = (50, 100, 300, 1000, 3000), {"A": [], "B": []}
+for n in NS:
     for rule in ("A", "B"):
         below, cost, picks = 0, 0.0, {}
         for _ in range(TRIALS):
@@ -29,5 +30,17 @@ for n in (50, 100, 300, 1000, 3000):
             name, acc, c = choose(scores, n, rule)
             below += acc < TARGET; cost += c; picks[name] = picks.get(name, 0) + 1
         top = max(picks, key=picks.get)
+        curves[rule].append(below / TRIALS)
         label = "measured ≥ target" if rule == "A" else "lower bound ≥ target"
         print(f"| {n} | {label} | {below/TRIALS:.0%} | {cost/TRIALS:.1f} | {top} ({picks[top]/TRIALS:.0%}) |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+line_chart(CHART_PATH, list(NS), {"Score ≥ target": curves["A"],
+                          "Lower bound ≥ target": curves["B"]},
+           title="Small evals pick models that miss the bar, unless you use the lower bound",
+           xlabel="Eval cases", ylabel="Picked a model truly below target", ypercent=True, logx=True,
+           xticks=list(NS))

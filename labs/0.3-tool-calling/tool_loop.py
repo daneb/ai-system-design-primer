@@ -57,3 +57,14 @@ for label, gate in rows.items():
     ran = [(n, a, k) for n, a, k in calls if gate(n, a)]
     print(f"| {label} | {len(ran):,} | {sum(k == 'malformed' for *_, k in ran)} | "
           f"{sum(k == 'forbidden' for *_, k in ran)} | {len(calls) - len(ran)} |")
+
+# ---- Chart (optional; needs matplotlib) --------------------------------------------------------
+import pathlib as _pl, sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent))
+from chart import line_chart
+CHART_PATH = _pl.Path(__file__).with_name("result.svg")
+ns = list(range(1, 21))
+line_chart(CHART_PATH, ns, {"50 tools": [loop_tokens(n, 10000)[1] for n in ns],
+                     "5 tools": [loop_tokens(n, 1000)[1] for n in ns]},
+           title="Every step resends the history and the tool definitions",
+           xlabel="Tool calls in the task", ylabel="Total input tokens", xticks=[1, 5, 10, 15, 20])
