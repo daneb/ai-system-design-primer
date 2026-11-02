@@ -37,9 +37,10 @@ Readers should never meet a term they can't look up, and every idea should come 
   Part 2–3 pages link to them instead of re-explaining. *Done 2026-11-01:* 0.1 tokens, context and sampling; 0.2 inside a model call (prefill, decode,
   KV cache, reasoning); 0.3 tool calling and structured output; each with a lab. Linked from 2.1, 2.7,
   3.3, 3.7, 3.8 and 3.9.
-- [ ] **P1 · "How it works, step by step" for the hardest mechanisms**, in the deep dives: KV cache and
+- [x] **P1 · "How it works, step by step" for the hardest mechanisms**, in the deep dives: KV cache and
   paged attention, continuous batching, speculative decoding, HNSW search, reciprocal rank fusion,
-  LoRA, prompt caching, pass^k. Each with a small diagram and a worked number. *Check:* list complete.
+  LoRA, prompt caching, pass^k. Each with a small diagram and a worked number. *Check:* list complete. *Done 2026-11-02:* all eight, each with a diagram and a worked
+  number, in deep dives 3.4, 3.6, 3.8, 3.13, 3.15 and 3.18.
 - [x] **P1 · Sentence-length pass.** Split sentences over 30 words; target under 20 across the primer.
   *Check:* `check` reports the count. *Done 2026-11-01:* 0 sentences over 30 words in Parts 0–3.
 - [x] **P1 · Glossary cleanup.** Remove duplicates (two were found and removed on 2026-11-01), one

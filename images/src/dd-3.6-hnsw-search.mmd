@@ -1,0 +1,8 @@
+%% alt: HNSW search. The query starts at the entry point on the sparse top layer and hops greedily to the closest node, drops a layer and repeats with shorter hops, and on layer 0, which holds every vector, runs a beam search keeping ef_search candidates, then returns the k nearest.
+flowchart LR
+  Q[Query vector]:::model --> E[Entry point<br/>top layer: few nodes]:::data
+  E --> G2[Hop to the closest<br/>neighbour until none<br/>is closer]
+  G2 --> L1[Drop a layer;<br/>start from there]
+  L1 --> G1[Hop again,<br/>shorter jumps]
+  G1 --> L0[Layer 0: every vector<br/>beam search keeps<br/>ef_search candidates]:::control
+  L0 --> K[Return the<br/>k nearest]

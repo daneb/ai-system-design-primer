@@ -39,10 +39,18 @@
  "dd-2.4-capability-vs-security.mmd": "f254ee72f37b4b95",
  "dd-3.1-ai-gateway-and-router.mmd": "68c4e924d539a65a",
  "dd-3.12-output-guardrails.mmd": "4f3d270d0291d690",
+ "dd-3.13-prefix-cache.mmd": "667c12748bacb586",
  "dd-3.15-evals.mmd": "626d47851c694dca",
+ "dd-3.15-pass-k.mmd": "89cca4371aaaa8ce",
  "dd-3.17-security.mmd": "90b1fc83aee77cdc",
+ "dd-3.18-lora.mmd": "45d1765211397412",
  "dd-3.2-input-guardrails.mmd": "013052cfb10eaab9",
  "dd-3.4-retrieval-pipeline.mmd": "6f8bdcaf5f1c2351",
+ "dd-3.4-rrf.mmd": "5efe53e0f74d98d6",
+ "dd-3.6-hnsw-search.mmd": "604eeaeda2869ec1",
  "dd-3.6-vector-stores.mmd": "94fb7094fa206e65",
+ "dd-3.8-continuous-batching.mmd": "bd73556a28203731",
+ "dd-3.8-paged-kv-cache.mmd": "a1a727be48d0b5c2",
+ "dd-3.8-speculative-decoding.mmd": "4cf38c4b71e6465a",
  "readme.mmd": "02e6ac2f557cb418"
 }

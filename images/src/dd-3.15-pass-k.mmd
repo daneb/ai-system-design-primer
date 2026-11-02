@@ -1,0 +1,7 @@
+%% alt: pass@k and pass^k. Each eval task is run k times. If at least one run passes, it counts for pass@k, which asks whether a retry will get there. Only if all k runs pass does it count for pass^k, which asks whether every user will get it right.
+flowchart LR
+  T[Each eval task]:::data --> R[Run it k times]:::model
+  R --> A{At least one<br/>run passes?}:::control
+  R --> B{All k runs<br/>pass?}:::control
+  A --> P1["pass@k:<br/>will a retry get there?"]
+  B --> P2["pass^k:<br/>will every user<br/>get it right?"]

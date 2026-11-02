@@ -1,0 +1,11 @@
+%% alt: Two panels. Static batching: requests start together, short ones finish early and their slots sit idle, and new requests wait for the longest to finish. Continuous batching: at every decode step the server frees finished requests' slots and memory and admits waiting requests, then repeats.
+flowchart LR
+  subgraph S[Static batching]
+    direction TB
+    S1[A batch of requests<br/>starts together] --> S2[Short answers finish;<br/>their slots sit idle] --> S3[New requests wait<br/>for the longest one]
+  end
+  subgraph C[Continuous batching]
+    direction TB
+    C1[Every decode step:<br/>any request finished?]:::control --> C2[Free its slot<br/>and KV blocks] --> C3[Admit a waiting request;<br/>prefill it in chunks] --> C1
+  end
+  S ~~~ C

@@ -1,0 +1,10 @@
+%% alt: Paged KV cache. Requests A and B each have a block table that maps their tokens to 16-token blocks anywhere in memory. Both tables point to the same shared blocks for the common system prompt, and each points to its own blocks for the rest, taken from a pool of free blocks.
+flowchart LR
+  A[Request A]:::model --> TA[Block table A]:::control
+  B[Request B<br/>same system prompt]:::model --> TB[Block table B]:::control
+  TA --> P[(Shared prompt<br/>blocks 3, 8)]:::data
+  TB --> P
+  TA --> OA[(A's blocks<br/>12, 5, 40 ...)]:::data
+  TB --> OB[(B's blocks<br/>7, 21 ...)]:::data
+  F[(Free pool<br/>16 tokens per block)] -.-> OA
+  F -.-> OB

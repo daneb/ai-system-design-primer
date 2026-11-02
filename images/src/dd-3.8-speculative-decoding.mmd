@@ -1,0 +1,9 @@
+%% alt: Speculative decoding. A small draft model guesses four tokens; the large target model checks all four in one pass; the guesses it agrees with are kept up to the first rejection, which is replaced by the target model's own token; then the next round starts.
+flowchart LR
+  D[Small draft model<br/>guesses 4 tokens]:::model --> V[Large target model<br/>checks all 4 in one pass]:::model
+  V --> A{Would the target<br/>have chosen this?}:::control
+  A -->|yes, up to the<br/>first no| K[Keep those tokens]
+  A -->|first no| R[Use the target's<br/>own token instead]
+  K --> N[Next round]
+  R --> N
+  N --> D

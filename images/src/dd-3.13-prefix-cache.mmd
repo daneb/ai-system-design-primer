@@ -1,0 +1,9 @@
+%% alt: Prompt caching. The prompt is ordered tool definitions, system instructions, shared documents, then the user question that changes every call. The provider looks for the longest cached prefix that matches from the first token; on a hit it reuses that prefix's KV cache and prefills only the rest; on a miss it prefills everything and writes the prefix to the cache.
+flowchart LR
+  subgraph P[Prompt, in this order]
+    direction LR
+    T[Tool definitions]:::data --> S[System instructions]:::data --> D[Shared documents]:::data --> U[User question<br/>changes every call]:::human
+  end
+  P --> M{Longest cached prefix<br/>matching from token 1?}:::control
+  M -->|hit| R[Reuse its KV cache;<br/>prefill only the rest]
+  M -->|miss| W[Prefill everything;<br/>write the prefix]

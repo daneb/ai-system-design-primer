@@ -1,0 +1,7 @@
+%% alt: LoRA. The input passes through the frozen weight matrix W, 4,096 by 4,096, and in parallel through two small trained matrices, A (16 by 4,096) then B (4,096 by 16, starting at zero); B's output is scaled and added to W's output.
+flowchart LR
+  X[Input]:::data --> W[Frozen weight W<br/>4,096 × 4,096<br/>16.8 million numbers]:::model
+  X --> A[A: 16 × 4,096<br/>trained]:::tool --> B[B: 4,096 × 16<br/>trained, starts at zero]:::tool
+  W --> S((add))
+  B -->|scaled by alpha / r| S
+  S --> Y[Output]
