@@ -75,7 +75,7 @@ frontier as news.
 ## Example
 
 An engineer has a week before a design interview at a company building AI products. They read the
-method (Part 1), then trade-offs 2.1, 2.2 and 2.4, then the five components marked in the study guide.
+foundations (0.1–0.3), the method (Part 1), then trade-offs 2.1, 2.2 and 2.4, then the five components marked in the study guide.
 On day four they work the enterprise RAG assistant (4.2) on paper before reading the solution, and
 compare their token estimate with the one in the page. Each evening they review that day's flashcards.
 On day six they run Lab 2.4 and classify the tools in their own team's chatbot. That last step is the
@@ -87,6 +87,7 @@ The classic primer offered short, medium and long study plans. The same idea, by
 
 | | 1 week | 1 month | 3 months |
 |---|---|---|---|
+| Foundations (0.1–0.3) | Read | Read, run the labs | Read, run the labs and exercises |
 | Method (Part 1) | Read | Read, practise twice | Practise on every solved design |
 | Trade-offs (Part 2) | 2.1, 2.2, 2.4 | All | All |
 | Components (Part 3) | 3.1, 3.4, 3.9, 3.15, 3.17 | All stable (`S`) sections | All, including frontier |

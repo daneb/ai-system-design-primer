@@ -1,4 +1,7 @@
 {
+ "0.1-tokens-context-and-sampling.mmd": "c599e793479699b5",
+ "0.2-inside-a-model-call.mmd": "8e73de39d3f0e1ef",
+ "0.3-tool-calling.mmd": "da5fc1557048b73a",
  "1-method.mmd": "977772298eaeb737",
  "2.1-cost-quality-latency.mmd": "049975b47908bf64",
  "2.2-determinism-vs-autonomy.mmd": "ea7604d654b59d31",

@@ -150,6 +150,9 @@ section that needs it.
 | Anthropic eval details: pass@k / pass^k, capability vs regression, grade outcomes not paths | Page confirmed to exist and cover them; details read via secondary summaries | 3.15 |
 | EU AI Act Art. 15 (accuracy for high-risk systems) | Not checked against the regulation text | 3.15, 5.4 |
 | Anthropic managed eval tooling; AWS and Google production monitoring of eval scores | Not researched | 3.15, 5.2 |
+| Google bills thinking tokens as output | Seen via secondary sources quoting the pricing page ("output price, including thinking tokens"); Anthropic and OpenAI confirmed first-party | 0.2 |
+| "Change temperature or top-p, not both" and reasoning models rejecting sampling settings | Azure confirmed first-party; Anthropic and OpenAI via secondary sources | 0.1, 0.2 |
+| Thinking Machines: 80 distinct completions from 1,000 temperature-0 requests | Several consistent secondary reports; original post not fetched | 0.1 |
 
 ## Research gaps
 

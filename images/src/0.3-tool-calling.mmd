@@ -1,0 +1,11 @@
+%% alt: The application sends messages and tool definitions; the model returns a tool call with a name and JSON arguments; the application checks the schema and the user's permissions, runs the tool, and sends back the result, which is untrusted input; the loop repeats until the model gives a final answer.
+flowchart LR
+  U[User request]:::human --> A[Your code<br/>sends messages and<br/>tool definitions]
+  A --> M[Model]:::model
+  M -->|tool call:<br/>name + JSON args| V{Schema valid?<br/>User allowed?}:::control
+  V -->|yes| T[Run the tool]:::tool
+  V -->|no| E[Return an error<br/>as the result]
+  T --> R[Tool result<br/>untrusted input]:::untrusted
+  R --> A
+  E --> A
+  M -->|finished| F[Final answer]

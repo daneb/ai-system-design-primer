@@ -4,8 +4,8 @@ What comes after the first draft. [PLAN.md](PLAN.md) records how the first draft
 verification debt; this file is the forward plan. Every item has a check you can run or see, so "done"
 isn't a matter of opinion.
 
-**State on 2026-11-01:** all 41 sections drafted (Parts 0–5), with 26 deep dives, 25 labs and
-210 flashcards. The author has signed off Phases 1–3 for now.
+**State on 2026-11-01:** all 44 sections drafted (Parts 0–5), with 26 deep dives, 28 labs and
+228 flashcards. The author has signed off Phases 1–3 for now.
 
 ## Baseline audit (2026-11-01)
 
@@ -31,10 +31,12 @@ Readers should never meet a term they can't look up, and every idea should come 
   *Check:* a new `check` rule lists acronyms missing from the glossary (the audit above, automated). *Done 2026-11-01:* `check` warns on acronyms missing from the glossary (Part 5 exempt).
 - [x] **P0 · One worked example per page.** A short, concrete case with numbers: "a 40-turn agent
   that…", "a bank with 50 apps…". *Check:* every primer page has a `### Example` subsection. *Done 2026-11-01:* Parts 0–3 have an example, mostly drawn from the labs.
-- [ ] **P1 · Part 0 foundations: "How a language model works, for system designers".** Tokens,
+- [x] **P1 · Part 0 foundations: "How a language model works, for system designers".** Tokens,
   context window, sampling and temperature, embeddings, attention and the KV cache, tool calling,
   reasoning models. Two or three short pages so Parts 2–3 can assume them. *Check:* pages exist and
-  Part 2–3 pages link to them instead of re-explaining.
+  Part 2–3 pages link to them instead of re-explaining. *Done 2026-11-01:* 0.1 tokens, context and sampling; 0.2 inside a model call (prefill, decode,
+  KV cache, reasoning); 0.3 tool calling and structured output; each with a lab. Linked from 2.1, 2.7,
+  3.3, 3.7, 3.8 and 3.9.
 - [ ] **P1 · "How it works, step by step" for the hardest mechanisms**, in the deep dives: KV cache and
   paged attention, continuous batching, speculative decoding, HNSW search, reciprocal rank fusion,
   LoRA, prompt caching, pass^k. Each with a small diagram and a worked number. *Check:* list complete.

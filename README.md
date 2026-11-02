@@ -46,6 +46,9 @@ library only, with the prediction written down before the run and an honest note
 
 | Lab | Question |
 |---|---|
+| [0.1](labs/0.1-tokens-and-sampling/README.md) | What a token is, and what temperature does |
+| [0.2](labs/0.2-inside-a-model-call/README.md) | Prefill, decode, the KV cache and reasoning tokens |
+| [0.3](labs/0.3-tool-calling/README.md) | The tool-calling loop, its token bill, and what checks catch |
 | [2.1](labs/2.1-cost-quality-latency/README.md) | When does routing between models pay off? |
 | [2.2](labs/2.2-determinism-vs-autonomy/README.md) | What autonomy costs in reliability and predictability |
 | [2.3](labs/2.3-context-vs-retrieval/README.md) | When is the whole corpus in the prompt cheaper than retrieval? |
@@ -92,6 +95,9 @@ are recorded in [adr/](adr/). Work still to do is in [ROADMAP.md](ROADMAP.md).
 **Part 0: Orientation**
 
 - [0 Orientation](docs/0-orientation/0-orientation.md) `S`
+- [0.1 Tokens, context and sampling](docs/0-orientation/0.1-tokens-context-and-sampling.md) `S`
+- [0.2 Inside a model call: prefill, decode and reasoning](docs/0-orientation/0.2-inside-a-model-call.md) `S`
+- [0.3 Tool calling and structured output](docs/0-orientation/0.3-tool-calling.md) `S`
 
 **Part 1: Method**
 
@@ -155,7 +161,7 @@ are recorded in [adr/](adr/). Work still to do is in [ROADMAP.md](ROADMAP.md).
 
 | | Short (days) | Medium (weeks) | Long (months) |
 |---|---|---|---|
-| Read [Orientation](docs/0-orientation/0-orientation.md) and the [method](docs/1-method/1-method.md) | ✓ | ✓ | ✓ |
+| Read [Orientation](docs/0-orientation/0-orientation.md), the foundations ([0.1](docs/0-orientation/0.1-tokens-context-and-sampling.md)–[0.3](docs/0-orientation/0.3-tool-calling.md)) and the [method](docs/1-method/1-method.md) | ✓ | ✓ | ✓ |
 | Read the trade-offs (Part 2) | Some | All | All |
 | Read the components (Part 3) | 3.1, 3.4, 3.9, 3.15, 3.17 | Most | All, plus deep dives |
 | Read [Numbers](docs/5-appendix/5.1-numbers.md) and the [Glossary](docs/5-appendix/5.6-glossary.md) | ✓ | ✓ | ✓ |
@@ -232,7 +238,7 @@ More practice: [additional design questions](docs/4-solved-designs/4.8-unsolved-
 <!-- status:start -->
 | Phase | Sections | Planned | Draft | Review | Published |
 |---|---|---|---|---|---|
-| 0 | 3 | 0 | 3 | 0 | 0 |
+| 0 | 6 | 0 | 6 | 0 | 0 |
 | 1 | 12 | 0 | 11 | 1 | 0 |
 | 2 | 10 | 0 | 10 | 0 | 0 |
 | 3 | 11 | 0 | 11 | 0 | 0 |
