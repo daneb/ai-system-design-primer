@@ -106,18 +106,15 @@ section that needs it.
 | SGLang RadixAttention TTFT improvement | Unsourced vendor claim | 3.8 |
 | TGI archive date | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
 | Managed agent memory (Foundry, Memory Bank, AgentCore) | Docs seen via search snippets, not read in full; Foundry throughput figure secondary; OpenAI long-term memory API absence unconfirmed | 3.3, 3.11 |
-| Self-Route cost savings (65% Gemini, 39% GPT-4o); LaRA findings | Secondary summaries; read arXiv 2407.16833 and 2502.09977 | 2.3 |
 | AWS and OpenAI first-party long-context-vs-RAG guidance | Not found | 2.3 |
 | Coding-agent search choices (Codex, Cline, Cursor) and Claude Code "agentic search beat RAG" | Secondary sources and an interview; arXiv 2608.01507 seen via abstract only | 3.5 |
 | Bedrock agentic retrieval and Vertex AI Search agentic features | AWS blog only; Google not checked | 3.5 |
-| MAST category shares (44.2% system design); Kim et al. sequential-task figures (39–70% vs "−70%") | Secondary sources and abstracts; read both papers | 2.5 |
 | A2A v1.0 operations, dates and agent-card fields; MCP revision list | Secondary sources; read a2a-protocol.org spec and MCP release list | 3.10 |
 | Cloud MCP/A2A services (AgentCore Gateway/Identity, Apigee, Entra Agent ID, Agent Engine A2A) | Not checked first-party | 3.10 |
 | OTel GenAI conventions details (repo move, versions, operations); Google Cloud Trace for ADK; Anthropic telemetry | Secondary sources; Google and Anthropic not checked first-party | 3.16 |
-| τ-bench policy-removal effect (−22.4% airline) and later domains; Klarna figures; Stanford legal-tool rates | Secondary summaries for τ-bench detail and Klarna; Stanford via HAI summary | 4.4, 4.5 |
+| τ-bench policy-removal effect (−22.4% airline) | Not found in the paper's HTML text (likely in a figure or appendix); Klarna, Stanford and the τ-bench pass^k figures confirmed 2026-11-02 | 4.5 |
 | EU AI Act: contract review not high-risk | Primer's reading of Annex III; confirm with legal | 4.4 |
 | Coding-agent sandbox details (Codex two-phase, Copilot firewall and approvals) | First-party docs seen via search; GitHub concept page redirected | 4.6 |
-| Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU memory and bandwidth confirmed on NVIDIA's pages (2026-11-02); embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
@@ -135,7 +132,7 @@ section that needs it.
 | OWASP Agentic Top 10 2026 entry names (all ten in 5.4); MITRE ATLAS counts | Several secondary sources agree on names; OWASP PDF and ATLAS pages not read directly | 3.17, 5.4 |
 | Invariant Labs tool-poisoning and rug-pull disclosures (April 2025); malicious models on public hubs (JFrog, ReversingLabs) | Secondary sources only | 3.17, 3.10 |
 | Tool-call authorisation, sandboxes and red-teaming services for Azure, Google, OpenAI | Not researched | 3.17, 5.2 |
-| τ-bench figures (GPT-4o retail pass@1 ~61%, pass^8 ~25%); newer models' pass^k | Figures from the paper abstract and summaries; current leaderboards not checked | 2.2, 3.15 |
+| Newer models' pass^k on τ-bench | Paper figures confirmed (GPT-4o retail ≈61% pass^1, ≈25% pass^8); current leaderboards not checked | 2.2, 3.15 |
 | OpenAI flex, priority and Scale Tier; Anthropic Priority Tier withdrawal; AWS priority on-demand | Via gateway documentation, not provider docs | 2.7, 5.2 |
 | Chunked-prefill defaults in vLLM V1 and SGLang; Sarathi-Serve figures; managed endpoints for open models on Azure and AWS | Secondary sources / not researched | 3.8, 5.2 |
 | Anthropic model fine-tuning via cloud partners | Claude 3 Haiku tuning on Bedrock confirmed (GA Nov 2024); AWS blog says the model reached EOL 10 Sep 2026; any current Claude tuning option not verified | 2.6, 3.18, 5.2 |

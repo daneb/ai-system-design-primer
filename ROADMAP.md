@@ -102,8 +102,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
   context and memory, operations; Part 0 and security figures added.
 - [ ] **Map Lakshmanan and Hapke** into the pattern crosswalk (5.3) from the published edition; check
   Gulli and Fowler names against their sources.
-- [ ] **Read the papers behind second-hand figures:** Self-Route, MAST, Kim et al., τ-bench, Chroma
-  context rot, Mem0, Stanford legal AI.
+- [x] **Read the papers behind second-hand figures:** Self-Route, MAST, Kim et al., τ-bench, Chroma
+  context rot, Mem0, Stanford legal AI. *Done 2026-11-02:* all seven read. Corrected Kim et al. (v3: 260 configurations,
+  −39% to −70% sequential) and MAST (41–86.7%); τ-bench's −22.4% policy-removal figure not found in the text.
 - [x] **Labs for the solved designs that lack one:** 4.4 (recall vs review time), 4.5 (pass^k on a toy
   policy), 4.6 (review capacity vs merged work). *Done 2026-11-02:* Labs 4.4, 4.5 and 4.6, each with a chart.
   Lab 4.4 found 98% recall needs 58–69 lawyer minutes with moderate separation, not 30; 4.4 now says so.
