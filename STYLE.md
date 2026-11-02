@@ -159,9 +159,12 @@ Every section is researched the same way, so readers can trust that a claim isn'
 3. **Look for convergence.** When independent providers describe the same pattern, that is the stable
    core: teach it as such. Where they disagree or only one vendor describes it, mark it as frontier or
    vendor-specific.
-4. **Separate what's verified from what isn't.** If a claim, number or mapping could not be confirmed
-   from a primary source, mark it in the text ("not verified") and add it to the verification debt in
-   [PLAN.md](PLAN.md). Never round a gap into a confident sentence.
+4. **Separate what's verified from what isn't.** A claim is *confirmed* when you have read it in its
+   primary source (the provider's documentation, the paper, the standard or regulation, or your own lab
+   or arithmetic) and it matches. If you couldn't confirm a claim, number or mapping, mark it in the
+   text ("not verified") and add it to the verification debt in [PLAN.md](PLAN.md#verification-debt)
+   with its kind: second-hand, source not read, not researched, or needs an expert. Never round a gap
+   into a confident sentence.
 5. **Prove one claim yourself** where practical: a small lab under `labs/<section-id>/`, with the
    expected result written down before running it. Report what happened, including when the result
    contradicts the expectation; that is often the best lesson.
