@@ -274,6 +274,7 @@ Participation is covered by the [Code of Conduct](CODE_OF_CONDUCT.md).
 - **Content** (pages, diagrams, flashcards, lab READMEs) is licensed under
   [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0), the same licence as the
   original System Design Primer.
+- All diagrams and charts are original to this repository and covered by the content licence.
 - **Code** (`scripts/`, the lab scripts and the CI workflow) is licensed under the [MIT License](LICENSE-CODE).
 - Contributions are accepted under the same terms. The reasoning is in [ADR 0008](adr/0008-licences.md).
 

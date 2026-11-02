@@ -72,7 +72,8 @@ plain, inconsistent in layout and rendered differently by every viewer.
   the rest compare named options and keep tables. `primer.py labs` checks the charts.
 - [ ] **P2 · Dark-mode and accessibility check:** contrast, readable at mobile width, text not baked
   into images where avoidable.
-- [ ] **P2 · Image licensing** recorded alongside the content licence.
+- [x] **P2 · Image licensing** recorded alongside the content licence. *Done 2026-11-02:* all diagrams and charts are original and covered by CC BY 4.0;
+  stated in the README.
 
 ## Theme 3: Prioritised backlog
 
@@ -96,8 +97,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
 - [ ] **First quarterly frontier review, due 2027-02-01:** 3.5, 3.10, 3.11, 4.5, 4.6, 5.2, 5.4, 5.5.
   Re-check MCP and A2A versions, managed memory and agent services, the EU AI Act Omnibus final text,
   and any `(not verified)` cells in the cloud mapping.
-- [ ] **Refresh 5.1 Numbers with Phase 3 figures:** tool-definition token costs, agent and multi-agent
-  token multipliers, pass^k, context-rot findings, trace sizes.
+- [x] **Refresh 5.1 Numbers with Phase 3 figures:** tool-definition token costs, agent and multi-agent
+  token multipliers, pass^k, context-rot findings, trace sizes. *Done 2026-11-02:* new tables for model calls, agents and tools,
+  context and memory, operations; Part 0 and security figures added.
 - [ ] **Map Lakshmanan and Hapke** into the pattern crosswalk (5.3) from the published edition; check
   Gulli and Fowler names against their sources.
 - [ ] **Read the papers behind second-hand figures:** Self-Route, MAST, Kim et al., τ-bench, Chroma
