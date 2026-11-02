@@ -4,8 +4,8 @@ What comes after the first draft. [PLAN.md](PLAN.md) records how the first draft
 verification debt; this file is the forward plan. Every item has a check you can run or see, so "done"
 isn't a matter of opinion.
 
-**State on 2026-11-01:** all 44 sections drafted (Parts 0–5), with 26 deep dives, 28 labs and
-228 flashcards. The author has signed off Phases 1–3 for now.
+**State on 2026-11-01:** all 44 sections drafted (Parts 0–5), with 26 deep dives, 31 labs and
+231 flashcards. The author has signed off Phases 1–3 for now.
 
 ## Baseline audit (2026-11-01)
 
@@ -17,7 +17,7 @@ Measured by a quick scan of the primer pages, to set targets below:
 | Primer pages with no worked example | 29 of 41 → **0 in Parts 0–3** (Parts 4–5 are worked cases already) | 0 |
 | Sentences over 30 words in primer pages | 110 → **0 in Parts 0–3** | Under 20 |
 | Acronyms used in primer pages but not in the glossary | ~37 → **0** | 0 |
-| Lab results shown as charts | 0 (tables only) → **14 of 14 labs with a numeric sweep** | Every lab with a numeric sweep has a chart |
+| Lab results shown as charts | 0 (tables only) → **17 of 17 labs with a numeric sweep** | Every lab with a numeric sweep has a chart |
 | Verification-debt rows | 50 | Under 15, none on a stable section |
 
 ## Theme 1: Clearer definitions and fuller explanations
@@ -104,8 +104,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
   Gulli and Fowler names against their sources.
 - [ ] **Read the papers behind second-hand figures:** Self-Route, MAST, Kim et al., τ-bench, Chroma
   context rot, Mem0, Stanford legal AI.
-- [ ] **Labs for the solved designs that lack one:** 4.4 (recall vs review time), 4.5 (pass^k on a toy
-  policy), 4.6 (review capacity vs merged work).
+- [x] **Labs for the solved designs that lack one:** 4.4 (recall vs review time), 4.5 (pass^k on a toy
+  policy), 4.6 (review capacity vs merged work). *Done 2026-11-02:* Labs 4.4, 4.5 and 4.6, each with a chart.
+  Lab 4.4 found 98% recall needs 58–69 lawyer minutes with moderate separation, not 30; 4.4 now says so.
 - [ ] **Anki package build** (`.apkg`) as an optional extra, keeping the TSV as the zero-dependency path.
 - [ ] **Second reads** of Phase 0 and the appendices (Parts 4.8 and 5).
 

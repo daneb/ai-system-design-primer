@@ -82,6 +82,9 @@ library only, with the prediction written down before the run and an honest note
 | [3.18](labs/3.18-model-adaptation/README.md) | What LoRA trains, and when a fine-tune pays for itself |
 | [4.1](labs/4.1-inference-api/README.md) | How many accelerators does a self-hosted inference API need? |
 | [4.2](labs/4.2-enterprise-rag/README.md) | Where the money goes in an enterprise RAG assistant |
+| [4.4](labs/4.4-document-review/README.md) | What 98% recall costs in lawyer time |
+| [4.5](labs/4.5-support-agent/README.md) | Consistency with policy in the prompt or in a policy engine |
+| [4.6](labs/4.6-coding-agent/README.md) | Review capacity caps merged work |
 
 ## Contributing
 
