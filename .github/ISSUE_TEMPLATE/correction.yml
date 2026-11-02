@@ -1,0 +1,32 @@
+name: Correction
+description: A factual error, an outdated figure, a broken link or an unclear explanation.
+title: "[Correction] "
+labels: ["correction"]
+body:
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: The section ID and page, for example "3.13 Caching (deep dive)".
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong or unclear
+      description: Quote the sentence or table row.
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source
+      description: A link to the provider documentation, paper or standard that supports the fix, with the date you checked it.
+    validations:
+      required: true

@@ -1,0 +1,24 @@
+name: New topic or solved design
+description: Propose a section, deep dive, lab or solved design that is missing.
+title: "[Topic] "
+labels: ["topic"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is missing
+      description: The pattern, trade-off or system, and where it would fit (Part 2, 3 or 4).
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs here
+      description: Is it settled across several providers or papers (stable), or still moving (frontier)?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Primary sources from at least two providers or independent papers.
