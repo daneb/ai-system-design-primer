@@ -38,14 +38,17 @@ and the [practice questions](docs/4-solved-designs/4.8-unsolved-questions.md).
 
 ## Anki flashcards
 
-Every page ends in question-and-answer flashcards. Build the deck with:
+Every page ends in question-and-answer flashcards. Build the deck with either command (standard
+library only):
 
 ```sh
-python3 scripts/primer.py flashcards   # writes build/flashcards.tsv; import into Anki
+python3 scripts/primer.py anki         # writes build/ai-system-design-primer.apkg: double-click to import
+python3 scripts/primer.py flashcards   # writes build/flashcards.tsv: plain text for Anki's File > Import
 ```
 
-Cards are tagged by section and maturity, so you can study one part, or drop `frontier` cards when
-they go stale.
+The package has one sub-deck per part. Re-importing a newer build updates answers in place and keeps
+your review history; a reworded question arrives as a new card. Cards are tagged by section and
+maturity, so you can study one part, or suspend `maturity::frontier` cards when they go stale.
 
 ## Labs
 

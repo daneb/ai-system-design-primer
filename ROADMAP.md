@@ -108,7 +108,8 @@ plain, inconsistent in layout and rendered differently by every viewer.
 - [x] **Labs for the solved designs that lack one:** 4.4 (recall vs review time), 4.5 (pass^k on a toy
   policy), 4.6 (review capacity vs merged work). *Done 2026-11-02:* Labs 4.4, 4.5 and 4.6, each with a chart.
   Lab 4.4 found 98% recall needs 58–69 lawyer minutes with moderate separation, not 30; 4.4 now says so.
-- [ ] **Anki package build** (`.apkg`) as an optional extra, keeping the TSV as the zero-dependency path.
+- [x] **Anki package build** (`.apkg`) as an optional extra, keeping the TSV as the zero-dependency path. *Done 2026-11-02:* `primer.py anki`, standard library only;
+  one sub-deck per part; stable GUIDs so re-imports update cards.
 - [ ] **Second reads** of Phase 0 and the appendices (Parts 4.8 and 5).
 
 ### P2: later

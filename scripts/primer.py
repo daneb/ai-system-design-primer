@@ -5,6 +5,8 @@
   python3 scripts/primer.py status         print progress by phase
   python3 scripts/primer.py readme         regenerate the TOC and progress blocks in README.md
   python3 scripts/primer.py flashcards     export Q/A blocks to build/flashcards.tsv (Anki import)
+  python3 scripts/primer.py anki           build build/ai-system-design-primer.apkg (Anki package)
+  python3 scripts/primer.py labs           run every lab and check the lab charts
 """
 import argparse
 import datetime as dt
@@ -400,8 +402,9 @@ def cmd_readme(args):
     return 0
 
 
-def cmd_flashcards(args):
-    rows = []
+def collect_cards():
+    """Every Q/A pair from the primer pages' Flashcards sections, in reading order."""
+    cards = []
     for s in load_sections():
         m = s["meta"]
         if m.get("status") == "planned":
@@ -409,15 +412,39 @@ def cmd_flashcards(args):
         block = re.search(r"^## Flashcards\s*\n(.*?)(?=^## |\Z)", s["body"], re.S | re.M)
         if not block:
             continue
+        clean = lambda t: " ".join(t.split()).replace("\t", " ")
+        part = m["id"].split(".")[0]
         for q, a in re.findall(r"^Q:\s*(.+?)\s*\nA:\s*(.+?)(?=\n\s*\n|\nQ:|\Z)", block.group(1), re.S | re.M):
-            clean = lambda t: " ".join(t.split()).replace("\t", " ")
-            tags = f"primer::{m['id'].replace('.', '_')} maturity::{m.get('maturity')}"
-            rows.append(f"{clean(q)}\t{clean(a)}\t{tags}")
+            cards.append({"section_id": m["id"], "section_title": m.get("title", ""),
+                          "part_name": PARTS.get(part, "Part " + part),
+                          "question": clean(q), "answer": clean(a),
+                          "tags": [f"primer::{m['id'].replace('.', '_')}", f"maturity::{m.get('maturity')}"]})
+    return cards
+
+
+def cmd_flashcards(args):
+    rows = [f"{c['question']}\t{c['answer']}\t{' '.join(c['tags'])}" for c in collect_cards()]
     out = ROOT / "build" / "flashcards.tsv"
     out.parent.mkdir(exist_ok=True)
     out.write_text("#separator:tab\n#html:false\n#tags column:3\n" + "\n".join(rows) + "\n", encoding="utf-8")
     print(f"{len(rows)} cards written to {out.relative_to(ROOT)}")
     return 0
+
+
+def cmd_anki(args):
+    """Build build/ai-system-design-primer.apkg: one sub-deck per part, re-importable without duplicates."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import anki
+    cards = collect_cards()
+    out = ROOT / "build" / "ai-system-design-primer.apkg"
+    out.parent.mkdir(exist_ok=True)
+    n = anki.write_apkg(out, cards, "Flashcards from the AI System Design Primer "
+                        "(https://github.com/daneb/ai-system-design-primer), CC BY 4.0.")
+    problems = anki.check_apkg(out)
+    for prob in problems:
+        print(f"error: {prob}")
+    print(f"{n} cards in {len({c['part_name'] for c in cards})} sub-decks written to {out.relative_to(ROOT)}")
+    return 1 if problems else 0
 
 
 def cmd_labs(args):
@@ -457,9 +484,10 @@ def main():
     r = sub.add_parser("readme")
     r.add_argument("--check", action="store_true", help="exit 1 if README.md would change")
     sub.add_parser("flashcards")
+    sub.add_parser("anki")
     sub.add_parser("labs")
     args = p.parse_args()
-    return {"check": cmd_check, "status": cmd_status, "readme": cmd_readme, "flashcards": cmd_flashcards, "labs": cmd_labs}[args.cmd](args)
+    return {"check": cmd_check, "status": cmd_status, "readme": cmd_readme, "flashcards": cmd_flashcards, "anki": cmd_anki, "labs": cmd_labs}[args.cmd](args)
 
 
 if __name__ == "__main__":
