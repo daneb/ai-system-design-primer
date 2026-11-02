@@ -18,4 +18,6 @@ exclude = [
   '^https://(www\.)?oreilly\.com/',
   '^https://(www\.)?axios\.com/',
   '^https://(www\.)?americanbar\.org/',
+  # HAL (French open archive) sits behind Anubis proof-of-work bot protection, so checkers time out.
+  '^https://([a-z-]+\.)?hal\.science/',
 ]
