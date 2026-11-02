@@ -4,9 +4,11 @@
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-lightgrey.svg)](LICENSE-CODE)
 
-> **Status: first draft.** Every section is written and checked by CI, but none has had an independent
-> review yet. Figures we couldn't confirm against a primary source are marked "not verified" on the page
-> and listed in [PLAN.md](PLAN.md#verification-debt). Corrections are very welcome.
+> **Status: first release, November 2026.** Every section has been researched against primary sources
+> and reviewed by the author. CI checks every change: links, structure, diagrams, and that every lab
+> runs. No one else has reviewed it yet. Figures we couldn't confirm against a primary source are marked
+> "not verified" on the page and listed in [PLAN.md](PLAN.md#verification-debt). Corrections with a
+> source are welcome.
 
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
@@ -286,7 +288,7 @@ Participation is covered by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## How this was written
 
-The author researched and wrote this primer with an AI assistant, under the method in
-[STYLE.md](STYLE.md): primary sources from several providers for every claim, a dated `last_verified`
-on every page, runnable labs instead of asserted numbers, and a public list of what isn't yet verified.
-Mistakes are still possible; please report them with a source.
+The author researched and wrote this primer with an AI assistant, and reviewed every section. The
+method is in [STYLE.md](STYLE.md): primary sources from several providers for every claim, a dated
+`last_verified` on every page, runnable labs instead of asserted numbers, and a public list of what
+isn't yet verified. Mistakes are still possible; please report them with a source.
