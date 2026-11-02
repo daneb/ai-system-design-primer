@@ -17,4 +17,5 @@ exclude = [
   '^https://(www\.)?canlii\.ca/',
   '^https://(www\.)?oreilly\.com/',
   '^https://(www\.)?axios\.com/',
+  '^https://(www\.)?americanbar\.org/',
 ]
