@@ -1,5 +1,13 @@
 # The AI System Design Primer
 
+[![CI](https://github.com/daneb/ai-system-design-primer/actions/workflows/ci.yml/badge.svg)](https://github.com/daneb/ai-system-design-primer/actions/workflows/ci.yml)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-lightgrey.svg)](LICENSE-CODE)
+
+> **Status: first draft.** Every section is written and checked by CI, but none has had an independent
+> review yet. Figures we couldn't confirm against a primary source are marked "not verified" on the page
+> and listed in [PLAN.md](PLAN.md#verification-debt). Corrections are very welcome.
+
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
 
@@ -257,8 +265,21 @@ verification debt (claims still waiting for a first-party source).
 
 ## Contact info
 
-Open an issue to discuss errors, missing topics or new solved designs.
+Open an issue to discuss errors, missing topics or new solved designs. Report security problems, or
+guidance that would make a system less safe, privately as described in [SECURITY.md](SECURITY.md).
+Participation is covered by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-To be decided. See [ROADMAP.md](ROADMAP.md).
+- **Content** (pages, diagrams, flashcards, lab READMEs) is licensed under
+  [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0), the same licence as the
+  original System Design Primer.
+- **Code** (`scripts/`, the lab scripts and the CI workflow) is licensed under the [MIT License](LICENSE-CODE).
+- Contributions are accepted under the same terms. The reasoning is in [ADR 0008](adr/0008-licences.md).
+
+## How this was written
+
+The author researched and wrote this primer with an AI assistant, under the method in
+[STYLE.md](STYLE.md): primary sources from several providers for every claim, a dated `last_verified`
+on every page, runnable labs instead of asserted numbers, and a public list of what isn't yet verified.
+Mistakes are still possible; please report them with a source.

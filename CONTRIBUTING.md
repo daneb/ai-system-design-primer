@@ -1,5 +1,10 @@
 # Contributing
 
+By contributing you agree that your contribution is licensed under the repository's licences: CC BY 4.0
+for content and MIT for code ([ADR 0008](adr/0008-licences.md)). Everyone taking part follows the
+[Code of Conduct](CODE_OF_CONDUCT.md). Report security problems, or guidance that would make a system
+less safe, privately as described in [SECURITY.md](SECURITY.md).
+
 ## Writing a section
 
 Read [STYLE.md](STYLE.md) first: it sets the audience, voice, length budgets and research method.

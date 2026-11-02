@@ -101,13 +101,10 @@ section that needs it.
 | Claim | Problem | Needed by |
 |---|---|---|
 | Claude list prices and context windows | Aggregator only (BenchLM), internally inconsistent | 5.1 |
-| Batch API discounts | ~50%: Anthropic confirmed first-party; OpenAI via a reliable secondary; Google, Azure, AWS via a secondary compilation of their docs | 2.1, 3.14, 5.1 |
-| Cache multipliers and TTLs per provider | Anthropic, OpenAI, Google, Azure confirmed first-party (Nov 2026); Bedrock lifetimes and per-model OpenAI read discounts via secondary sources | 3.13, 5.1 |
+| Cache multipliers and TTLs per provider | Anthropic, OpenAI, Google, Azure and AWS Bedrock confirmed first-party (Nov 2026); per-model OpenAI read discounts and Anthropic automatic caching by default still via secondary sources | 3.13, 5.1 |
 | Self-hosted cost per M output tokens | Single vendor worked example | 3.8, 4.1 |
 | SGLang RadixAttention TTFT improvement | Unsourced vendor claim | 3.8 |
 | TGI archive date | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
-| PagedAttention throughput figures | From memory; read arXiv 2309.06180 | 3.8 |
-| OpenAI "A practical guide to building agents" details | Seen via summary only | 3.9 |
 | Managed agent memory (Foundry, Memory Bank, AgentCore) | Docs seen via search snippets, not read in full; Foundry throughput figure secondary; OpenAI long-term memory API absence unconfirmed | 3.3, 3.11 |
 | Self-Route cost savings (65% Gemini, 39% GPT-4o); LaRA findings | Secondary summaries; read arXiv 2407.16833 and 2502.09977 | 2.3 |
 | AWS and OpenAI first-party long-context-vs-RAG guidance | Not found | 2.3 |
@@ -123,7 +120,6 @@ section that needs it.
 | Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
-| Contextual retrieval −35% and absolute failure rates | −49/−67%, $1.02, 50–100 tokens and the 200k threshold confirmed from Anthropic; −35% and 5.7% → 1.9% still from secondary reports | 3.4 |
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
 | Lakshmanan & Hapke pattern names | Possibly a revised edition; not mapped in 5.3 | 5.3 |
 | Gulli chapter titles and Fowler pattern names in 5.3 | From memory of the published contents; check against the book and article | 5.3 |
@@ -131,12 +127,11 @@ section that needs it.
 | FINOS AIGF risk IDs (AIR-SEC-0xx, AIR-OP-0xx) | Read from the framework site's search snippets, not each risk page | 5.4 |
 | EU AI Act article mapping per risk in 5.4 | Primer's reading; confirm with legal | 5.4 |
 | FINOS risk counts | Sources say 30, 46 and 25; the site doesn't state a total; 5.4 avoids counts | 5.4 |
-| pgvector HNSW defaults (m, ef_construction, ef_search) | Seen via a documentation mirror, not the pgvector repository | 3.6 |
 | AWS S3 Vectors and MemoryDB as vector stores | Third-party source only | 3.6, 5.2 |
 | AWS AgentCore Gateway token limits; Google learned routing | Third-party source only / not researched | 3.1, 5.2 |
 | Prompt Shields input limits (2024 figures); Azure PII masking and custom categories; open-source guardrails (Llama Guard, Prompt Guard, NeMo, Presidio) | Possibly outdated / not researched | 3.2, 5.2 |
 | OpenAI structured outputs and guardrails-library hallucination check; Azure OpenAI structured outputs | Secondary sources only / not checked | 3.12, 5.2 |
-| OpenAI agent guide (tool risk ratings, human-intervention triggers); Microsoft deterministic exfiltration blocking | PDF and MSRC post read via search excerpts and secondary summaries | 2.4, 3.17 |
+| Microsoft deterministic exfiltration blocking | MSRC post read via search excerpts and secondary summaries (OpenAI agent guide confirmed 2026-11-02) | 2.4, 3.17 |
 | OWASP Agentic Top 10 2026 entry names (all ten in 5.4); MITRE ATLAS counts | Several secondary sources agree on names; OWASP PDF and ATLAS pages not read directly | 3.17, 5.4 |
 | Invariant Labs tool-poisoning and rug-pull disclosures (April 2025); malicious models on public hubs (JFrog, ReversingLabs) | Secondary sources only | 3.17, 3.10 |
 | Tool-call authorisation, sandboxes and red-teaming services for Azure, Google, OpenAI | Not researched | 3.17, 5.2 |
@@ -168,8 +163,7 @@ Not covered by the feasibility study. Each is the first task of the section name
 
 ## Open decisions
 
-- **License.** The original uses CC BY 4.0 for content. Options: CC BY 4.0 (maximum reuse), CC BY-SA 4.0
-  (derivatives stay open), plus MIT for `scripts/`.
+- **License.** Decided 2026-11-02: CC BY 4.0 for content, MIT for code ([ADR 0008](adr/0008-licences.md)).
 - **Visibility.** Public from the start, or private until Phase 1 is published.
 - **Publishing.** Each finished section can also go out as a standalone article; decide where.
-- **Git.** The folder is not yet a git repository. Run `git init` and push when ready.
+- **Git.** Done: hosted at github.com/daneb/ai-system-design-primer.

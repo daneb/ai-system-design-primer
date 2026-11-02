@@ -78,14 +78,17 @@ plain, inconsistent in layout and rendered differently by every viewer.
 
 ### P0: before going public
 
-- [ ] **Decide the licence, visibility and publishing** (open decisions in PLAN.md). Suggested: CC BY
-  4.0 for content, MIT for code, matching the original.
+- [x] **Decide the licence, visibility and publishing** (open decisions in PLAN.md). Suggested: CC BY
+  4.0 for content, MIT for code, matching the original. *Licence decided 2026-11-02:* CC BY 4.0 + MIT
+  ([ADR 0008](adr/0008-licences.md)); Code of Conduct, SECURITY.md, issue and PR templates added.
+  Visibility and publishing remain the author's call.
 - [x] **`git init`, first commit, push.**
 - [x] **CI:** run `primer.py check`, `primer.py readme --check`, the relative-link check and every lab
-  on each pull request. *Check:* green badge in README. *Done 2026-11-01:* labs job added; badge still to add once public.
-- [ ] **Clear verification debt on stable sections first:** batch discounts and cache multipliers
+  on each pull request. *Check:* green badge in README. *Done 2026-11-01:* labs job added. Badge added 2026-11-02.
+- [x] **Clear verification debt on stable sections first:** batch discounts and cache multipliers
   (2.1, 3.13, 5.1), PagedAttention figures (3.8), contextual-retrieval figures (3.4), pgvector defaults
-  (3.6), OpenAI agent guide details (3.9, 2.4).
+  (3.6), OpenAI agent guide details (3.9, 2.4). *Done 2026-11-02:* all six checked against primary sources;
+  one correction (vLLM's throughput figures). Five debt rows cleared, two narrowed.
 - [x] **External link checker** (weekly, with a cache) so dead provider links surface early. *Done:* lychee weekly in CI.
 
 ### P1: next quarter
