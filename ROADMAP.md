@@ -110,7 +110,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
   Lab 4.4 found 98% recall needs 58–69 lawyer minutes with moderate separation, not 30; 4.4 now says so.
 - [x] **Anki package build** (`.apkg`) as an optional extra, keeping the TSV as the zero-dependency path. *Done 2026-11-02:* `primer.py anki`, standard library only;
   one sub-deck per part; stable GUIDs so re-imports update cards.
-- [ ] **Second reads** of Phase 0 and the appendices (Parts 4.8 and 5).
+- [x] **Second reads** of Phase 0 and the appendices (Parts 4.8 and 5). *Done 2026-11-02:* Part 0 updated for the foundations, labs and Anki
+  package; 4.8 links the foundations; 5.2 title fixed; 5.4 now cites the Omnibus as law (Regulation (EU)
+  2026/1744, in force 27 July 2026).
 
 ### P2: later
 

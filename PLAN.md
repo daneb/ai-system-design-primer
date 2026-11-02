@@ -120,7 +120,6 @@ section that needs it.
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
 | Lakshmanan & Hapke pattern names | Possibly a revised edition; not mapped in 5.3 | 5.3 |
 | Gulli chapter titles and Fowler pattern names in 5.3 | From memory of the published contents; check against the book and article | 5.3 |
-| EU AI Act Digital Omnibus dates | Provisional agreement (7 May 2026) and Parliament vote (16 June 2026) via law-firm summaries; final Official Journal text not checked | 5.4 |
 | FINOS AIGF risk IDs (AIR-SEC-0xx, AIR-OP-0xx) | Read from the framework site's search snippets, not each risk page | 5.4 |
 | EU AI Act article mapping per risk in 5.4 | Primer's reading; confirm with legal | 5.4 |
 | FINOS risk counts | Sources say 30, 46 and 25; the site doesn't state a total; 5.4 avoids counts | 5.4 |

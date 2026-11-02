@@ -4,7 +4,7 @@ title: "Orientation"
 phase: 0
 maturity: stable
 status: draft
-last_verified: 2026-11-01
+last_verified: 2026-11-02
 review_by: 2027-11-01
 owner: "@daneb"
 ---
@@ -30,6 +30,7 @@ of engineers that every design decision is a trade-off:
 
 | Part | What it gives you | Classic equivalent |
 |---|---|---|
+| 0.1–0.3 Foundations | How a model call works: tokens, context, prefill and decode, tool calling | None: the classic assumes you know how a web request works |
 | 1 Method | A repeatable way to work through any AI design question | "How to approach a system design interview question" |
 | 2 Trade-offs | The handful of tensions behind almost every decision | Performance vs scalability, latency vs throughput, CAP |
 | 3 Components | Each building block, in the order a request meets it | DNS → CDN → load balancer → … → security |
@@ -42,6 +43,8 @@ of engineers that every design decision is a trade-off:
   AI-heavy companies, often with a separate evaluation round
   ([techinterview.org](https://www.techinterview.org/post/3233476396/what-genai-engineer-interviews-test/)).
   Parts 1, 2 and 4 are the core.
+- **Engineers new to AI.** Start with the foundations, [0.1](0.1-tokens-context-and-sampling.md) to
+  [0.3](0.3-tool-calling.md): they explain the terms every later page assumes.
 - **Practising engineers** building on model APIs. Parts 2 and 3, then the solved design closest to
   your system.
 - **Enterprise architects and review boards.** Every pattern has a "Risk and controls" table that maps
@@ -51,7 +54,8 @@ of engineers that every design decision is a trade-off:
 
 Every topic has the same shape. The primer page covers what it is, key terms, a worked example, when
 to use it, when to avoid it, its disadvantages and flashcards. The deep dive holds the provider survey,
-numbers, risk and controls, and cloud mapping.
+numbers, risk and controls, and cloud mapping. Most topics also have a lab: a small script that tests
+one claim, with the prediction written down before the run.
 
 Each section is also labelled with how settled its content is:
 
@@ -75,7 +79,8 @@ frontier as news.
 ## Example
 
 An engineer has a week before a design interview at a company building AI products. They read the
-foundations (0.1–0.3), the method (Part 1), then trade-offs 2.1, 2.2 and 2.4, then the five components marked in the study guide.
+foundations (0.1–0.3) and the method (Part 1), then trade-offs 2.1, 2.2 and 2.4, then the five
+components marked in the study guide.
 On day four they work the enterprise RAG assistant (4.2) on paper before reading the solution, and
 compare their token estimate with the one in the page. Each evening they review that day's flashcards.
 On day six they run Lab 2.4 and classify the tools in their own team's chatbot. That last step is the
@@ -97,9 +102,10 @@ The classic primer offered short, medium and long study plans. The same idea, by
 
 ## Using the flashcards
 
-Run `python3 scripts/primer.py flashcards` and import `build/flashcards.tsv` into Anki
-(File → Import). Cards are tagged by section and maturity, so you can suspend frontier cards when a
-section is rewritten.
+Run `python3 scripts/primer.py anki` and double-click `build/ai-system-design-primer.apkg` to import
+it into Anki, with one sub-deck per part. Re-importing a newer build updates answers and keeps your
+review history. For plain text, `python3 scripts/primer.py flashcards` writes `build/flashcards.tsv`.
+Cards are tagged by section and maturity, so you can suspend frontier cards when a section is rewritten.
 
 ## Flashcards
 

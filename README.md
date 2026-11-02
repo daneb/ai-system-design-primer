@@ -162,7 +162,7 @@ are recorded in [adr/](adr/). Work still to do is in [ROADMAP.md](ROADMAP.md).
 **Part 5: Appendix**
 
 - [5.1 Numbers every AI engineer should know](docs/5-appendix/5.1-numbers.md) `S/F`
-- [5.2 Cloud mapping: Azure, AWS Bedrock, GCP](docs/5-appendix/5.2-cloud-mapping.md) `F`
+- [5.2 Cloud mapping: Azure, AWS, Google Cloud](docs/5-appendix/5.2-cloud-mapping.md) `F`
 - [5.3 Pattern crosswalk](docs/5-appendix/5.3-pattern-crosswalk.md) `S/F`
 - [5.4 Governance crosswalk: OWASP, FINOS, EU AI Act](docs/5-appendix/5.4-governance-crosswalk.md) `F`
 - [5.5 Real-world architectures and engineering blogs](docs/5-appendix/5.5-real-world-architectures.md) `F`
