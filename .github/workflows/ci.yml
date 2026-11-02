@@ -22,10 +22,14 @@ jobs:
         run: python3 scripts/diagrams.py check
       - name: Flashcards build
         run: python3 scripts/primer.py flashcards
+      - name: Anki package builds
+        run: python3 scripts/primer.py anki
       - uses: actions/upload-artifact@v4
         with:
           name: flashcards
-          path: build/flashcards.tsv
+          path: |
+            build/flashcards.tsv
+            build/ai-system-design-primer.apkg
 
   labs:
     runs-on: ubuntu-latest
