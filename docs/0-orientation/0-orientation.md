@@ -3,7 +3,7 @@ id: "0"
 title: "Orientation"
 phase: 0
 maturity: stable
-status: draft
+status: published
 last_verified: 2026-11-02
 review_by: 2027-11-01
 owner: "@daneb"

@@ -4,7 +4,7 @@ What comes after the first draft. [PLAN.md](PLAN.md) records how the first draft
 verification debt; this file is the forward plan. Every item has a check you can run or see, so "done"
 isn't a matter of opinion.
 
-**State on 2026-11-01:** all 44 sections drafted (Parts 0–5), with 26 deep dives, 31 labs and
+**State on 2026-11-02:** first release; all 44 sections reviewed by the author (Parts 0–5), with 26 deep dives, 31 labs and
 231 flashcards. The author has signed off Phases 1–3 for now.
 
 ## Baseline audit (2026-11-01)
@@ -62,10 +62,10 @@ plain, inconsistent in layout and rendered differently by every viewer.
 - [x] **P0 · Render diagrams to SVG in the build.** Keep Mermaid as source; render with `mmdc` and a
   shared theme into `images/`, and link the SVG with alt text from each page. *Check:* `check` fails
   when a page's diagram has no rendered SVG or no alt text. *Done 2026-11-01:* 43 sources in `images/src/`, `scripts/diagrams.py check` in CI.
-- [ ] **P1 · Hero diagrams**, drawn by hand (Excalidraw or draw.io sources committed under
+- [ ] **P2 · Hero diagrams**, drawn by hand (Excalidraw or draw.io sources committed under
   `images/src/`): the request path through Parts 3 (README), the complexity ladder, the lethal trifecta,
   the agent loop, the retrieval pipeline, the sandbox in 4.6. These are the images people will share.
-- [ ] **P1 · Anatomy diagrams** for mechanisms in Theme 1 (KV cache, continuous batching, HNSW, LoRA,
+- [ ] **P2 · Anatomy diagrams** for mechanisms in Theme 1 (KV cache, continuous batching, HNSW, LoRA,
   caching prefixes), drawn to scale where numbers matter.
 - [x] **P1 · Lab charts.** Each lab writes an SVG chart next to its README (matplotlib, optional
   dependency); READMEs show the chart above the table. *Check:* labs with a sweep have `result.svg`. *Done 2026-11-02:* 14 labs with sweeps draw `result.svg` via `labs/chart.py`;
@@ -95,13 +95,11 @@ plain, inconsistent in layout and rendered differently by every viewer.
 ### P1: next quarter
 
 - [ ] **First quarterly frontier review, due 2027-02-01:** 3.5, 3.10, 3.11, 4.5, 4.6, 5.2, 5.4, 5.5.
-  Re-check MCP and A2A versions, managed memory and agent services, the EU AI Act Omnibus final text,
-  and any `(not verified)` cells in the cloud mapping.
+  Re-check MCP and A2A versions, managed memory and agent services, EU AI Act guidance
+  and standards, and any `(not verified)` cells in the cloud mapping.
 - [x] **Refresh 5.1 Numbers with Phase 3 figures:** tool-definition token costs, agent and multi-agent
   token multipliers, pass^k, context-rot findings, trace sizes. *Done 2026-11-02:* new tables for model calls, agents and tools,
   context and memory, operations; Part 0 and security figures added.
-- [ ] **Map Lakshmanan and Hapke** into the pattern crosswalk (5.3) from the published edition; check
-  Gulli and Fowler names against their sources.
 - [x] **Read the papers behind second-hand figures:** Self-Route, MAST, Kim et al., τ-bench, Chroma
   context rot, Mem0, Stanford legal AI. *Done 2026-11-02:* all seven read. Corrected Kim et al. (v3: 260 configurations,
   −39% to −70% sequential) and MAST (41–86.7%); τ-bench's −22.4% policy-removal figure not found in the text.
@@ -116,6 +114,8 @@ plain, inconsistent in layout and rendered differently by every viewer.
 
 ### P2: later
 
+- [ ] **Map Lakshmanan and Hapke** into the pattern crosswalk (5.3) from the published edition; check
+  Gulli and Fowler names against their sources.
 - [ ] **New solved designs** from 4.8, in order of reader value: text-to-SQL analytics assistant,
   real-time voice agent, deep-research agent, web-grounded answer engine.
 - [ ] **Static site** (for example MkDocs) with search, rendered diagrams and the deep dives side by

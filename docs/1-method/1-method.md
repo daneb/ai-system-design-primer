@@ -3,7 +3,7 @@ id: "1"
 title: "How to approach an AI system design question"
 phase: 0
 maturity: stable
-status: draft
+status: published
 last_verified: 2026-11-01
 review_by: 2027-11-01
 owner: "@daneb"
