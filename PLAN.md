@@ -118,7 +118,7 @@ section that needs it.
 | EU AI Act: contract review not high-risk | Primer's reading of Annex III; confirm with legal | 4.4 |
 | Coding-agent sandbox details (Codex two-phase, Copilot firewall and approvals) | First-party docs seen via search; GitHub concept page redirected | 4.6 |
 | Chroma context-rot figures | Secondary summaries; read the report's charts before quoting any percentage | 3.3 |
-| Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU specs via a reseller page, NVIDIA datasheet not read; embedding dimensions not covered | 5.1 |
+| Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU memory and bandwidth confirmed on NVIDIA's pages (2026-11-02); embedding dimensions not covered | 5.1 |
 | Prompt → RAG → fine-tune → distill → RL ladder | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Huyen's platform build-up order | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
 | Lakshmanan & Hapke pattern names | Possibly a revised edition; not mapped in 5.3 | 5.3 |
