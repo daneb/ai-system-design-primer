@@ -71,7 +71,9 @@ plain, inconsistent in layout and rendered differently by every viewer.
   dependency); READMEs show the chart above the table. *Check:* labs with a sweep have `result.svg`. *Done 2026-11-02:* 14 labs with sweeps draw `result.svg` via `labs/chart.py`;
   the rest compare named options and keep tables. `primer.py labs` checks the charts.
 - [ ] **P2 · Dark-mode and accessibility check:** contrast, readable at mobile width, text not baked
-  into images where avoidable.
+  into images where avoidable. *Partly done 2026-11-03:* every diagram fits GitHub's column with text
+  at 11 px or more (`diagrams.py check` enforces it) and has hand-written alt text. Dark mode and
+  mobile width still open.
 - [x] **P2 · Image licensing** recorded alongside the content licence. *Done 2026-11-02:* all diagrams and charts are original and covered by CC BY 4.0;
   stated in the README.
 

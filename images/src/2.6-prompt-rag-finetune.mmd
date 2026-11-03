@@ -1,7 +1,7 @@
-%% alt: Diagram for 2.6 Prompting vs RAG vs fine-tuning: Output not good enough, Missing knowledge?, Wrong behaviour?, RAG: put the facts in the prompt, Better prompt and examples, Fine-tune
-flowchart TD
-  Q{Output not good enough} --> K{Missing knowledge?}
-  Q --> B{Wrong behaviour?}
-  K -->|yes| R[RAG: put the facts in the prompt]
-  B -->|yes| P[Better prompt and examples]
-  P -->|still failing an eval| F[Fine-tune]
+%% alt: When output isn't good enough, ask why. Missing knowledge calls for retrieval, putting the facts in the prompt. Wrong behaviour calls for a better prompt and examples first, and fine-tuning only if it still fails an eval.
+flowchart LR
+  Q[Output not<br/>good enough]:::human --> K[Missing knowledge?]
+  Q --> B[Wrong behaviour?]
+  K -->|yes| R[RAG: put the facts<br/>in the prompt]:::tool
+  B -->|yes| P[Better prompt<br/>and examples]:::model
+  P -->|still failing an eval| F[Fine-tune]:::model

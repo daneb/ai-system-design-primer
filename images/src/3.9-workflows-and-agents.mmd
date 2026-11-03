@@ -1,9 +1,8 @@
-%% alt: Two panels. Workflows, where code decides the path: prompt chaining, routing, parallelisation, orchestrator-workers and evaluator-optimizer. Agent, where the model decides the path: goal, the model chooses a tool, the tool result gives ground truth, then a check for done or budget spent loops back.
-flowchart LR
+%% alt: Two panels, one above the other. Workflows, where code decides the path: prompt chaining, routing, parallelisation, orchestrator-workers and evaluator-optimizer. Agent, where the model decides the path: goal, the model chooses a tool, the tool result gives ground truth, then a check for done or budget spent loops back.
+flowchart TB
   subgraph W[Workflows: code decides the path]
     direction LR
-    C[Chain] ~~~ R[Route] ~~~ P[Parallel]
-    O[Orchestrator-<br/>workers] ~~~ E[Evaluator-<br/>optimizer]
+    C[Chain] ~~~ R[Route] ~~~ P[Parallel] ~~~ O[Orchestrator-<br/>workers] ~~~ E[Evaluator-<br/>optimizer]
   end
   subgraph A[Agent: the model decides the path]
     direction LR

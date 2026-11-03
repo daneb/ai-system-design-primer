@@ -1,16 +1,15 @@
-%% alt: Diagram for 4.2 Design an enterprise RAG assistant: Staff member, Assistant API, Input checks, Query rewrite small model, Hybrid search BM25 + vectors filtered by user's groups, Reranker top 50 → 4, AI gateway
-flowchart LR
-  U[Staff member] -->|SSO| APP[Assistant API]
-  APP --> IG[Input checks]
-  IG --> QR[Query rewrite<br/>small model]
-  QR --> HS[Hybrid search<br/>BM25 + vectors<br/>filtered by user's groups]
-  HS --> RR[Reranker<br/>top 50 → 4]
-  RR --> GW[AI gateway]
-  GW --> LLM[Answer model<br/>streams with citations]
-  LLM --> OG[Citation and<br/>grounding check]
-  OG --> APP
-  subgraph Indexing
-    SRC[(SharePoint, policy<br/>library, wiki)] --> ING[Change feed] --> CH[Parse, chunk,<br/>add context] --> EMB[Embed] --> IDX[(Hybrid index<br/>with ACLs)]
+%% alt: Two flows. Indexing: SharePoint, the policy library and the wiki feed a change feed; documents are parsed, chunked and given context, embedded, and stored in a hybrid index with access lists. Answering: a staff member signs in to the assistant API; the question passes input checks and a small-model rewrite, then hybrid search over the index filtered by the user's groups, a reranker from 50 to 4 passages, and the answer model through the AI gateway; a citation and grounding check runs before the answer returns, and traces, feedback and eval samples are kept.
+flowchart TB
+  subgraph Q[Answering, per question]
+    U[Staff member]:::human -->|SSO| APP[Assistant API]:::tool
+    APP --> IG[Input checks]:::control --> QR[Query rewrite<br/>small model]:::model
+    QR --> HS[Hybrid search<br/>BM25 + vectors,<br/>filtered by user's groups]:::tool
+    HS --> RR[Reranker<br/>top 50 → 4]:::model --> GW[AI gateway]:::control
+    GW --> LLM[Answer model<br/>streams with citations]:::model --> OG[Citation and<br/>grounding check]:::control
   end
-  IDX --- HS
-  APP --> TEL[(Traces, feedback,<br/>eval samples)]
+  subgraph IX[Indexing, on change]
+    SRC[(SharePoint, policy<br/>library, wiki)]:::untrusted --> ING[Change feed<br/>parse, chunk,<br/>add context]:::tool --> EMB[Embed]:::model --> IDX[(Hybrid index<br/>with ACLs)]:::data
+  end
+  IDX --> HS
+  OG -.->|answer| U
+  OG --> TEL[(Traces, feedback,<br/>eval samples)]:::data

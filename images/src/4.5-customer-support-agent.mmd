@@ -1,16 +1,15 @@
-%% alt: Diagram for 4.5 Design a customer-support agent: Customer, authenticated in app, Chat channel, Input guardrails: injection, abuse, PII, Router, Small model + approved content, Support agent, Knowledge: policies, product terms, RAG
-flowchart LR
-  C[Customer,<br/>authenticated in app] --> CH[Chat channel]
-  CH --> IG[Input guardrails:<br/>injection, abuse, PII]
-  IG --> R{Router}
-  R -->|FAQ| F[Small model +<br/>approved content]
-  R -->|account or action| A[Support agent]
-  A --> K[Knowledge: policies,<br/>product terms, RAG]
-  A --> T[Tools as workflows:<br/>lookups, card freeze,<br/>dispute, preferences]
-  T --> P{Policy engine:<br/>eligibility, limits}
-  P -->|allowed| B[Core banking APIs]
-  P -->|needs confirmation| Y[Customer confirms<br/>in app]
-  A --> OG[Output checks:<br/>grounded, no advice,<br/>no other customer's data]
-  OG --> CH
-  A -->|hand over| H[Human agent desktop:<br/>summary + history]
-  A --> L[(Traces, decisions,<br/>actions, consent)]
+%% alt: An authenticated customer writes in the chat channel; input guardrails screen for injection, abuse and personal data before a router. FAQ questions go to a small model with approved content; account questions and actions go to the support agent. The agent reads knowledge (policies, product terms) and calls tools built as workflows; a policy engine decides eligibility and limits, either calling core banking APIs or asking the customer to confirm in the app. Output checks confirm answers are grounded, give no advice and expose no other customer's data. The agent can hand over to a human agent with a summary, and every decision and action is traced.
+flowchart TB
+  C[Customer, signed in]:::human --> CH[Chat channel]:::tool
+  CH --> IG[Input guardrails<br/>injection, abuse, PII]:::control --> R{Router}:::control
+  R -->|FAQ| F[Small model +<br/>approved content]:::model
+  R -->|account or action| A[Support agent]:::model
+  A --> K[(Knowledge<br/>policies, product terms)]:::data
+  A --> T[Tools as workflows<br/>lookups, card freeze, disputes]:::tool
+  A -->|hand over| H[Human agent<br/>summary + history]:::human
+  T --> P{Policy engine<br/>eligibility, limits}:::control
+  P -->|allowed| B[Core banking APIs]:::tool
+  P -->|confirm| Y[Customer confirms<br/>in app]:::human
+  A --> OG[Output checks<br/>grounded, no advice,<br/>no other customer's data]:::control
+  OG --> L[(Traces, decisions,<br/>actions, consent)]:::data
+  K ~~~ OG

@@ -1,12 +1,11 @@
-%% alt: Diagram for 4.4 Design a regulated document-review assistant: Upload contract, Ingest: extract text, keep layout and page refs, flag hidden text, Review calls: contract + playbook section, quote and classify
-flowchart LR
-  U[Upload contract] --> I[Ingest: extract text,<br/>keep layout and page refs,<br/>flag hidden text]
-  I --> R[Review calls:<br/>contract + playbook section,<br/>quote and classify]
-  R --> V[Code checks:<br/>quotes exist verbatim,<br/>redlines from library,<br/>schema valid]
+%% alt: An uploaded contract, which is untrusted input, is ingested with its layout and page references kept and hidden text flagged. Review calls send the contract and the relevant playbook section to the model to quote and classify each position. Code checks confirm quotes exist verbatim, redlines come from the approved library and the schema is valid, sending failures back for another review call. A second pass checks high-risk findings, then the lawyer reviews findings beside the contract. Decisions, overrides and versions go to an audit trail that updates the eval set and the playbook, which is versioned and feeds the review calls and the checks.
+flowchart TB
+  U[Uploaded contract]:::untrusted --> I[Ingest<br/>keep layout and page refs,<br/>flag hidden text]:::tool
+  I --> R[Review calls<br/>contract + playbook section,<br/>quote and classify]:::model
+  P[(Playbook and approved<br/>fallbacks, versioned)]:::data --> R
+  R --> V[Code checks<br/>quotes verbatim, redlines<br/>from library, schema]:::control
   V -->|fail| R
-  V --> X[Second-pass check on<br/>high-risk findings<br/>and 'standard' red lines]
-  X --> W[Lawyer review UI:<br/>findings side by side<br/>with contract]
-  W --> D[(Decisions, overrides,<br/>versions, audit trail)]
-  D --> E[Eval set and<br/>playbook updates]
-  P[(Playbook and<br/>approved fallbacks,<br/>versioned)] --> R
-  P --> V
+  V --> X[Second pass on<br/>high-risk findings]:::model
+  X --> W[Lawyer review<br/>findings beside contract]:::human
+  W --> D[(Decisions, overrides,<br/>versions, audit trail)]:::data
+  D --> E[Eval set and<br/>playbook updates]:::tool

@@ -1,3 +1,3 @@
-%% alt: Diagram for 2.2 Determinism vs autonomy: Plain code, One model call with retrieval, Workflow code decides the steps, Agent model decides the steps, Multi-agent
+%% alt: A spectrum from most to least deterministic: plain code, one model call with retrieval, a workflow where code decides the steps, an agent where the model decides the steps, and multiple agents.
 flowchart LR
-  F["Plain code"] --> S["One model call<br/>with retrieval"] --> W["Workflow<br/>code decides the steps"] --> A["Agent<br/>model decides the steps"] --> M["Multi-agent"]
+  F[Plain code] --> S[One call +<br/>retrieval]:::model --> W[Workflow<br/>code decides]:::control --> A[Agent<br/>model decides]:::model --> M[Multi-agent]:::model

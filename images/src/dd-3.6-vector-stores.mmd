@@ -1,7 +1,3 @@
-%% alt: Diagram for 3.6 Vector stores: deep dive: Query embedding, Filter tenant, ACL, date, ANN index HNSW, IVF, DiskANN, Candidates top k, Optional rescoring full-precision vectors, Results to fusion and reranking, 3.4
-flowchart LR
-  Q[Query embedding] --> F{Filter<br/>tenant, ACL, date}
-  F --> A[ANN index<br/>HNSW, IVF, DiskANN]
-  A --> C[Candidates<br/>top k]
-  C --> R[Optional rescoring<br/>full-precision vectors]
-  R --> O[Results to fusion<br/>and reranking, 3.4]
+%% alt: A vector query: the query embedding is filtered by tenant, access rights and date, searched in an approximate nearest-neighbour index such as HNSW, IVF or DiskANN to get the top k candidates, optionally rescored with full-precision vectors, then passed on to fusion and reranking (3.4).
+flowchart TB
+  Q[Query embedding]:::model --> F{Filter<br/>tenant, ACL, date}:::control --> A[ANN index<br/>HNSW, IVF, DiskANN]:::data --> C[Candidates: top k]:::data --> R[Optional rescoring<br/>full-precision vectors]:::tool --> O[To fusion and<br/>reranking, 3.4]:::tool

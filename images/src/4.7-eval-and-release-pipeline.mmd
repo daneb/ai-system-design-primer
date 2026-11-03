@@ -1,15 +1,12 @@
-%% alt: Diagram for 4.7 Design an eval and release pipeline: Change: prompt, model, retrieval, tool, config, CI: fast suite, Release candidate, Full, safety and permission suites, Release gate thresholds + paired comparison
-flowchart LR
-  CH[Change: prompt, model,<br/>retrieval, tool, config] --> CI[CI: fast suite]
-  CI -->|pass| RC[Release candidate]
-  RC --> FS[Full, safety and<br/>permission suites]
-  FS --> G{Release gate<br/>thresholds + paired<br/>comparison}
-  G -->|pass| CA[Canary 1–5%<br/>with online scoring]
-  CA -->|healthy| PR[Production]
-  G -->|fail| RP[Report: failing cases,<br/>diffs, traces]
-  PR --> SM[Sample 1% → judges<br/>+ human review]
-  SM --> FB[(Failures → new cases)]
-  FB --> DS[(Versioned eval sets)]
-  DS --> CI & FS
-  J[(Judge calibration set)] --> FS & SM
-  REG[(Release registry:<br/>versions, results,<br/>approvals)] --- G & PR
+%% alt: A change to a prompt, model, retrieval, tool or configuration runs the fast eval suite in CI, then the full, safety and permission suites. A release gate compares the candidate with production on thresholds and paired comparison: failures produce a report of failing cases, diffs and traces; passes go to a 1 to 5 percent canary with online scoring and then to production. In production, a 1 percent sample goes to judges and human review, and failures become new cases in the versioned eval sets that the suites run on.
+flowchart TB
+  CH[Change<br/>prompt, model, retrieval,<br/>tool, config]:::human --> CI[CI: fast suite]:::control
+  CI -->|pass| FS[Full, safety and<br/>permission suites]:::control
+  FS --> G{Release gate<br/>thresholds + paired<br/>comparison}:::control
+  G -->|fail| RP[Report<br/>failing cases, diffs]:::tool
+  G -->|pass| CA[Canary 1–5%<br/>online scoring]:::model
+  CA -->|healthy| PR[Production]:::model
+  PR --> SM[Sample 1% → judges<br/>+ human review]:::human
+  SM --> DS[(Versioned eval sets<br/>failures become cases)]:::data
+  DS -.-> CI
+  DS -.-> FS

@@ -1,16 +1,14 @@
-%% alt: Diagram for 4.6 Design a coding agent platform: Ticket or prompt, Orchestrator: queue, quotas, policy, Ephemeral sandbox per task, Ephemeral sandbox, Agent loop, Files: repo clone worktree, Shell: build, test, lint
-flowchart LR
-  T[Ticket or prompt] --> O[Orchestrator:<br/>queue, quotas,<br/>policy]
-  O --> S[Ephemeral sandbox<br/>per task]
-  subgraph S[Ephemeral sandbox]
-    A[Agent loop] --> F[Files: repo clone<br/>worktree]
-    A --> X[Shell: build,<br/>test, lint]
-    A --> R[Read-only sub-agents:<br/>search, review]
+%% alt: A ticket or prompt reaches the orchestrator, which applies queues, quotas and policy and starts an ephemeral sandbox per task. Inside the sandbox the agent loop works on a repository worktree, runs build, test and lint in a shell, and uses read-only sub-agents for search and review. Model calls go through the AI gateway; network egress reaches only the package mirror and git server. The agent's output is a branch and pull request, which CI checks with tests, static analysis and secret scanning before human review and approval, then merge. Traces, commands and the network log are kept.
+flowchart TB
+  T[Ticket or prompt]:::human --> O[Orchestrator<br/>queue, quotas, policy]:::control
+  O --> A
+  subgraph S[Ephemeral sandbox per task]
+    A[Agent loop]:::model --> X[Repo worktree, shell<br/>build, test, lint]:::tool
+    A --> R[Read-only sub-agents<br/>search, review]:::model
   end
-  A -->|model calls| G[AI gateway]
-  X -->|egress allow-list| P[Package mirror,<br/>git server]
-  A --> PR[Branch + pull request]
-  PR --> CI[CI: tests, SAST,<br/>secret scan]
-  CI --> H[Human review<br/>and approval]
-  H --> M[Merge]
-  S --> L[(Traces, commands,<br/>network log)]
+  A -->|model calls| G[AI gateway]:::control
+  X -->|egress allow-list| P[Package mirror,<br/>git server]:::tool
+  X --> PR[Branch +<br/>pull request]:::tool --> CI[CI<br/>tests, SAST, secret scan]:::control
+  CI --> H[Human review<br/>and approval]:::human --> M[Merge]:::tool
+  M ~~~ L[(Traces, commands,<br/>network log)]:::data
+  S -.-> L

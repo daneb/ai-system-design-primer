@@ -1,25 +1,11 @@
-%% alt: Diagram for 3.4 Retrieval pipeline: deep dive: Indexing (offline, on change, Sources, Parse and extract, Chunk, Enrich: metadata, context, Embed, Keyword index, Index: vectors, text, permissions, Query (online, per request, Query
-flowchart LR
-  subgraph Ingest["Indexing (offline, on change)"]
+%% alt: The retrieval pipeline in detail. Indexing runs offline whenever sources change: parse and extract, chunk, enrich with metadata and context, then both embed and build a keyword index, stored together with permissions. Each query is rewritten or decomposed, runs keyword and vector search against the permission-filtered index, fuses the two result lists with reciprocal rank fusion, reranks, assembles context with citations, and generates the answer.
+flowchart TB
+  subgraph Ingest[Indexing, offline, on change]
     direction LR
-    S[Sources] --> P[Parse and<br/>extract]
-    P --> C[Chunk]
-    C --> E[Enrich:<br/>metadata, context]
-    E --> V[Embed]
-    E --> K[Keyword<br/>index]
-    V --> I[(Index:<br/>vectors, text,<br/>permissions)]
-    K --> I
+    S[Sources]:::untrusted --> P[Parse, chunk]:::tool --> E[Enrich:<br/>metadata, context]:::tool --> V[Embed and<br/>keyword index]:::model --> I[(Index: vectors,<br/>text, permissions)]:::data
   end
-  subgraph Query["Query (online, per request)"]
+  subgraph Query[Query, online, per request]
     direction LR
-    Q[Query] --> T[Translate:<br/>rewrite, decompose]
-    T --> R1[Keyword<br/>search]
-    T --> R2[Vector<br/>search]
-    R1 --> F[Fuse<br/>RRF]
-    R2 --> F
-    F --> RR[Rerank]
-    RR --> A[Assemble context<br/>with citations]
-    A --> G[Generate]
+    T[Rewrite,<br/>decompose]:::model --> R[Keyword and<br/>vector search]:::tool --> F[Fuse RRF,<br/>rerank]:::model --> A[Context with<br/>citations]:::data --> G[Generate]:::model
   end
-  I -. permission-filtered .-> R1
-  I -. permission-filtered .-> R2
+  Ingest -->|permission-filtered| Query

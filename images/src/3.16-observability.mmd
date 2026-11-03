@@ -1,10 +1,9 @@
-%% alt: Diagram for 3.16 Observability: Agent run, Spans: agent, model call, tool call, retrieval, guardrail, Collector: redact, sample, Traces, Metrics: tokens, cost, latency, errors, Online evals score samples, Dashboards and alerts
-flowchart LR
-  A[Agent run] --> S[Spans: agent,<br/>model call, tool call,<br/>retrieval, guardrail]
-  S --> C[Collector:<br/>redact, sample]
-  C --> T[(Traces)]
-  C --> M[(Metrics:<br/>tokens, cost,<br/>latency, errors)]
-  T --> E[Online evals<br/>score samples]
-  E --> D[Dashboards<br/>and alerts]
-  M --> D
-  T --> R[Review queue,<br/>new eval cases]
+%% alt: Each agent run emits spans for the agent, model calls, tool calls, retrieval and guardrails. A collector redacts and samples them into traces and metrics (tokens, cost, latency, errors). Online evals score sampled traces; scores and metrics feed dashboards and alerts, and selected traces go to a review queue and become new eval cases.
+flowchart TB
+  A[Agent run]:::model --> S[Spans: agent, model call,<br/>tool call, retrieval, guardrail]:::tool
+  S --> C[Collector<br/>redact, sample]:::control
+  C --> T[(Traces)]:::data
+  C --> M[(Metrics: tokens, cost,<br/>latency, errors)]:::data
+  T --> E[Online evals<br/>score samples]:::control
+  T --> R[Review queue,<br/>new eval cases]:::human
+  E & M --> D[Dashboards<br/>and alerts]:::tool

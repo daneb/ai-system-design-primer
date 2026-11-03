@@ -1,5 +1,6 @@
-%% alt: Diagram for 3.15 Evals: Cases from real use, edge cases, must-refuse, System under test, Graders code, model, human, Scores with error bars, Release gate, Production traffic
-flowchart LR
-  D[(Cases from real use,<br/>edge cases, must-refuse)] --> S[System under test] --> G[Graders<br/>code, model, human] --> R[Scores with<br/>error bars] --> X{Release gate}
-  P[Production traffic] -. sample .-> G
-  G -. failures become cases .-> D
+%% alt: An eval loop: cases from real use, edge cases and must-refuse cases run through the system under test; graders (code, a model, or people) score the outputs; scores with error bars feed a release gate. Production traffic is sampled into the graders, and failures become new cases.
+flowchart TB
+  D[(Cases: real use, edge cases,<br/>must-refuse)]:::data --> S[System under test]:::model
+  S --> G[Graders<br/>code, model, human]:::control --> R[Scores with<br/>error bars]:::data --> X{Release gate}:::control
+  P[Production traffic]:::human -.->|sample| G
+  G -.->|failures become cases| D

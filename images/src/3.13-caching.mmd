@@ -1,9 +1,9 @@
-%% alt: Diagram for 3.13 Caching: Request, Exact or semantic response cache?, Stored answer, Prompt with stable prefix first, Provider prefix cache, Model, Answer
-flowchart LR
-  Q[Request] --> E{Exact or semantic<br/>response cache?}
-  E -->|hit| R[Stored answer]
-  E -->|miss| P[Prompt with stable<br/>prefix first]
-  P --> PC{Provider prefix<br/>cache}
-  PC -->|hit: prefix reused,<br/>~0.1–0.5× price| M[Model]
-  PC -->|miss: full price<br/>plus any write fee| M
-  M --> A[Answer]
+%% alt: Two caches in sequence. A request first checks an exact or semantic response cache; a hit returns a stored answer without calling the model. On a miss, the prompt is sent with its stable prefix first. On a hit, the provider's prefix cache reuses that prefix at a fraction of the input price. On a miss, it charges full price and any write fee. The model then produces the answer.
+flowchart TB
+  Q[Request]:::human --> E{Response cache<br/>exact or semantic}:::control
+  E -->|hit| R[(Stored answer)]:::data
+  E -->|miss| P[Prompt, stable<br/>prefix first]:::tool
+  P --> PC{Provider<br/>prefix cache}:::control
+  PC -->|hit: 0.1–0.5× price| M[Model]:::model
+  PC -->|miss: full price| M
+  M --> A[Answer]:::human

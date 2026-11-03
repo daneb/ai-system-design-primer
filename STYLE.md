@@ -103,9 +103,10 @@ Diagrams are Mermaid sources rendered to SVG, so they look the same on GitHub, i
 - **Where they live:** source in `images/src/<page-stem>.mmd`, rendered file in `images/<page-stem>.svg`. Deep-dive diagrams use a `dd-` prefix. Never put a ```` ```mermaid ```` block in a page.
 - **How a page shows one:** `![alt text](../../images/<stem>.svg)` with `<!-- source: images/src/<stem>.mmd; render with scripts/diagrams.py -->` on the next line.
 - **Alt text:** the first line of the source is `%% alt: ...`. Write one sentence saying what the diagram shows, not what it looks like. `scripts/diagrams.py sync-alt` copies it into the pages.
-- **Flow:** left to right (`flowchart LR`) unless the idea is a stack. Use invisible links (`~~~`) to sit two panels side by side.
+- **Width:** GitHub shows a page at about 830 px, and a wider diagram is scaled down until its text is unreadable. Keep a diagram at most 1,131 px wide, which keeps 15 px text at 11 px or more. `render` writes each SVG at its natural size, and `check` fails a diagram that is too wide.
+- **Flow:** top to bottom (`flowchart TB`) by default; left to right only for a short chain of four or five boxes. Mermaid ignores a subgraph's `direction` when its nodes link outside it, so link subgraph to subgraph instead. Use invisible links (`~~~`) to sit two panels side by side.
 - **Labels:** short nouns. Put the section number on a component that has its own page, for example `Gateway 3.1`.
-- **Colour means something.** Tag nodes with a class; plain nodes stay white. Add no other colours.
+- **Colour means something.** Tag nodes in architecture and pipeline diagrams with a class; concept diagrams, such as a trade-off or a spectrum, stay plain white. Add no other colours.
 
 | Class | Use for | Look |
 |---|---|---|
@@ -117,7 +118,7 @@ Diagrams are Mermaid sources rendered to SVG, so they look the same on GitHub, i
 | `control` | a guardrail, gateway or policy check | violet |
 
 - **Render:** `python3 scripts/diagrams.py render` (needs Node; uses `@mermaid-js/mermaid-cli` and `images/mermaid-config.json`). Commit the `.mmd`, the `.svg` and `images/.hashes.json` together.
-- **Check:** `python3 scripts/diagrams.py check` fails on inline Mermaid, missing alt text, a missing source or SVG, or an SVG older than its source. CI runs it.
+- **Check:** `python3 scripts/diagrams.py check` fails on inline Mermaid, missing alt text, a missing source or SVG, an SVG older than its source, or an SVG wider than 1,131 px. CI runs it.
 
 ### Lab charts
 

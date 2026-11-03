@@ -4,11 +4,16 @@
   python3 scripts/diagrams.py extract   # one-off: move ```mermaid blocks out of pages into images/src
   python3 scripts/diagrams.py render    # render every .mmd with the shared theme (needs Node: npx mmdc)
   python3 scripts/diagrams.py sync-alt  # copy each source's alt line into the pages that show it
-  python3 scripts/diagrams.py check     # every image link has alt text, a source, and an up-to-date SVG
+  python3 scripts/diagrams.py check     # alt text, a source, an up-to-date SVG, and text readable at GitHub width
 
 Each .mmd starts with '%% alt: <text>' (the image's alt text). The renderer prepends the shared
 classDefs (STYLE.md, "Diagrams") to flowcharts, so sources can use 'class X model' etc. The SHA-256 of
 each rendered source is kept in images/.hashes.json so CI can spot a stale SVG without running Node.
+
+Rendered SVGs get explicit pixel sizes (Mermaid writes width="100%", which makes browsers stretch every
+diagram to the page width), so all diagrams show 15 px text at natural size. A diagram wider than
+MAX_WIDTH is shrunk to fit a GitHub page and its text drops below about 11 px: `check` fails, and the
+fix is a narrower layout (top-to-bottom flow, fewer nodes per row), not a smaller font.
 """
 import hashlib, json, pathlib, re, shutil, subprocess, sys
 
@@ -78,12 +83,34 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
 
 
-def render():
+COLUMN, FONT_PX, MIN_PX = 830, 15, 11          # GitHub's content width; theme font size; smallest readable
+MAX_WIDTH = int(COLUMN * FONT_PX / MIN_PX)     # 1,131 px
+
+
+def svg_size(svg_text):
+    w, h = re.search(r'viewBox="[-\d.]+ [-\d.]+ ([\d.]+) ([\d.]+)"', svg_text).groups()
+    return float(w), float(h)
+
+
+def fix_size(path):
+    """Replace Mermaid's width="100%" with the diagram's real size, so it renders at natural scale."""
+    s = path.read_text(encoding="utf-8")
+    w, h = svg_size(s)
+    tag = re.search(r"<svg\b[^>]*>", s).group(0)
+    new = re.sub(r'\s(width|height)="[^"]*"', "", tag)
+    new = re.sub(r"max-width:\s*[\d.]+px;?\s*", "", new)
+    new = new.replace("<svg", f'<svg width="{w:g}" height="{h:g}"', 1)
+    path.write_text(s.replace(tag, new, 1), encoding="utf-8")
+
+
+def render(only=None):
     mmdc = shutil.which("mmdc")
     cmd = [mmdc] if mmdc else ["npx", "-y", "@mermaid-js/mermaid-cli"]
     hashes = json.loads(HASHES.read_text()) if HASHES.exists() else {}
     tmp = IMAGES / ".tmp.mmd"
     for src in sorted(SRC.glob("*.mmd")):
+        if only and src.stem not in only:
+            continue
         tmp.write_text(with_classdefs(src.read_text(encoding="utf-8")), encoding="utf-8")
         out = IMAGES / f"{src.stem}.svg"
         r = subprocess.run(cmd + ["-i", str(tmp), "-o", str(out), "-c", str(CONFIG), "-b", "white"],
@@ -91,8 +118,11 @@ def render():
         if r.returncode:
             print(f"FAILED {src.name}\n{r.stderr[-800:]}")
             continue
+        fix_size(out)
         hashes[src.name] = digest(src)
-        print(f"rendered {out.relative_to(ROOT)}")
+        w, _ = svg_size(out.read_text(encoding="utf-8"))
+        note = "" if w <= MAX_WIDTH else f"  (too wide: {w:.0f} px > {MAX_WIDTH}; text will be under {MIN_PX} px)"
+        print(f"rendered {out.relative_to(ROOT)}{note}")
     tmp.unlink(missing_ok=True)
     HASHES.write_text(json.dumps(hashes, indent=1, sort_keys=True) + "\n")
 
@@ -129,6 +159,11 @@ def check():
                 problems.append(f"images/{name}.svg missing; run diagrams.py render")
             elif hashes.get(src.name) != digest(src):
                 problems.append(f"images/{name}.svg is stale; run diagrams.py render")
+            else:
+                w, _ = svg_size(svg.read_text(encoding="utf-8"))
+                if w > MAX_WIDTH:
+                    problems.append(f"images/{name}.svg is {w:.0f} px wide; on a GitHub page its text "
+                                    f"shrinks below {MIN_PX} px. Use a narrower layout (max {MAX_WIDTH} px)")
     for p in problems:
         print(f"error: {p}")
     print(f"{len(list(SRC.glob('*.mmd')))} diagram sources, {len(problems)} problems")
@@ -137,4 +172,4 @@ def check():
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "check"
-    sys.exit({"extract": lambda: extract() or 0, "render": lambda: render() or 0, "sync-alt": lambda: sync_alt() or 0, "check": check}[cmd]())
+    sys.exit({"extract": lambda: extract() or 0, "render": lambda: render(set(sys.argv[2:]) or None) or 0, "sync-alt": lambda: sync_alt() or 0, "check": check}[cmd]())

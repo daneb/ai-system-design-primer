@@ -1,14 +1,13 @@
-%% alt: Diagram for 4.3 Design an enterprise AI gateway: Apps, Edge: auth, request limits, Policy: data class, model catalogue, input guardrails, Token quotas and budgets, Router: rules, learned routing, fallback, breakers, Provider A two regions
-flowchart LR
-  A[Apps] --> E[Edge: auth,<br/>request limits]
-  E --> P[Policy: data class,<br/>model catalogue,<br/>input guardrails]
-  P --> Q[Token quotas<br/>and budgets]
-  Q --> R[Router: rules,<br/>learned routing,<br/>fallback, breakers]
-  R --> M1[Provider A<br/>two regions]
-  R --> M2[Provider B]
-  R --> M3[Self-hosted pool]
-  R -.-> O[Output checks<br/>where configured]
-  E & Q & R --> U[(Usage records,<br/>traces)]
-  U --> D[Chargeback, dashboards,<br/>model inventory]
-  C[Self-service portal] --> K[(Config: teams, keys,<br/>quotas, routes)]
-  K --> E & P & Q & R
+%% alt: Applications call the gateway, which applies four stages in order: the edge (auth and request limits), policy (data classification, the model catalogue and input guardrails), token quotas and budgets, and the router (rules, learned routing, fallback and circuit breakers). The router sends traffic to provider A in two regions, provider B, or a self-hosted pool, with output checks where configured. The stages write usage records and traces that feed chargeback, dashboards and the model inventory; a self-service portal manages the configuration of teams, keys, quotas and routes.
+flowchart TB
+  A[Apps]:::human --> E[Edge<br/>auth, request limits]:::control
+  E --> P[Policy<br/>data class, model catalogue,<br/>input guardrails]:::control
+  P --> Q[Token quotas<br/>and budgets]:::control
+  Q --> R[Router<br/>rules, learned routing,<br/>fallback, breakers]:::control
+  R --> M1[Provider A<br/>two regions]:::model
+  R --> M2[Provider B]:::model
+  R --> M3[Self-hosted pool]:::model
+  R -.-> O[Output checks<br/>where configured]:::control
+  C[Self-service portal]:::human --> K[(Config: teams, keys,<br/>quotas, routes)]:::data
+  K -.-> E
+  E & Q & R --> U[(Usage records,<br/>traces)]:::data --> D[Chargeback, dashboards,<br/>model inventory]:::tool

@@ -1,12 +1,9 @@
-%% alt: Diagram for 3.1 AI gateway and router: App A, App B, Agent, AI gateway, Authenticate, Token quotas, Policy hooks, Route, Retry and fallback, Provider 1, Provider 2, Usage per team
-flowchart LR
-  A1[App A] --> G
-  A2[App B] --> G
-  A3[Agent] --> G
+%% alt: Two apps and an agent call one AI gateway. It authenticates the caller, applies token quotas, runs policy hooks and routes the request. It retries or falls back between provider 1 and provider 2, and records usage per team.
+flowchart TB
+  A1[App A]:::human & A2[App B]:::human & A3[Agent]:::model --> AU
   subgraph G[AI gateway]
-    direction TB
-    AU[Authenticate] --> Q[Token quotas] --> P[Policy hooks] --> R[Route] --> F[Retry and fallback]
+    AU[Authenticate]:::control --> Q[Token quotas]:::control --> P[Policy hooks]:::control --> R[Route]:::control --> F[Retry and fallback]:::control
   end
-  F --> M1[Provider 1]
-  F --> M2[Provider 2]
-  G -.-> O[(Usage per team)]
+  F --> M1[Provider 1]:::model
+  F --> M2[Provider 2]:::model
+  R -.-> O[(Usage per team)]:::data

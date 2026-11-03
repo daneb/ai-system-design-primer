@@ -1,4 +1,4 @@
-%% alt: Diagram for 3.6 Vector stores: Query embedding, Filter tenant, permissions, date, ANN index, Top k candidates, Optional rescoring, To fusion and reranking, 3.4
+%% alt: A query embedding is first filtered by tenant, permissions and date, then searched in an approximate nearest-neighbour index; the top k candidates are optionally rescored and passed on to fusion and reranking (3.4).
 flowchart LR
-  Q[Query embedding] --> F{Filter<br/>tenant, permissions, date}
-  F --> A[ANN index] --> C[Top k candidates] --> R[Optional rescoring] --> O[To fusion and<br/>reranking, 3.4]
+  Q[Query embedding]:::data --> F{Filter: tenant,<br/>permissions, date}:::control
+  F --> A[(ANN index)]:::data --> C[Top k<br/>candidates]:::tool --> R[Optional<br/>rescoring]:::tool --> O[To fusion and<br/>reranking, 3.4]

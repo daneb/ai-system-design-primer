@@ -1,9 +1,9 @@
 %% alt: The prompt's tokens go through prefill all at once, which is limited by arithmetic and builds the KV cache; then decode writes one token per step, reading all the weights and the KV cache each time, which is limited by memory speed; a reasoning model writes hidden reasoning tokens before the visible answer.
-flowchart LR
-  P[Prompt tokens]:::data --> F[Prefill<br/>all at once<br/>limited by arithmetic]:::model
-  F --> C[(KV cache<br/>grows by one entry<br/>per token)]:::data
-  F --> D[Decode<br/>one token per step<br/>limited by memory speed]:::model
+flowchart TB
+  P[Prompt tokens]:::data --> F[Prefill<br/>all at once,<br/>limited by arithmetic]:::model
+  F --> C[(KV cache<br/>one entry per token)]:::data
+  F --> D[Decode<br/>one token per step,<br/>limited by memory speed]:::model
   C <--> D
-  D --> R[Hidden reasoning<br/>tokens, billed<br/>as output]
-  R --> A[Visible answer<br/>streamed]
+  D --> R[Hidden reasoning tokens<br/>billed as output]:::data
+  R --> A[Visible answer<br/>streamed]:::human
   D --> A

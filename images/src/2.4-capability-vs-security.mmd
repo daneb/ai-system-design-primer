@@ -1,4 +1,5 @@
-%% alt: Diagram for 2.4 Capability vs security: A: untrusted input, B: sensitive data, C: change state or communicate out, All three in one session: an injection can steal or act
-flowchart LR
-  A["A: untrusted input"] --- B["B: sensitive data"] --- C["C: change state or<br/>communicate out"] --- A
-  X{{"All three in one session:<br/>an injection can steal or act"}}
+%% alt: The lethal trifecta: untrusted input, sensitive data, and the ability to change state or communicate out, each feeding one session. With all three together, an injected instruction can steal data or take actions.
+flowchart TB
+  A[A: untrusted input]:::untrusted --> X{{All three in one session:<br/>an injection can steal or act}}:::control
+  B[(B: sensitive data)]:::data --> X
+  C[C: change state or<br/>communicate out]:::tool --> X

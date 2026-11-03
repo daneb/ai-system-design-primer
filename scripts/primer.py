@@ -280,13 +280,16 @@ def cmd_check(args):
 
 
 def status_table():
+    """Sections per part by status; statuses with no sections are left out."""
     sections = load_sections()
-    lines = ["| Phase | Sections | Planned | Draft | Review | Published |", "|---|---|---|---|---|---|"]
-    for phase in sorted({int(s["meta"].get("phase") or 0) for s in sections}):
-        group = [s for s in sections if int(s["meta"].get("phase") or 0) == phase]
-        counts = {k: sum(1 for s in group if s["meta"].get("status") == k) for k in STATUS}
-        lines.append(f"| {phase} | {len(group)} | {counts['planned']} | {counts['draft']} | "
-                     f"{counts['review']} | {counts['published']} |")
+    used = [k for k in STATUS if any(x["meta"].get("status") == k for x in sections)]
+    lines = ["| Part | Sections | " + " | ".join(k.capitalize() for k in used) + " |",
+             "|---|---|" + "---|" * len(used)]
+    for part, name in PARTS.items():
+        group = [x for x in sections if x["meta"]["id"].split(".")[0] == part]
+        if group:
+            counts = [str(sum(1 for x in group if x["meta"].get("status") == k)) for k in used]
+            lines.append(f"| {name} | {len(group)} | " + " | ".join(counts) + " |")
     return "\n".join(lines)
 
 

@@ -1,8 +1,8 @@
 %% alt: Text is split by a tokenizer into token IDs; the model gives a probability for every possible next token; a sampler, set by temperature and top-p, picks one; the token is appended and the loop repeats inside the context window.
-flowchart LR
-  T[Text]:::data --> K[Tokenizer] --> I[Token IDs]
-  subgraph W[Context window: instructions, history, documents, answer]
-    direction LR
-    I --> M[Model]:::model --> P[Probability for<br/>every next token] --> S[Sampler<br/>temperature, top-p]:::control --> N[Next token]
+flowchart TB
+  T[Text]:::data --> K[Tokenizer]:::tool --> I[Token IDs]:::data
+  subgraph W[Context window]
+    I --> M[Model]:::model --> P[Probability for<br/>every next token]:::data
+    P --> S[Sampler<br/>temperature, top-p]:::control --> N[Next token]:::data
     N -->|append and repeat| M
   end

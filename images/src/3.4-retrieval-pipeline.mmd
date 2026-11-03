@@ -1,11 +1,11 @@
-%% alt: Diagram for 3.4 Retrieval pipeline: Indexing (on change, Sources, Parse, Chunk, Enrich, Embed and keyword index, Index with permissions, Query (every request, Query, Rewrite, Keyword + vector search, Fuse, Rerank, Assemble with citations
-flowchart LR
-  subgraph Ingest["Indexing (on change)"]
+%% alt: Two pipelines. Indexing runs when sources change: parse and chunk, enrich and embed, then store in an index with keyword and vector entries and permissions. Querying runs on every request: rewrite the query, run keyword and vector search filtered by the caller's permissions, fuse and rerank the results, and generate an answer with citations.
+flowchart TB
+  subgraph Ingest[Indexing, on change]
     direction LR
-    S[Sources] --> P[Parse] --> C[Chunk] --> E[Enrich] --> V[Embed and<br/>keyword index] --> I[(Index with<br/>permissions)]
+    S[Sources]:::untrusted --> P[Parse, chunk]:::tool --> E[Enrich, embed]:::model --> I[(Index: keywords,<br/>vectors, permissions)]:::data
   end
-  subgraph Query["Query (every request)"]
+  subgraph Query[Querying, every request]
     direction LR
-    Q[Query] --> T[Rewrite] --> R[Keyword + vector<br/>search] --> F[Fuse] --> RR[Rerank] --> A[Assemble<br/>with citations] --> G[Generate]
+    T[Rewrite query]:::model --> R[Hybrid search,<br/>caller's permissions]:::tool --> F[Fuse, rerank]:::model --> G[Generate<br/>with citations]:::model
   end
-  I -. filtered by caller's permissions .-> R
+  Ingest -.->|searched by| Query

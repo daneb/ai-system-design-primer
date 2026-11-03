@@ -1,10 +1,7 @@
-%% alt: Diagram for 3.15 Evals: deep dive: Eval cases from real use, edge cases, must-refuse, System under test prompt, model, retrieval, tools, Outputs and transcripts, Graders code, model, human, Scores with error bars, Release gate
-flowchart LR
-  D[(Eval cases<br/>from real use,<br/>edge cases,<br/>must-refuse)] --> S[System under test<br/>prompt, model,<br/>retrieval, tools]
-  S --> O[Outputs and<br/>transcripts]
-  O --> G[Graders<br/>code, model, human]
-  G --> R[Scores with<br/>error bars]
-  R --> X{Release<br/>gate}
-  P[Production traffic] -. sample .-> G
-  O -. read regularly .-> H[Humans refine<br/>criteria and cases]
-  H -.-> D
+%% alt: An eval loop. Cases from real use, edge cases and must-refuse cases run through the system under test (prompt, model, retrieval and tools). Graders, which may be code, a model or people, score the outputs and transcripts, giving scores with error bars that feed a release gate. Production traffic is sampled into the graders, and people read outputs regularly to refine the criteria and add cases.
+flowchart TB
+  D[(Eval cases: real use,<br/>edge cases, must-refuse)]:::data --> S[System under test<br/>prompt, model, retrieval, tools]:::model
+  S --> O[Outputs and transcripts]:::data --> G[Graders<br/>code, model, human]:::control
+  G --> R[Scores with error bars]:::data --> X{Release gate}:::control
+  P[Production traffic]:::human -.->|sample| G
+  O -.->|read regularly| H[People refine<br/>criteria and cases]:::human -.-> D

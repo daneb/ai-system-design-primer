@@ -1,10 +1,8 @@
-%% alt: Diagram for 3.12 Output guardrails and validation: deep dive: Model output, Shape schema, types, allowed values, Grounding claims supported by sources?, Policy harmful content, PII, leakage, Safe handling encode, parameterise
-flowchart LR
-  M[Model output] --> S[Shape<br/>schema, types,<br/>allowed values]
-  S --> G[Grounding<br/>claims supported<br/>by sources?]
-  G --> P[Policy<br/>harmful content,<br/>PII, leakage]
-  P --> H[Safe handling<br/>encode, parameterise,<br/>never execute]
-  H --> D[User or<br/>downstream system]
-  S -. fail .-> F[Retry, fall back,<br/>refuse, or route<br/>to a person]
-  G -. fail .-> F
-  P -. fail .-> F
+%% alt: Model output passes four checks in order before reaching the user or a downstream system: shape (schema, types, allowed values), grounding (are claims supported by the sources), policy (harmful content, personal data, leakage), and safe handling (encode, parameterise, never execute). A failure at shape, grounding or policy leads to a retry, a fallback, a refusal, or routing to a person.
+flowchart TB
+  M[Model output]:::model --> S[Shape<br/>schema, types, allowed values]:::control
+  S --> G[Grounding<br/>claims supported by sources?]:::control
+  G --> P[Policy<br/>harmful content, PII, leakage]:::control
+  P --> H[Safe handling<br/>encode, parameterise, never execute]:::control
+  H --> D[User or downstream system]:::human
+  S & G & P -.->|fail| F[Retry, fall back, refuse,<br/>or route to a person]:::tool

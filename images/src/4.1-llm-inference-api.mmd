@@ -1,10 +1,9 @@
-%% alt: Diagram for 4.1 Design an LLM inference API: Teams, AI gateway auth, quotas, telemetry, Inference router queue-, cache- and prefix-aware, Interactive pool engine replicas, Bulk pool engine replicas, Signed model weights object storage
-flowchart LR
-  T[Teams] --> GW[AI gateway<br/>auth, quotas, telemetry]
-  GW --> IG[Inference router<br/>queue-, cache- and<br/>prefix-aware]
-  IG --> P1[Interactive pool<br/>engine replicas]
-  IG --> P2[Bulk pool<br/>engine replicas]
-  P1 & P2 --> W[(Signed model weights<br/>object storage)]
-  AS[Autoscaler<br/>on queue depth and<br/>KV-cache use] --> P1
-  AS --> P2
-  P1 & P2 --> M[(Metrics: TTFT, TPOT,<br/>queue, cache use)]
+%% alt: Internal teams call through the AI gateway, which handles auth, quotas and telemetry, to an inference router that is queue-, cache- and prefix-aware. The router sends interactive and bulk traffic to separate pools of engine replicas, which load signed model weights from object storage. An autoscaler sizes both pools on queue depth and KV-cache use, and the pools report TTFT, TPOT, queue and cache metrics.
+flowchart TB
+  T[Teams]:::human --> GW[AI gateway<br/>auth, quotas, telemetry]:::control
+  GW --> IG[Inference router<br/>queue-, cache- and prefix-aware]:::control
+  IG --> P1[Interactive pool<br/>engine replicas]:::model
+  IG --> P2[Bulk pool<br/>engine replicas]:::model
+  AS[Autoscaler<br/>queue depth, KV-cache use]:::tool -.-> P1 & P2
+  W[(Signed model weights<br/>object storage)]:::data --> P1 & P2
+  P1 & P2 --> M[(Metrics: TTFT, TPOT,<br/>queue, cache use)]:::data

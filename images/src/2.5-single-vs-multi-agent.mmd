@@ -1,14 +1,14 @@
-%% alt: Diagram for 2.5 Single-agent vs multi-agent: Single agent, One agent one context all tools, Multi-agent: orchestrator, Lead agent, Sub-agent
+%% alt: Two designs side by side: a single agent with one context and all the tools, and an orchestrator whose lead agent delegates to three sub-agents that return short summaries. Move from the first to the second only when testing shows a limit you can't fix.
 flowchart LR
   subgraph S[Single agent]
     direction TB
-    A1[One agent<br/>one context<br/>all tools]
+    A1[One agent<br/>one context<br/>all tools]:::model
   end
   subgraph M[Multi-agent: orchestrator]
     direction TB
-    L[Lead agent] --> W1[Sub-agent]
-    L --> W2[Sub-agent]
-    L --> W3[Sub-agent]
-    W1 & W2 & W3 -->|short summaries| L
+    L[Lead agent]:::model --> W1[Sub-agent]:::model
+    L --> W2[Sub-agent]:::model
+    L --> W3[Sub-agent]:::model
+    W1 & W2 & W3 -->|summaries| L
   end
-  S -.->|split only when testing<br/>shows a limit you can't fix| M
+  S -.->|split only when tests show<br/>a limit you can't fix| M

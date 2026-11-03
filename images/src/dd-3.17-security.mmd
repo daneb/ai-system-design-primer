@@ -1,12 +1,12 @@
-%% alt: Diagram for 3.17 Security: deep dive: User, Application, Web, email, uploads, other agents, Context assembly, Documents and vector store, AI gateway, Model provider, Output handling, Policy and identity check, Tools and MCP servers
-flowchart LR
-  U[User] -->|1 prompts| APP[Application]
-  EXT[Web, email, uploads,<br/>other agents] -->|2 untrusted content| CTX
-  APP --> CTX[Context assembly]
-  KB[(Documents and<br/>vector store)] -->|3 retrieval| CTX
-  CTX --> GW[AI gateway] --> M[Model provider]
-  M --> OUT[Output handling] --> APP
-  OUT -->|4 tool calls| POL{Policy and<br/>identity check} --> T[Tools and MCP servers] --> SYS[(Business systems)]
-  SC[Models, packages,<br/>tool servers] -.->|5 supply chain| M
+%% alt: The attack surface in more detail. User prompts enter the application (1). Untrusted content from the web, email, uploads and other agents (2) and retrieval from documents and the vector store (3) enter context assembly, which goes through the AI gateway to the model provider. Model output goes through output handling; tool calls (4) pass a policy and identity check before reaching tools, MCP servers and business systems. The supply chain of models, packages and tool servers (5) feeds the model and the tools, and logs and traces (6) go to telemetry.
+flowchart TB
+  U[User]:::human -->|1 prompts| APP[Application]:::tool
+  EXT[Web, email, uploads,<br/>other agents]:::untrusted -->|2 untrusted content| CTX
+  KB[(Documents and<br/>vector store)]:::data -->|3 retrieval| CTX
+  APP --> CTX[Context assembly]:::tool --> GW[AI gateway]:::control --> M[Model provider]:::model
+  M --> OUT[Output handling]:::control
+  OUT --> APP
+  OUT -->|4 tool calls| POL{Policy and<br/>identity check}:::control --> T[Tools and MCP servers]:::tool --> SYS[(Business systems)]:::data
+  SC[Models, packages,<br/>tool servers]:::untrusted -.->|5 supply chain| M
   SC -.-> T
-  APP -->|6 logs and traces| LOG[(Telemetry)]
+  APP -->|6 logs, traces| LOG[(Telemetry)]:::data

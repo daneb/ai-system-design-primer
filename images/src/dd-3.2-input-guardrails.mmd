@@ -1,11 +1,10 @@
-%% alt: Diagram for 3.2 Input guardrails: deep dive: User input, Retrieved documents, tool results, emails, Input guardrails, Rules: size, format, allow and deny lists, Classifiers: harmful content, prompt attacks, PII, topic, Model
-flowchart LR
-  U[User input] --> C1
-  D[Retrieved documents,<br/>tool results, emails] --> C1
+%% alt: User input and untrusted content such as retrieved documents, tool results and emails pass through input guardrails: first rules for size, format and allow and deny lists, then classifiers for harmful content, prompt attacks, personal data and topic. Input that passes goes to the model; input with personal data is masked first; blocked or flagged input gets a safe response and goes to a review queue and the log.
+flowchart TB
+  U[User input]:::human --> L
+  D[Retrieved documents,<br/>tool results, emails]:::untrusted --> L
   subgraph C1[Input guardrails]
-    direction TB
-    L[Rules: size, format,<br/>allow and deny lists] --> K[Classifiers: harmful content,<br/>prompt attacks, PII, topic]
+    L[Rules: size, format,<br/>allow and deny lists]:::control --> K[Classifiers: harmful content,<br/>prompt attacks, PII, topic]:::control
   end
-  C1 -->|pass| M[Model]
-  C1 -->|mask| R[Redacted input] --> M
-  C1 -->|block or flag| H[Safe response,<br/>review queue, log]
+  K -->|pass| M[Model]:::model
+  K -->|mask| R[Redacted input]:::data --> M
+  K -->|block or flag| H[Safe response,<br/>review queue, log]:::tool

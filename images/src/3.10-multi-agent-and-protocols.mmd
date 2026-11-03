@@ -1,7 +1,7 @@
-%% alt: Diagram for 3.10 Multi-agent topologies and protocols (MCP, A2A): User, Host app / lead agent, MCP server: CRM, MCP server: documents, Remote agent another team or vendor, MCP server: payments
-flowchart LR
-  U[User] --> H[Host app /<br/>lead agent]
-  H -->|MCP: call a tool,<br/>read a resource| T1[MCP server:<br/>CRM]
-  H -->|MCP| T2[MCP server:<br/>documents]
-  H -->|A2A: delegate a task| R[Remote agent<br/>another team or vendor]
-  R -->|MCP| T3[MCP server:<br/>payments]
+%% alt: A user works with a host app or lead agent. It uses MCP to call tools and read resources on a CRM server and a documents server. It uses A2A to delegate a task to a remote agent run by another team or vendor. That remote agent uses MCP to reach its own payments server.
+flowchart TB
+  U[User]:::human --> H[Host app or lead agent]:::model
+  H -->|MCP| T1[MCP server: CRM]:::tool
+  H -->|MCP| T2[MCP server: documents]:::tool
+  H -->|A2A: delegate a task| R[Remote agent<br/>another team or vendor]:::untrusted
+  R -->|MCP| T3[MCP server: payments]:::tool

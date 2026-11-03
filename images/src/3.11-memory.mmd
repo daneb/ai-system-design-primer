@@ -1,9 +1,7 @@
-%% alt: Diagram for 3.11 Agent memory: Conversation and tool results, Candidate memories, Write?, Memory store, scoped per user, Update or delete old, Working context, Model
-flowchart LR
-  C[Conversation<br/>and tool results] -->|extract| X[Candidate<br/>memories]
-  X -->|check source,<br/>filter sensitive| G{Write?}
-  G -->|new| S[(Memory store,<br/>scoped per user)]
-  G -->|contradicts old| U[Update or<br/>delete old]
-  U --> S
-  S -->|search by relevance<br/>at the start of a turn| W[Working context]
-  W --> M[Model]
+%% alt: Writing and reading agent memory. Candidate memories are extracted from conversations and tool results. Each is checked for its source and filtered for sensitive content. It is then written as a new entry, or used to update or delete a contradicted one, in a memory store scoped per user. At the start of each turn, relevant memories are added to the model's working context.
+flowchart TB
+  C[Conversation and<br/>tool results]:::untrusted -->|extract| X[Candidate memories]:::model
+  X --> G{Source checked,<br/>sensitive filtered:<br/>write?}:::control
+  G -->|new| S[(Memory store<br/>scoped per user)]:::data
+  G -->|contradicts old| U[Update or delete old]:::tool --> S
+  S -->|relevant memories,<br/>start of each turn| W[Working context]:::data --> M[Model]:::model

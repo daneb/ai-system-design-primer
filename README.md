@@ -16,10 +16,16 @@ patterns that have converged across the industry, along with the ones that are s
 ![The request path through the primer's components. A user's request passes through the gateway (3.1), input guardrails (3.2) and context engineering (3.3), then retrieval (3.4 to 3.6) and a workflow or agent (3.9 to 3.11), reaches the model layer (3.7, 3.8), and returns through output checks (3.12). Caching, asynchronism, evals, observability and security support the path.](images/readme.svg)
 <!-- source: images/src/readme.mmd; render with scripts/diagrams.py -->
 
-## Motivation
+## Start here
 
-> Learn how to design AI systems that hold up in production.
-> Prepare for the AI system design conversation.
+| If you are… | Read |
+|---|---|
+| New to building on models | [Orientation](docs/0-orientation/0-orientation.md) and the foundations [0.1](docs/0-orientation/0.1-tokens-context-and-sampling.md)–[0.3](docs/0-orientation/0.3-tool-calling.md), then the [trade-offs](#index-of-ai-system-design-topics) in Part 2 |
+| Preparing for an interview or design review | The [method](docs/1-method/1-method.md), two [solved designs](#ai-system-design-questions-with-solutions), then the [practice questions](docs/4-solved-designs/4.8-unsolved-questions.md); pace yourself with the [study guide](#study-guide) |
+| Building a system now | The [component](#index-of-ai-system-design-topics) you need and its deep dive, the [numbers](docs/5-appendix/5.1-numbers.md) and the [cloud mapping](docs/5-appendix/5.2-cloud-mapping.md) |
+| Reviewing risk or security | [2.4 Capability vs security](docs/2-trade-offs/2.4-capability-vs-security.md), [3.2](docs/3-components/3.2-input-guardrails.md), [3.12](docs/3-components/3.12-output-guardrails.md), [3.17](docs/3-components/3.17-security.md) and the [governance crosswalk](docs/5-appendix/5.4-governance-crosswalk.md) |
+
+## Motivation
 
 Building on models is now a core engineering skill, and the field moves fast. Most of what's written
 about it is a product announcement, a framework tutorial or a single team's experience. This primer is
@@ -57,6 +63,9 @@ maturity, so you can study one part, or suspend `maturity::frontier` cards when 
 Most topics come with a small, runnable lab: a simulation or calculation, numpy or the standard
 library only, with the prediction written down before the run and an honest note when it was wrong.
 
+<details>
+<summary>All 31 labs</summary>
+
 | Lab | Question |
 |---|---|
 | [0.1](labs/0.1-tokens-and-sampling/README.md) | What a token is, and what temperature does |
@@ -90,6 +99,8 @@ library only, with the prediction written down before the run and an honest note
 | [4.4](labs/4.4-document-review/README.md) | What 98% recall costs in lawyer time |
 | [4.5](labs/4.5-support-agent/README.md) | Consistency with policy in the prompt or in a policy engine |
 | [4.6](labs/4.6-coding-agent/README.md) | Review capacity caps merged work |
+
+</details>
 
 ## Contributing
 
@@ -252,13 +263,14 @@ More practice: [additional design questions](docs/4-solved-designs/4.8-unsolved-
 ## Progress
 
 <!-- status:start -->
-| Phase | Sections | Planned | Draft | Review | Published |
-|---|---|---|---|---|---|
-| 0 | 6 | 0 | 0 | 0 | 6 |
-| 1 | 12 | 0 | 0 | 2 | 10 |
-| 2 | 10 | 0 | 0 | 2 | 8 |
-| 3 | 11 | 0 | 0 | 1 | 10 |
-| 4 | 5 | 0 | 0 | 2 | 3 |
+| Part | Sections | Published | Review |
+|---|---|---|---|
+| Part 0: Orientation | 4 | 4 | 0 |
+| Part 1: Method | 1 | 1 | 0 |
+| Part 2: Trade-offs | 7 | 7 | 0 |
+| Part 3: Components, in request order | 18 | 13 | 5 |
+| Part 4: Solved designs | 8 | 8 | 0 |
+| Part 5: Appendix | 6 | 4 | 2 |
 <!-- status:end -->
 
 See [ROADMAP.md](ROADMAP.md) for what's next and [PLAN.md](PLAN.md) for the build plan and the

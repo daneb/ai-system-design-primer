@@ -23,7 +23,7 @@ design, design the core components, then scale. AI systems need two changes to t
 
 That gives six steps.
 
-![Diagram for 1 How to approach an AI system design question: 1 Use cases, constraints, quality bar, 2 Back-of-the- envelope, 3 High-level design on the ladder, 4 Core components, 5 Harden, 6 Scale and optimise](../../images/1-method.svg)
+![Six steps, top to bottom: use cases, constraints and the quality bar; back-of-the-envelope estimates; a high-level design on the complexity ladder; core components; hardening against injection, leakage and unsafe actions; then scaling and optimising, which loops back to the components whenever a new bottleneck appears.](../../images/1-method.svg)
 <!-- source: images/src/1-method.mmd; render with scripts/diagrams.py -->
 
 ## Key terms

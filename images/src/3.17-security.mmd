@@ -1,9 +1,9 @@
-%% alt: Diagram for 3.17 Security: User, Application, Web, email, uploads, Documents and vector store, Model, Tools and business systems, Models, packages, tool servers, Telemetry
-flowchart LR
-  U[User] -->|1 prompts| APP[Application]
-  EXT[Web, email, uploads] -->|2 untrusted content| APP
-  KB[(Documents and<br/>vector store)] -->|3 retrieval| APP
-  APP --> M[Model]
-  APP -->|4 tool calls| T[Tools and<br/>business systems]
-  SC[Models, packages,<br/>tool servers] -.->|5 supply chain| APP
-  APP -->|6 logs| LOG[(Telemetry)]
+%% alt: The six ways in and out of an AI application. They are user prompts; untrusted content from the web, email and uploads; retrieval from documents and the vector store; and tool calls to business systems. They also include the supply chain of models, packages and tool servers, and logs sent to telemetry. The application also calls the model.
+flowchart TB
+  U[User]:::human -->|1 prompts| APP[Application]:::tool
+  EXT[Web, email, uploads]:::untrusted -->|2 untrusted content| APP
+  KB[(Documents and<br/>vector store)]:::data -->|3 retrieval| APP
+  SC[Models, packages,<br/>tool servers]:::untrusted -.->|5 supply chain| APP
+  APP --> M[Model]:::model
+  APP -->|4 tool calls| T[Tools and<br/>business systems]:::tool
+  APP -->|6 logs| LOG[(Telemetry)]:::data

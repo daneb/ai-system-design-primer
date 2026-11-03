@@ -1,16 +1,8 @@
-%% alt: Diagram for 3.1 AI gateway and router: deep dive: App A, App B, Agent, AI gateway, Authenticate caller, Token quotas and budgets, Policy hooks guardrails, logging, Router model choice, load balancing, Retry, fallback, circuit breaker
-flowchart LR
-  A1[App A] --> G
-  A2[App B] --> G
-  A3[Agent] --> G
+%% alt: Apps and agents send every model call through an AI gateway, which authenticates the caller, applies token quotas and budgets, runs policy hooks for guardrails and logging, routes to a model with load balancing, and handles retries, fallback and circuit breaking across two providers and a self-hosted model. The gateway records tokens, cost and latency per team.
+flowchart TB
+  A1[App A]:::human & A2[App B]:::human & A3[Agent]:::model --> AU
   subgraph G[AI gateway]
-    direction TB
-    AU[Authenticate<br/>caller] --> Q[Token quotas<br/>and budgets]
-    Q --> P[Policy hooks<br/>guardrails, logging]
-    P --> R[Router<br/>model choice,<br/>load balancing]
-    R --> F[Retry, fallback,<br/>circuit breaker]
+    AU[Authenticate caller]:::control --> Q[Token quotas and budgets]:::control --> P[Policy hooks<br/>guardrails, logging]:::control --> R[Router<br/>model choice, load balancing]:::control --> F[Retry, fallback,<br/>circuit breaker]:::control
   end
-  F --> M1[Provider 1]
-  F --> M2[Provider 2]
-  F --> M3[Self-hosted model]
-  G -. tokens, cost, latency .-> O[(Telemetry<br/>per team)]
+  F --> M1[Provider 1]:::model & M2[Provider 2]:::model & M3[Self-hosted model]:::model
+  R -.->|tokens, cost, latency| O[(Telemetry per team)]:::data

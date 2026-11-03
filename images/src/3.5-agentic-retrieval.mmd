@@ -1,11 +1,11 @@
-%% alt: Diagram for 3.5 Agentic retrieval and the long-context boundary: Question, Plan: what do I need to know?, Choose a tool, Search index, grep / list files, Open a whole document, Read results, Enough to answer?, Answer with citations
-flowchart LR
-  Q[Question] --> P[Plan: what do<br/>I need to know?]
-  P --> T{Choose a tool}
-  T --> S[Search index]
-  T --> G[grep / list files]
-  T --> O[Open a whole<br/>document]
-  S & G & O --> R[Read results]
-  R --> E{Enough to answer?}
-  E -->|no: refine query| P
-  E -->|yes| A[Answer with citations]
+%% alt: Agentic retrieval as a loop. From a question, the agent plans what it needs to know. It chooses a tool: search the index, grep or list files, or open a whole document. It reads the results and decides whether it has enough. If not, it refines the query and plans again; if so, it answers with citations.
+flowchart TB
+  Q[Question]:::human --> P[Plan: what do I need to know?]:::model
+  P --> T{Choose a tool}:::model
+  T --> S[Search index]:::tool
+  T --> G[grep, list files]:::tool
+  T --> O[Open a whole<br/>document]:::tool
+  S & G & O --> R[Read results]:::model
+  R --> E{Enough to answer?}:::control
+  E -.->|no: refine query| P
+  E -->|yes| A[Answer with citations]:::human

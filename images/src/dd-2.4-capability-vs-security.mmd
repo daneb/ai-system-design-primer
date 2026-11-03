@@ -1,12 +1,6 @@
-%% alt: Diagram for 2.4 Capability vs security: deep dive: A: untrusted input (web, email, uploads, retrieved docs, B: sensitive data or systems, C: change state or communicate out, AB: lower risk, BC: lower risk, AC: lower risk
-flowchart LR
-  A["A: untrusted input<br/>(web, email, uploads, retrieved docs)"]
-  B["B: sensitive data or systems"]
-  C["C: change state or<br/>communicate out"]
-  A --- AB(("AB: lower risk")) --- B
-  B --- BC(("BC: lower risk")) --- C
-  A --- AC(("AC: lower risk")) --- C
-  ABC{{"A + B + C in one session:<br/>an injection can steal or act"}}
-  AB -.-> ABC
-  BC -.-> ABC
-  AC -.-> ABC
+%% alt: The three risky capabilities: A, untrusted input such as web pages, email, uploads or retrieved documents; B, access to sensitive data or systems; C, the ability to change state or communicate out. Any two together carry lower risk. All three in one session mean an injected instruction can steal data or act.
+flowchart TB
+  A[A: untrusted input<br/>web, email, uploads,<br/>retrieved docs]:::untrusted
+  B[B: sensitive data<br/>or systems]:::data
+  C[C: change state or<br/>communicate out]:::tool
+  A & B & C --> X[A + B + C in one session:<br/>an injection can steal or act.<br/>Any two together: lower risk]:::untrusted

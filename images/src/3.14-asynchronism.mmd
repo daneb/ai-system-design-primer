@@ -1,7 +1,7 @@
-%% alt: Diagram for 3.14 Asynchronism: batch, durable execution, back-pressure: Caller, Queue, Workers rate-limited, Model API, Checkpoints and results
+%% alt: A caller enqueues work and gets a job ID back. Rate-limited workers take jobs from the queue, call the model API with retries using backoff and jitter, and save checkpoints and results; the caller collects results by webhook or by polling.
 flowchart LR
-  C[Caller] -->|enqueue, get job ID| Q[(Queue)]
-  Q --> W[Workers<br/>rate-limited]
-  W -->|retry with backoff + jitter| M[Model API]
-  W --> S[(Checkpoints<br/>and results)]
-  S -->|webhook or poll| C
+  C[Caller]:::human -->|enqueue,<br/>get job ID| Q[(Queue)]:::data
+  Q --> W[Workers<br/>rate-limited]:::tool
+  W -->|retry, backoff + jitter| M[Model API]:::model
+  W --> S[(Checkpoints<br/>and results)]:::data
+  S -.->|webhook or poll| C

@@ -1,16 +1,8 @@
 %% alt: The request path through the primer's components. A user's request passes through the gateway (3.1), input guardrails (3.2) and context engineering (3.3), then retrieval (3.4 to 3.6) and a workflow or agent (3.9 to 3.11), reaches the model layer (3.7, 3.8), and returns through output checks (3.12). Caching, asynchronism, evals, observability and security support the path.
-flowchart LR
-  U[User]:::human --> G[Gateway<br/>3.1]:::control
-  G --> IG[Input<br/>guardrails 3.2]:::control
-  IG --> C[Context<br/>engineering 3.3]
-  C --> R[Retrieval<br/>3.4–3.6]:::data
-  C --> A[Workflow or<br/>agent 3.9–3.11]:::tool
-  A --> M[Model layer<br/>3.7–3.8]:::model
-  R --> M
-  M --> OG[Output<br/>checks 3.12]:::control
-  OG --> U
-  M -.-> K[Caching 3.13]:::data
-  A -.-> Q[Async 3.14]
-  E[Evals 3.15] -.-> M
-  O[Observability 3.16] -.-> A
-  S[Security 3.17] -.-> A
+flowchart TB
+  U[User]:::human --> G[Gateway 3.1]:::control --> IG[Input guardrails 3.2]:::control --> C[Context engineering 3.3]:::tool
+  C --> R[Retrieval 3.4–3.6]:::data & A[Workflow or agent 3.9–3.11]:::tool
+  R & A --> M[Model layer 3.7–3.8]:::model
+  M --> OG[Output checks 3.12]:::control
+  OG -.->|answer| U
+  M ~~~ X[Across the path:<br/>caching 3.13<br/>async 3.14<br/>evals 3.15<br/>observability 3.16<br/>security 3.17]
