@@ -120,6 +120,28 @@ Diagrams are Mermaid sources rendered to SVG, so they look the same on GitHub, i
 - **Render:** `python3 scripts/diagrams.py render` (needs Node; uses `@mermaid-js/mermaid-cli` and `images/mermaid-config.json`). Commit the `.mmd`, the `.svg` and `images/.hashes.json` together.
 - **Check:** `python3 scripts/diagrams.py check` fails on inline Mermaid, missing alt text, a missing source or SVG, an SVG older than its source, or an SVG wider than 1,131 px. CI runs it.
 
+### Animated diagrams
+
+Animate a diagram only when the point is a process changing over time: a loop, two phases, a queue.
+Structure stays static.
+
+- **Where they live:** a Python generator in `images/anim/<stem>.py` builds `images/anim/<stem>.svg`
+  with the helpers in `images/anim/lib.py`. Animation is CSS only, no script, so it plays inside an
+  image on GitHub. Run `python3 scripts/diagrams.py animate` after a change; `check` rebuilds each one
+  and fails if the committed SVG differs.
+- **Always a static fallback.** The page shows the animation in a `<picture>` whose
+  `prefers-reduced-motion` source is a static Mermaid diagram, so readers who turn motion off, and
+  print and PDF, get the still version. The generator names it in `FALLBACK`.
+- **The un-animated styles are a complete frame.** Wherever animation is off, the SVG shows a
+  meaningful state, not an empty one.
+- **Same rules as the static diagrams:** the colour classes, 15 px text, at most 1,131 px wide, step
+  labels that use the page's key terms, and illustrative numbers marked as such.
+- **One caption, no narration.** Under the image, one italic line says what to watch. The page text
+  doesn't walk through the animation, because some readers see the static version. Check that the
+  animation never contradicts the page (for example, by setting two options the page says not to
+  combine).
+- **Alt text** is the generator's `ALT`; `diagrams.py sync-alt` copies it into the page.
+
 ### Lab charts
 
 A lab with a numeric sweep draws it with `labs/chart.py` and writes `result.svg` beside its README.

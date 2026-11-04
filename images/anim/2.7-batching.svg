@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" viewBox="0 0 820 430" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" role="img">
+<title>Animated: four batch slots over 16 decode steps. With static batching, requests A to D start together; slots whose request finishes early sit idle until the longest, B, finishes at step 14, so only 4 requests finish and 36% of slot-steps are idle. With continuous batching, a waiting request joins as soon as a slot frees up, so 8 requests finish and no slot is idle.</title>
+<style>@keyframes k1 { 0.00% { transform:translateX(0px) } 5.56% { transform:translateX(0px) } 77.78% { transform:translateX(576px) } 100.00% { transform:translateX(576px) } } .k1 { transform:translateX(576px); animation: k1 18.0s linear infinite; } @keyframes k2 { 0.00% { transform:translateX(0px) } 5.56% { transform:translateX(0px) } 77.78% { transform:translateX(576px) } 100.00% { transform:translateX(576px) } } .k2 { transform:translateX(576px); animation: k2 18.0s linear infinite; } @keyframes v3 { 0.00% { opacity:0 } 5.56% { opacity:0 } 7.50% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v3 { opacity:0; animation: v3 18.0s linear infinite; } @keyframes v4 { 0.00% { opacity:0 } 0.06% { opacity:0 } 0.33% { opacity:1 } 23.61% { opacity:1 } 23.89% { opacity:0 } 100.00% { opacity:0 } } .v4 { opacity:0; animation: v4 18.0s linear infinite; } @keyframes v5 { 0.00% { opacity:0 } 23.61% { opacity:0 } 23.89% { opacity:1 } 32.64% { opacity:1 } 32.92% { opacity:0 } 100.00% { opacity:0 } } .v5 { opacity:0; animation: v5 18.0s linear infinite; } @keyframes v6 { 0.00% { opacity:0 } 32.64% { opacity:0 } 32.92% { opacity:1 } 46.18% { opacity:1 } 46.46% { opacity:0 } 100.00% { opacity:0 } } .v6 { opacity:0; animation: v6 18.0s linear infinite; } @keyframes v7 { 0.00% { opacity:0 } 46.18% { opacity:0 } 46.46% { opacity:1 } 68.75% { opacity:1 } 69.03% { opacity:0 } 100.00% { opacity:0 } } .v7 { opacity:0; animation: v7 18.0s linear infinite; } @keyframes v8 { 0.00% { opacity:0 } 68.75% { opacity:0 } 69.03% { opacity:1 } 97.22% { opacity:1 } 97.50% { opacity:0 } 100.00% { opacity:0 } } .v8 { opacity:1; animation: v8 18.0s linear infinite; } @keyframes v9 { 0.00% { opacity:0 } 78.89% { opacity:0 } 80.83% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v9 { opacity:1; animation: v9 18.0s linear infinite; } @keyframes v10 { 0.00% { opacity:0 } 28.12% { opacity:0 } 30.07% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v10 { opacity:1; animation: v10 18.0s linear infinite; } @keyframes k11 { 0.00% { transform:translateX(0px) } 5.56% { transform:translateX(0px) } 77.78% { transform:translateX(576px) } 100.00% { transform:translateX(576px) } } .k11 { transform:translateX(576px); animation: k11 18.0s linear infinite; } @keyframes k12 { 0.00% { transform:translateX(0px) } 5.56% { transform:translateX(0px) } 77.78% { transform:translateX(576px) } 100.00% { transform:translateX(576px) } } .k12 { transform:translateX(576px); animation: k12 18.0s linear infinite; } @keyframes v13 { 0.00% { opacity:0 } 5.56% { opacity:0 } 7.50% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v13 { opacity:0; animation: v13 18.0s linear infinite; } @keyframes v14 { 0.00% { opacity:0 } 0.06% { opacity:0 } 0.33% { opacity:1 } 23.61% { opacity:1 } 23.89% { opacity:0 } 100.00% { opacity:0 } } .v14 { opacity:0; animation: v14 18.0s linear infinite; } @keyframes v15 { 0.00% { opacity:0 } 23.61% { opacity:0 } 23.89% { opacity:1 } 32.64% { opacity:1 } 32.92% { opacity:0 } 100.00% { opacity:0 } } .v15 { opacity:0; animation: v15 18.0s linear infinite; } @keyframes v16 { 0.00% { opacity:0 } 32.64% { opacity:0 } 32.92% { opacity:1 } 46.18% { opacity:1 } 46.46% { opacity:0 } 100.00% { opacity:0 } } .v16 { opacity:0; animation: v16 18.0s linear infinite; } @keyframes v17 { 0.00% { opacity:0 } 46.18% { opacity:0 } 46.46% { opacity:1 } 68.75% { opacity:1 } 69.03% { opacity:0 } 100.00% { opacity:0 } } .v17 { opacity:0; animation: v17 18.0s linear infinite; } @keyframes v18 { 0.00% { opacity:0 } 68.75% { opacity:0 } 69.03% { opacity:1 } 77.78% { opacity:1 } 78.06% { opacity:0 } 100.00% { opacity:0 } } .v18 { opacity:0; animation: v18 18.0s linear infinite; } @keyframes v19 { 0.00% { opacity:0 } 77.78% { opacity:0 } 78.06% { opacity:1 } 97.22% { opacity:1 } 97.50% { opacity:0 } 100.00% { opacity:0 } } .v19 { opacity:1; animation: v19 18.0s linear infinite; } @keyframes v20 { 0.00% { opacity:0 } 78.89% { opacity:0 } 80.83% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v20 { opacity:1; animation: v20 18.0s linear infinite; } @keyframes v21 { 0.00% { opacity:0 } 28.12% { opacity:0 } 30.07% { opacity:1 } 97.22% { opacity:1 } 99.17% { opacity:0 } 100.00% { opacity:0 } } .v21 { opacity:1; animation: v21 18.0s linear infinite; } @keyframes s22 { 0.00% { fill:#64748B } 77.78% { fill:#64748B } 78.89% { fill:#0F172A } 97.22% { fill:#0F172A } 98.33% { fill:#64748B } 100.00% { fill:#64748B } } .s22 { fill:#0F172A; animation: s22 18.0s linear infinite; } @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }</style>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#F8FAFC"/><line x1="0" y1="0" x2="0" y2="6" stroke="#CBD5E1" stroke-width="2"/></pattern></defs>
+<rect width="820" height="430" fill="#FFFFFF"/>
+<text x="130" y="18" font-size="12" fill="#475569" text-anchor="start">decode steps →</text>
+<text x="20" y="42" font-size="15" fill="#0F172A" text-anchor="start" font-weight="600">Static batching</text>
+<text x="120" y="72" font-size="12" fill="#475569" text-anchor="end">slot 1</text>
+<text x="120" y="98" font-size="12" fill="#475569" text-anchor="end">slot 2</text>
+<text x="120" y="124" font-size="12" fill="#475569" text-anchor="end">slot 3</text>
+<text x="120" y="150" font-size="12" fill="#475569" text-anchor="end">slot 4</text>
+<rect x="346" y="56" width="288" height="22" rx="3" fill="url(#hatch)" stroke="#CBD5E1"/><text x="490.0" y="71" text-anchor="middle" font-size="12" fill="#475569">idle</text>
+<rect x="274" y="108" width="360" height="22" rx="3" fill="url(#hatch)" stroke="#CBD5E1"/><text x="454.0" y="123" text-anchor="middle" font-size="12" fill="#475569">idle</text>
+<rect x="454" y="134" width="180" height="22" rx="3" fill="url(#hatch)" stroke="#CBD5E1"/><text x="544.0" y="149" text-anchor="middle" font-size="12" fill="#475569">idle</text>
+<rect x="131" y="56" width="213" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="71" font-size="13" fill="#78350F" font-weight="600">A</text>
+<rect x="131" y="82" width="501" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="97" font-size="13" fill="#78350F" font-weight="600">B</text>
+<rect x="131" y="108" width="141" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="123" font-size="13" fill="#78350F" font-weight="600">C</text>
+<rect x="131" y="134" width="321" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="149" font-size="13" fill="#78350F" font-weight="600">D</text>
+<rect x="635" y="56" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="71" font-size="13" fill="#78350F" font-weight="600">E</text>
+<rect x="635" y="82" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="97" font-size="13" fill="#78350F" font-weight="600">F</text>
+<rect x="635" y="108" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="123" font-size="13" fill="#78350F" font-weight="600">G</text>
+<rect x="635" y="134" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="149" font-size="13" fill="#78350F" font-weight="600">H</text>
+<g clip-path="url(#clip28)"><rect class="k1" x="130" y="54" width="578" height="104" fill="#FFFFFF"/></g>
+<clipPath id="clip28"><rect x="130" y="54" width="578" height="104"/></clipPath>
+<line x1="130" y1="54" x2="130" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="166" y1="54" x2="166" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="202" y1="54" x2="202" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="238" y1="54" x2="238" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="274" y1="54" x2="274" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="310" y1="54" x2="310" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="346" y1="54" x2="346" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="382" y1="54" x2="382" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="418" y1="54" x2="418" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="454" y1="54" x2="454" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="490" y1="54" x2="490" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="526" y1="54" x2="526" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="562" y1="54" x2="562" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="598" y1="54" x2="598" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="634" y1="54" x2="634" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="670" y1="54" x2="670" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="706" y1="54" x2="706" y2="158" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="130" y="54" width="576" height="104" fill="none" stroke="#CBD5E1" stroke-width="1.5"/>
+<g class="v3"><line class="k2" x1="130" y1="50" x2="130" y2="162" stroke="#7C3AED" stroke-width="2.5"/></g>
+<text x="722" y="76" font-size="12" fill="#475569" text-anchor="start">finished</text>
+<text class="v4" x="722" y="104" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">0</text>
+<text class="v5" x="722" y="104" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">1</text>
+<text class="v6" x="722" y="104" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">2</text>
+<text class="v7" x="722" y="104" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">3</text>
+<text class="v8" x="722" y="104" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">4</text>
+<text class="v9" x="722" y="130" font-size="12" fill="#475569" text-anchor="start">idle: 36%</text>
+<text class="v10" x="130" y="180" font-size="13" fill="#475569" text-anchor="start">Short requests finish; their slots wait for the longest one (B).</text>
+<text x="20" y="212" font-size="15" fill="#0F172A" text-anchor="start" font-weight="600">Continuous batching</text>
+<text x="120" y="242" font-size="12" fill="#475569" text-anchor="end">slot 1</text>
+<text x="120" y="268" font-size="12" fill="#475569" text-anchor="end">slot 2</text>
+<text x="120" y="294" font-size="12" fill="#475569" text-anchor="end">slot 3</text>
+<text x="120" y="320" font-size="12" fill="#475569" text-anchor="end">slot 4</text>
+<rect x="131" y="226" width="213" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="241" font-size="13" fill="#78350F" font-weight="600">A</text>
+<rect x="131" y="252" width="501" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="267" font-size="13" fill="#78350F" font-weight="600">B</text>
+<rect x="131" y="278" width="141" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="293" font-size="13" fill="#78350F" font-weight="600">C</text>
+<rect x="131" y="304" width="321" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="140" y="319" font-size="13" fill="#78350F" font-weight="600">D</text>
+<rect x="275" y="278" width="177" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="284" y="293" font-size="13" fill="#78350F" font-weight="600">E</text>
+<rect x="347" y="226" width="285" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="356" y="241" font-size="13" fill="#78350F" font-weight="600">F</text>
+<rect x="455" y="278" width="177" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="464" y="293" font-size="13" fill="#78350F" font-weight="600">G</text>
+<rect x="455" y="304" width="249" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="464" y="319" font-size="13" fill="#78350F" font-weight="600">H</text>
+<rect x="635" y="226" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="241" font-size="13" fill="#78350F" font-weight="600">I</text>
+<rect x="635" y="252" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="267" font-size="13" fill="#78350F" font-weight="600">J</text>
+<rect x="635" y="278" width="69" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/><text x="644" y="293" font-size="13" fill="#78350F" font-weight="600">K</text>
+<g clip-path="url(#clip198)"><rect class="k11" x="130" y="224" width="578" height="104" fill="#FFFFFF"/></g>
+<clipPath id="clip198"><rect x="130" y="224" width="578" height="104"/></clipPath>
+<line x1="130" y1="224" x2="130" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="166" y1="224" x2="166" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="202" y1="224" x2="202" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="238" y1="224" x2="238" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="274" y1="224" x2="274" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="310" y1="224" x2="310" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="346" y1="224" x2="346" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="382" y1="224" x2="382" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="418" y1="224" x2="418" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="454" y1="224" x2="454" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="490" y1="224" x2="490" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="526" y1="224" x2="526" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="562" y1="224" x2="562" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="598" y1="224" x2="598" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="634" y1="224" x2="634" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="670" y1="224" x2="670" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="706" y1="224" x2="706" y2="328" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="130" y="224" width="576" height="104" fill="none" stroke="#CBD5E1" stroke-width="1.5"/>
+<g class="v13"><line class="k12" x1="130" y1="220" x2="130" y2="332" stroke="#7C3AED" stroke-width="2.5"/></g>
+<text x="722" y="246" font-size="12" fill="#475569" text-anchor="start">finished</text>
+<text class="v14" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">0</text>
+<text class="v15" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">1</text>
+<text class="v16" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">2</text>
+<text class="v17" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">4</text>
+<text class="v18" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">7</text>
+<text class="v19" x="722" y="274" font-size="26" fill="#0F172A" text-anchor="start" font-weight="700">8</text>
+<text class="v20" x="722" y="300" font-size="12" fill="#475569" text-anchor="start">idle: 0%</text>
+<text class="v21" x="130" y="350" font-size="13" fill="#475569" text-anchor="start">A waiting request joins at the next step after any slot frees up.</text>
+<text x="130" y="370" font-size="12" fill="#475569" text-anchor="start">Waiting queue: E F G H I J K …</text>
+<text class="s22" x="20" y="402" font-size="14" fill="#475569" text-anchor="start" font-weight="600">Same hardware, same requests: more finished, no idle slots</text>
+</svg>

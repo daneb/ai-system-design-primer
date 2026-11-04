@@ -44,7 +44,7 @@ def reading_body(body):
 def body_words(body):
     """Words counted against the budget: the reading body minus the Key terms box (reference material)."""
     text = re.sub(r"^## Key terms\s*$.*?(?=^## )", "", reading_body(body), flags=re.S | re.M)
-    text = re.sub(r"!\[[^\]]*\]\([^)]*\)|<!--.*?-->", "", text, flags=re.S)  # diagram alt text is not reading
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)|<!--.*?-->|<picture>.*?</picture>", "", text, flags=re.S)  # diagram alt text is not reading
     return len(re.findall(r"\S+", text))
 
 
