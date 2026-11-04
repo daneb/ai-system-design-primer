@@ -1,9 +1,10 @@
 # Link checker settings (lychee reads this file automatically; CI also passes its own flags).
 
-# Retry flaky hosts and treat rate limiting as a pass.
+# Retry flaky hosts and treat rate limiting as a pass. EUR-Lex answers 202 (Accepted) to checkers
+# while it queues the page; the page is there.
 max_retries = 2
 timeout = 30
-accept = ["200", "206", "429"]
+accept = ["200", "202", "206", "429"]
 
 # research/ holds dated feasibility notes kept as a record; its links are evidence of what was read
 # then, not reading for learners, so link rot there doesn't fail the build.
@@ -13,6 +14,7 @@ exclude_path = ["templates", "research"]
 # Before adding a site here, open the link by hand to confirm it is alive.
 exclude = [
   '^https://help\.openai\.com/',
+  '^https://(www\.)?openai\.com/',
   '^https://(www\.)?customerexperiencedive\.com/',
   '^https://(www\.)?canlii\.ca/',
   '^https://(www\.)?oreilly\.com/',

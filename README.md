@@ -4,12 +4,6 @@
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-lightgrey.svg)](LICENSE-CODE)
 
-> **Status: first release, November 2026.** Every section was researched against primary sources and
-> reviewed by the author, and CI checks every change: links, structure, diagrams, and that every lab
-> runs. The few claims that couldn't be confirmed against a primary source are listed, with the sections
-> that use them, in [PLAN.md](PLAN.md#verification-debt). Reviews and corrections are welcome; please
-> include a source.
-
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
 
