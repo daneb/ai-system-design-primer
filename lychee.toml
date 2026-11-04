@@ -1,10 +1,9 @@
 # Link checker settings (lychee reads this file automatically; CI also passes its own flags).
 
-# Retry flaky hosts and treat rate limiting as a pass. EUR-Lex answers 202 (Accepted) to checkers
-# while it queues the page; the page is there.
+# Retry flaky hosts and treat rate limiting as a pass.
 max_retries = 2
 timeout = 30
-accept = ["200", "202", "206", "429"]
+accept = ["200", "206", "429"]
 
 # research/ holds dated feasibility notes kept as a record; its links are evidence of what was read
 # then, not reading for learners, so link rot there doesn't fail the build.
@@ -22,4 +21,6 @@ exclude = [
   '^https://(www\.)?americanbar\.org/',
   # HAL (French open archive) sits behind Anubis proof-of-work bot protection, so checkers time out.
   '^https://([a-z-]+\.)?hal\.science/',
+  # EUR-Lex answers checkers with 202 Accepted (it queues the request) instead of the page.
+  '^https://eur-lex\.europa\.eu/',
 ]
