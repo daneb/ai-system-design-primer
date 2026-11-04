@@ -10,8 +10,9 @@ frontier that must be dated and rewritten on a schedule. The hard part is stayin
 
 ## Status: first release (2 November 2026)
 
-- **44 sections**, all reviewed by the author: 37 published, 7 in review until
-  their open verification items are cleared.
+- **44 sections**, all reviewed by the author and published. 21 claims remain open (below); no
+  section has more than two. 3.8, 3.10, 3.15, 3.17, 3.18, 5.2 and 5.4 moved from review to published
+  on 3 November 2026.
 - **26 deep dives, 31 labs (17 with charts), 54 diagrams, 8 ADRs**, and a flashcard deck exported as
   TSV and as an Anki package.
 - **CI** checks front matter, review dates, the README, diagrams, links, flashcards and every lab.
@@ -66,18 +67,18 @@ last. Each section followed the definition of done above.
 - [x] **3.4** Retrieval pipeline — published
 - [x] **3.6** Vector stores — published (1 open item)
 - [x] **3.12** Output guardrails and validation — published (1 open item)
-- [x] **3.15** Evals — in review: 4 open verification items
-- [x] **3.17** Security — in review: 4 open verification items
+- [x] **3.15** Evals
+- [x] **3.17** Security
 - [x] **4.2** Design an enterprise RAG assistant — published
 
 ### Phase 2: Serving and economics
 
 - [x] **2.7** Throughput vs per-request latency in serving — published (1 open item)
 - [x] **3.7** Model layer: selection, structured outputs, streaming — published (1 open item)
-- [x] **3.8** Serving internals — in review: 4 open verification items
+- [x] **3.8** Serving internals
 - [x] **3.13** Caching — published (1 open item)
 - [x] **3.14** Asynchronism: batch, durable execution, back-pressure — published (1 open item)
-- [x] **3.18** Model adaptation — in review: 3 open verification items
+- [x] **3.18** Model adaptation
 - [x] **4.1** Design an LLM inference API — published (1 open item)
 - [x] **4.3** Design an enterprise AI gateway — published
 - [x] **4.7** Design an eval and release pipeline — published
@@ -90,7 +91,7 @@ last. Each section followed the definition of done above.
 - [x] **3.3** Context engineering — published (1 open item)
 - [x] **3.5** Agentic retrieval and the long-context boundary — published (2 open items)
 - [x] **3.9** Workflows and agents — published
-- [x] **3.10** Multi-agent topologies and protocols (MCP, A2A) — in review: 3 open verification items
+- [x] **3.10** Multi-agent topologies and protocols (MCP, A2A)
 - [x] **3.11** Agent memory — published (1 open item)
 - [x] **3.16** Observability — published (1 open item)
 - [x] **4.4** Design a regulated document-review assistant — published (1 open item)
@@ -100,9 +101,9 @@ last. Each section followed the definition of done above.
 ### Phase 4: Cross-cutting appendices
 
 - [x] **4.8** Additional design questions — published
-- [x] **5.2** Cloud mapping: Azure, AWS, Google Cloud — in review: 10 open verification items
+- [x] **5.2** Cloud mapping: Azure, AWS, Google Cloud
 - [x] **5.3** Pattern crosswalk — published (2 open items)
-- [x] **5.4** Governance crosswalk: OWASP, FINOS, EU AI Act — in review: 5 open verification items
+- [x] **5.4** Governance crosswalk: OWASP, FINOS, EU AI Act
 - [x] **5.5** Real-world architectures and engineering blogs — published
 
 ## Verification debt
@@ -127,9 +128,9 @@ below has one of four kinds, which says what it takes to clear it:
 
 | Kind | Meaning | To clear it | Open |
 |---|---|---|---|
-| Second-hand | Known only from a blog, summary, search snippet, aggregator or vendor claim | Find and read the primary source | 18 |
-| Source not read | The primary source exists, but the relevant part hasn't been read in full | Read it | 11 |
-| Not researched | Nobody has looked yet, often a cloud-mapping cell or a newer development | Research it | 10 |
+| Second-hand | Known only from a blog, summary, search snippet, aggregator or vendor claim | Find and read the primary source | 7 |
+| Source not read | The primary source exists, but the relevant part hasn't been read in full | Read it | 7 |
+| Not researched | Nobody has looked yet, often a cloud-mapping cell or a newer development | Research it | 5 |
 | Needs an expert | A judgement, such as how a regulation applies, that a source can't settle | Ask a qualified reviewer, such as legal or compliance | 2 |
 
 Sources read through automated tools can be misread; for legal, regulatory and high-stakes figures, a
@@ -146,45 +147,25 @@ or fewer rows name it.
 | Claim | Kind | Problem | Needed by |
 |---|---|---|---|
 | Cache multipliers and TTLs per provider | Second-hand | Anthropic, OpenAI, Google, Azure and AWS Bedrock confirmed first-party (Nov 2026); per-model OpenAI read discounts and Anthropic automatic caching by default still via secondary sources | 3.13, 5.1 |
-| Self-hosted cost per M output tokens | Second-hand | Single vendor worked example | 3.8, 4.1 |
-| SGLang RadixAttention TTFT improvement | Second-hand | Unsourced vendor claim | 3.8 |
-| TGI archive date | Second-hand | Secondary blog; cite Hugging Face's maintenance-mode note only | 3.8 |
 | Managed agent memory (Foundry, Memory Bank, AgentCore) | Source not read | Docs seen via search snippets, not read in full; Foundry throughput figure secondary; OpenAI long-term memory API absence unconfirmed | 3.3, 3.11 |
 | AWS and OpenAI first-party long-context-vs-RAG guidance | Not researched | Not found | 2.3 |
 | Coding-agent search choices (Codex, Cline, Cursor) and Claude Code "agentic search beat RAG" | Second-hand | Secondary sources and an interview; arXiv 2608.01507 seen via abstract only | 3.5 |
 | Bedrock agentic retrieval and Vertex AI Search agentic features | Second-hand | AWS blog only; Google not checked | 3.5 |
-| A2A v1.0 operations, dates and agent-card fields; MCP revision list | Second-hand | Secondary sources; read a2a-protocol.org spec and MCP release list | 3.10 |
-| Cloud MCP/A2A services (AgentCore Gateway/Identity, Apigee, Entra Agent ID, Agent Engine A2A) | Not researched | Not checked first-party | 3.10 |
 | OTel GenAI conventions details (repo move, versions, operations); Google Cloud Trace for ADK; Anthropic telemetry | Second-hand | Secondary sources; Google and Anthropic not checked first-party | 3.16 |
 | τ-bench policy-removal effect (−22.4% airline) | Source not read | Not found in the paper's HTML text (likely in a figure or appendix); Klarna, Stanford and the τ-bench pass^k figures confirmed 2026-11-02 | 4.5 |
 | EU AI Act: contract review not high-risk | Needs an expert | Primer's reading of Annex III; confirm with legal | 4.4 |
 | Coding-agent sandbox details (Codex two-phase, Copilot firewall and approvals) | Source not read | First-party docs seen via search; GitHub concept page redirected | 4.6 |
 | Tokens per word, embedding dimensions, KV-cache bytes, GPU memory and bandwidth | Not researched | Tokens per word confirmed (OpenAI); KV-cache formula derived; GPU memory and bandwidth confirmed on NVIDIA's pages (2026-11-02); embedding dimensions not covered | 5.1 |
-| Prompt → RAG → fine-tune → distill → RL ladder | Not researched | First three steps now sourced (Anthropic, OpenAI, AWS, Google, Thoughtworks; see 2.6). Distillation and RL steps still synthesis | 3.18 |
 | Huyen's platform build-up order | Source not read | Secondary synthesis; check *AI Engineering* ch. 10 | 1, 3.1 |
 | Lakshmanan & Hapke pattern names | Source not read | Possibly a revised edition; not mapped in 5.3 | 5.3 |
 | Gulli chapter titles and Fowler pattern names in 5.3 | Source not read | From memory of the published contents; check against the book and article | 5.3 |
-| FINOS AIGF risk IDs (AIR-SEC-0xx, AIR-OP-0xx) | Source not read | Read from the framework site's search snippets, not each risk page | 5.4 |
 | EU AI Act article mapping per risk in 5.4 | Needs an expert | Primer's reading; confirm with legal | 5.4 |
-| FINOS risk counts | Second-hand | Sources say 30, 46 and 25; the site doesn't state a total; 5.4 avoids counts | 5.4 |
-| AWS S3 Vectors and MemoryDB as vector stores | Second-hand | Third-party source only | 3.6, 5.2 |
-| AWS AgentCore Gateway token limits; Google learned routing | Second-hand | Third-party source only / not researched | 3.1, 5.2 |
 | Prompt Shields input limits (2024 figures); Azure PII masking and custom categories; open-source guardrails (Llama Guard, Prompt Guard, NeMo, Presidio) | Not researched | Possibly outdated / not researched | 3.2, 5.2 |
-| OpenAI structured outputs and guardrails-library hallucination check; Azure OpenAI structured outputs | Second-hand | Secondary sources only / not checked | 3.12, 5.2 |
-| Microsoft deterministic exfiltration blocking | Source not read | MSRC post read via search excerpts and secondary summaries (OpenAI agent guide confirmed 2026-11-02) | 2.4, 3.17 |
-| OWASP Agentic Top 10 2026 entry names (all ten in 5.4); MITRE ATLAS counts | Source not read | Several secondary sources agree on names; OWASP PDF and ATLAS pages not read directly | 3.17, 5.4 |
-| Invariant Labs tool-poisoning and rug-pull disclosures (April 2025); malicious models on public hubs (JFrog, ReversingLabs) | Second-hand | Secondary sources only | 3.17, 3.10 |
 | Tool-call authorisation, sandboxes and red-teaming services for Azure, Google, OpenAI | Not researched | Not researched | 3.17, 5.2 |
 | Newer models' pass^k on τ-bench | Not researched | Paper figures confirmed (GPT-4o retail ≈61% pass^1, ≈25% pass^8); current leaderboards not checked | 2.2, 3.15 |
-| OpenAI flex, priority and Scale Tier; Anthropic Priority Tier withdrawal; AWS priority on-demand | Second-hand | Via gateway documentation, not provider docs | 2.7, 5.2 |
-| Chunked-prefill defaults in vLLM V1 and SGLang; Sarathi-Serve figures; managed endpoints for open models on Azure and AWS | Second-hand | Secondary sources / not researched | 3.8, 5.2 |
-| Anthropic model fine-tuning via cloud partners | Not researched | Claude 3 Haiku tuning on Bedrock confirmed (GA Nov 2024); AWS blog says the model reached EOL 10 Sep 2026; any current Claude tuning option not verified | 2.6, 3.18, 5.2 |
-| Azure and Google fine-tuning methods (DPO, RFT); OpenAI currently tunable models; Bedrock RFT accuracy claim | Not researched | Not researched / secondary | 3.18, 5.2 |
 | Anthropic 529 overload semantics; OpenAI, Google, Azure, AWS batch limits | Second-hand | Secondary sources | 3.14 |
 | OpenAI snapshot pinning guidance; Anthropic dateless IDs are pinned | Second-hand | Secondary sources quoting provider docs | 3.7 |
-| Anthropic eval details: pass@k / pass^k, capability vs regression, grade outcomes not paths | Source not read | Page confirmed to exist and cover them; details read via secondary summaries | 3.15 |
-| EU AI Act Art. 15 (accuracy for high-risk systems) | Source not read | Not checked against the regulation text | 3.15, 5.4 |
-| Anthropic managed eval tooling; AWS and Google production monitoring of eval scores | Not researched | Not researched | 3.15, 5.2 |
+| EU AI Act Art. 15 (accuracy for high-risk systems) | Source not read | 3.15 now states Art. 15(1) and (3) as given by the AI Act Explorer's copy of the text; EUR-Lex's page didn't load in full. A person's read of Art. 15 on EUR-Lex clears it | 3.15, 5.4 |
 | "Change temperature or top-p, not both" and reasoning models rejecting sampling settings | Second-hand | Azure confirmed first-party; Anthropic and OpenAI via secondary sources (Anthropic API reference didn't load in full, 2026-11-02) | 0.1, 0.2 |
 
 ## Research gaps

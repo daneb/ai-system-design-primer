@@ -263,14 +263,14 @@ More practice: [additional design questions](docs/4-solved-designs/4.8-unsolved-
 ## Progress
 
 <!-- status:start -->
-| Part | Sections | Published | Review |
-|---|---|---|---|
-| Part 0: Orientation | 4 | 4 | 0 |
-| Part 1: Method | 1 | 1 | 0 |
-| Part 2: Trade-offs | 7 | 7 | 0 |
-| Part 3: Components, in request order | 18 | 13 | 5 |
-| Part 4: Solved designs | 8 | 8 | 0 |
-| Part 5: Appendix | 6 | 4 | 2 |
+| Part | Sections | Published |
+|---|---|---|
+| Part 0: Orientation | 4 | 4 |
+| Part 1: Method | 1 | 1 |
+| Part 2: Trade-offs | 7 | 7 |
+| Part 3: Components, in request order | 18 | 18 |
+| Part 4: Solved designs | 8 | 8 |
+| Part 5: Appendix | 6 | 6 |
 <!-- status:end -->
 
 See [ROADMAP.md](ROADMAP.md) for what's next and [PLAN.md](PLAN.md) for the build plan and the
