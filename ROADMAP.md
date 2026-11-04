@@ -70,7 +70,7 @@ plain, inconsistent in layout and rendered differently by every viewer.
 - [x] **P1 · Lab charts.** Each lab writes an SVG chart next to its README (matplotlib, optional
   dependency); READMEs show the chart above the table. *Check:* labs with a sweep have `result.svg`. *Done 2026-11-02:* 14 labs with sweeps draw `result.svg` via `labs/chart.py`;
   the rest compare named options and keep tables. `primer.py labs` checks the charts.
-- [x] **P2 · Animated diagrams** for processes. *Done 2026-11-04:* 0.1 (the token loop), 0.2 (prefill
+- [x] **P2 · Animated diagrams** for processes. *Done 2026-11-04:* the README hero (a request travelling the component path), 0.1 (the token loop), 0.2 (prefill
   and decode), 0.3 (the tool-calling loop) and 2.7 (static vs continuous batching), CSS-only SVGs from
   Python generators in `images/anim/`, each with a static reduced-motion fallback; `diagrams.py check`
   rebuilds them.

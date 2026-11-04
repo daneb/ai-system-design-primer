@@ -13,8 +13,11 @@
 Learn how to design systems built on large language models: the trade-offs, the components, and the
 patterns that have converged across the industry, along with the ones that are still moving.
 
-![The request path through the primer's components. A user's request passes through the gateway (3.1), input guardrails (3.2) and context engineering (3.3), then retrieval (3.4 to 3.6) and a workflow or agent (3.9 to 3.11), reaches the model layer (3.7, 3.8), and returns through output checks (3.12). Caching, asynchronism, evals, observability and security support the path.](images/readme.svg)
-<!-- source: images/src/readme.mmd; render with scripts/diagrams.py -->
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="images/readme.svg">
+  <img src="images/anim/readme.svg" alt="Animated: a request travels from the user through the gateway (3.1), input guardrails (3.2) and context engineering (3.3), then retrieval (3.4 to 3.6) and a workflow or agent (3.9 to 3.11), reaches the model layer (3.7, 3.8), and returns through output checks (3.12) to the user. Caching, asynchronism, evals, observability and security (3.13 to 3.17) support the whole path.">
+</picture>
+<!-- animation: images/anim/readme.py (scripts/diagrams.py animate); static fallback: images/src/readme.mmd -->
 
 ## Start here
 
